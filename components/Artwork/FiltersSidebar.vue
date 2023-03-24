@@ -1,0 +1,34 @@
+<script lang="ts" setup>
+import { useUserMovementsStore } from '@/stores';
+
+const route = useRoute();
+const userMovementsStore = useUserMovementsStore();
+
+const parseTagsSearchTerm = () => {
+	const tag = (route.query.tag as string) || '';
+	userMovementsStore.UPDATE_TAGS_SEARCH_TERM(tag);
+};
+
+onMounted(parseTagsSearchTerm);
+</script>
+
+<template>
+	<div
+		class="flex flex-col border-r border-b border-solid border-brand-gray-1 bg-white p-4 xs:w-full md:w-96"
+	>
+		<section class="pb-5">
+			<!-- <artwork-filters-sidebar-checkbox-group/> -->
+			<artwork-filters-sidebar-prompt />
+
+			<artwork-filters-sidebar-tags />
+
+			<collapsible-accordian header="Categories">
+				<artwork-filters-sidebar-categories />
+			</collapsible-accordian>
+
+			<collapsible-accordian header="Locations">
+				<artwork-filters-sidebar-locations />
+			</collapsible-accordian>
+		</section>
+	</div>
+</template>
