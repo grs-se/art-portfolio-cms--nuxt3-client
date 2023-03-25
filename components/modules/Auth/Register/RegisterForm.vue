@@ -1,8 +1,8 @@
-<script lang="ts" setup>
+<!-- <script lang="ts" setup>
 import { computed, reactive, ref } from 'vue'
 import { useUsersStore, useAlertStore } from '~/stores'
 import { router } from '~/router'
-import type { User } from '~/types'
+import type { IUser } from '~/types/IUser'
 import { FormInput } from './'
 
 const usersStore = useUsersStore()
@@ -158,4 +158,4 @@ const register = function (e: Event) {
       </form>
     </div>
   </div>
-</template>
+</template> -->

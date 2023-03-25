@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, ref, onBeforeUnmount, onMounted } from 'vue'
 
-import nextElementInList from '~/common/utility/nextElementInList'
+import nextElementInList from '~/utils/nextElementInList'
 
 const action = ref('Build')
 const interval = ref<ReturnType<typeof setInterval>>()

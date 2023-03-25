@@ -59,7 +59,31 @@ export default defineNuxtConfig({
   components: {
     dirs: [
       {
-        path: '~/components/common',
+        path: '~/components/common/data-display',
+        extensions: ['vue'],
+      },
+      {
+        path: '~/components/common/data-input',
+        extensions: ['vue'],
+      },
+      {
+        path: '~/components/common/feedback',
+        extensions: ['vue'],
+      },
+      {
+        path: '~/components/common/landing',
+        extensions: ['vue'],
+      },
+      {
+        path: '~/components/common/layout',
+        extensions: ['vue'],
+      },
+      {
+        path: '~/components/common/navigation',
+        extensions: ['vue'],
+      },
+      {
+        path: '~/components/common/surfaces',
         extensions: ['vue'],
       },
       {

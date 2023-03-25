@@ -1,11 +1,10 @@
-<script lang="ts" setup>
+<!-- <script lang="ts" setup>
 import { Field, Form } from 'vee-validate'
 import { ForgotPassword, LoginButton, RememberMe, SignUp } from '.'
-import { Alert } from '~/common/components/feedback'
 
 import * as Yup from 'yup'
 
-import { useAuthStore } from '~/stores'
+import { useAuthStore } from '~/stores/auth'
 
 const schema = Yup.object().shape({
   // email: Yup.string().required("Email is required"),
@@ -119,4 +118,4 @@ async function onSubmit(values) {
 .invalid-feedback {
   @apply text-sm text-red-600;
 }
-</style>
+</style> -->

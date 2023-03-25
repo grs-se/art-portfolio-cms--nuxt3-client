@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
-import { ActionButton } from '~/common/components/data-input'
-
-import { useAlertStore } from '~/stores'
+import { useAlertStore } from '~/stores/alert'
 
 const alertStore = useAlertStore()
 const { alert } = storeToRefs(alertStore)
