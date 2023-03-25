@@ -1,32 +1,32 @@
 <template>
-	<div
-		class="mx-auto flex items-center justify-center p-2 xl:max-h-80 xl:w-auto"
-	>
-		<figure
-			@mouseover="hover = true"
-			@mouseleave="hover = false"
-			class="flex h-auto flex-col items-center justify-center rounded border border-solid border-brand-gray-2 bg-white p-1 hover:shadow-gray"
-		>
-			<img
-				:src="'images/' + artwork.imageCover"
-				class="sm:max-h-auto items-center justify-center xl:max-h-80"
-			/>
-			<ModalHover :artwork="artwork" v-if="hover === true" />
-		</figure>
-	</div>
+  <div
+    class="mx-auto flex items-center justify-center p-2 xl:max-h-80 xl:w-auto"
+  >
+    <figure
+      @mouseover="hover = true"
+      @mouseleave="hover = false"
+      class="flex h-auto flex-col items-center justify-center rounded border border-solid border-brand-gray-2 bg-white p-1 hover:shadow-gray"
+    >
+      <img
+        :src="'images/' + artwork.imageCover"
+        class="sm:max-h-auto items-center justify-center xl:max-h-80"
+      />
+      <ModalHover :artwork="artwork" v-if="hover === true" />
+    </figure>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import type { Artwork } from '@/types';
+import type { Artwork } from '~/types'
 
-const hover = ref<boolean>(false);
+const hover = ref<boolean>(false)
 
 const props = defineProps({
-	artwork: {
-		type: Object as PropType<Artwork>,
-		required: true,
-	},
-});
+  artwork: {
+    type: Object as PropType<Artwork>,
+    required: true,
+  },
+})
 // var tooltip = document.getElementById("tooltip-span");
 
 // const displayModalMousePosition = () => {
@@ -38,5 +38,5 @@ const props = defineProps({
 // 	};
 // };
 
-const artworkPageLink = computed(() => `/artworks/results/${props.artwork.id}`);
+const artworkPageLink = computed(() => `/artworks/results/${props.artwork.id}`)
 </script>

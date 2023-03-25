@@ -1,6 +1,6 @@
 import { useRouter, useState } from '#app'
-import { ISession } from '@/types/ISession'
-import { IUser } from '@/types/IUser'
+import { ISession } from '~/types/ISession'
+import { IUser } from '~/types/IUser'
 
 export const useAuthCookie = () => useCookie('auth_token')
 

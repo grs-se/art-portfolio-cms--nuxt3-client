@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
-import createSetFromNestedArray from '@/utils/createSetFromNestedArray'
+import createSetFromNestedArray from '~/utils/createSetFromNestedArray'
 
-import getArtworks from '@/services/getArtworks'
+import getArtworks from '~/services/getArtworks'
 
-import { useUserMovementsStore } from '@/stores/userMovement'
-import type { IArtwork } from '@/types/IArtwork'
+import { useUserMovementsStore } from '~/stores/userMovement'
+import type { IArtwork } from '~/types/IArtwork'
 
 export const FETCH_ARTWORKS = 'FETCH_ARTWORKS'
 export const UNIQUE_ARTWORK_CATEGORIES = 'UNIQUE_ARTWORK_CATEGORIES'

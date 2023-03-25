@@ -55,6 +55,7 @@ export default defineNuxtConfig({
     injectPosition: 0,
     viewer: true,
   },
+  css: ['@fortawesome/fontawesome-svg-core/styles.css'],
   components: {
     dirs: [
       {

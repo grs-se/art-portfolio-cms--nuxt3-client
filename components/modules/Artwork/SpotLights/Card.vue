@@ -1,31 +1,31 @@
 <template>
-	<ul>
-		<li v-for="spotlight in displaySpotlights" :key="spotlight.id">
-			<slot
-				:image-cover="spotlight.imageCover"
-				:title="spotlight.title"
-				:medium="spotlight.medium"
-				:dimensions="spotlight.dimensions"
-				:description="spotlight.description"
-				:categories="spotlight.categories"
-			></slot>
-		</li>
-	</ul>
+  <ul>
+    <li v-for="spotlight in displaySpotlights" :key="spotlight.id">
+      <slot
+        :image-cover="spotlight.imageCover"
+        :title="spotlight.title"
+        :medium="spotlight.medium"
+        :dimensions="spotlight.dimensions"
+        :description="spotlight.description"
+        :categories="spotlight.categories"
+      ></slot>
+    </li>
+  </ul>
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted } from "vue";
+import { computed, onMounted } from 'vue'
 
-import { useArtworksStore } from "@/stores";
+import { useArtworksStore } from '~/stores'
 
-const artworksStore = useArtworksStore();
-onMounted(artworksStore.FETCH_ARTWORKS);
+const artworksStore = useArtworksStore()
+onMounted(artworksStore.FETCH_ARTWORKS)
 
-const ARTWORK_SPOTLIGHTS = computed(() => artworksStore.ARTWORK_SPOTLIGHTS);
+const ARTWORK_SPOTLIGHTS = computed(() => artworksStore.ARTWORK_SPOTLIGHTS)
 
 const displaySpotlights = computed(() => {
-	return ARTWORK_SPOTLIGHTS.value;
-});
+  return ARTWORK_SPOTLIGHTS.value
+})
 
 // import { ref, onMounted } from "vue";
 // import axios from "axios";

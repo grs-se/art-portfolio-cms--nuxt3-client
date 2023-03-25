@@ -1,11 +1,11 @@
-import type { Artwork } from '@/types/IArtwork'
-import ApiUrls from '@/data/constants/urls'
+import type { IArtwork } from '~/types/IArtwork'
+import ApiUrls from '~/data/constants/urls'
 
 const getArtworks = async () => {
   const baseUrl = import.meta.env.VITE_API_URL
   const endpoint = ApiUrls.getAllArtworksEndpoint
   const url = `${baseUrl}${endpoint}`
-  const response = await $fetch<Artwork[]>(url)
+  const response = await $fetch<IArtwork[]>(url)
   return response.data.data.artworks
 }
 

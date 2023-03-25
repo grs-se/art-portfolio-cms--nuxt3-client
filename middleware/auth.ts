@@ -1,5 +1,5 @@
 import { defineNuxtRouteMiddleware, useNuxtApp } from '#app'
-import { useUser } from '@/composables/useAuth'
+import { useUser } from '~/composables/useAuth'
 
 export default defineNuxtRouteMiddleware(async (to) => {
   const user = await useUser()

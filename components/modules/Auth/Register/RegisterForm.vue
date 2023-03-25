@@ -1,21 +1,21 @@
 <script lang="ts" setup>
-import { computed, reactive, ref } from "vue";
-import { useUsersStore, useAlertStore } from "@/stores";
-import { router } from "@/router";
-import type { User } from "@/types";
-import { FormInput } from "./";
+import { computed, reactive, ref } from 'vue'
+import { useUsersStore, useAlertStore } from '~/stores'
+import { router } from '~/router'
+import type { User } from '~/types'
+import { FormInput } from './'
 
-const usersStore = useUsersStore();
-const alertStore = useAlertStore();
+const usersStore = useUsersStore()
+const alertStore = useAlertStore()
 
 const registerData = reactive({
-	firstName: "",
-	lastName: "",
-	username: "",
-	email: "",
-	password: "",
-	confirmPass: "",
-});
+  firstName: '',
+  lastName: '',
+  username: '',
+  email: '',
+  password: '',
+  confirmPass: '',
+})
 
 // const errors = ref({
 // 	firstName: {
@@ -44,48 +44,48 @@ const registerData = reactive({
 // 		required: [true, "First Name is required"],
 // 	},
 // });
-const registerError = ref("");
+const registerError = ref('')
 
 async function onSubmit(values) {
-	try {
-		await usersStore.REGISTER_USER(values);
-		await router.push("/account/login");
-		alertStore.success("Registration successful");
-	} catch (error) {
-		alertStore.error(error);
-	}
+  try {
+    await usersStore.REGISTER_USER(values)
+    await router.push('/account/login')
+    alertStore.success('Registration successful')
+  } catch (error) {
+    alertStore.error(error)
+  }
 }
 
 const register = function (e: Event) {
-	e.preventDefault();
+  e.preventDefault()
 
-	const userData = {
-		firstName: String(registerData.firstName),
-		lastName: String(registerData.lastName),
-		email: String(registerData.email),
-		username: String(registerData.username),
-		password: String(registerData.password),
-		confirmPass: String(registerData.confirmPass),
-	};
+  const userData = {
+    firstName: String(registerData.firstName),
+    lastName: String(registerData.lastName),
+    email: String(registerData.email),
+    username: String(registerData.username),
+    password: String(registerData.password),
+    confirmPass: String(registerData.confirmPass),
+  }
 
-	if (registerData.password !== registerData.confirmPass) {
-		registerError.value = "Password not matched";
-		registerData.password = "";
-		registerData.confirmPass = "";
-	} else {
-		onSubmit();
-	}
-};
+  if (registerData.password !== registerData.confirmPass) {
+    registerError.value = 'Password not matched'
+    registerData.password = ''
+    registerData.confirmPass = ''
+  } else {
+    onSubmit()
+  }
+}
 </script>
 
 <template>
-	<div class="login-form">
-		<h4 class="card-header">Register</h4>
-		<div class="card-body">
-			<form @submit="onSubmit" novalidate>
-				<FormInput v-model="name" />
+  <div class="login-form">
+    <h4 class="card-header">Register</h4>
+    <div class="card-body">
+      <form @submit="onSubmit" novalidate>
+        <FormInput v-model="name" />
 
-				<!-- <div class="form-group">
+        <!-- <div class="form-group">
 					<label>First Name</label>
 					<input
 						v-model="registerData.firstName"
@@ -95,67 +95,67 @@ const register = function (e: Event) {
 					/>
 					<div class="invalid-feedback">{{ errors.firstName }}</div>
 				</div> -->
-				<div class="form-group">
-					<label>Last Name</label>
-					<input
-						name="lastName"
-						type="text"
-						class="form-control"
-						:class="{ 'is-invalid': errors.lastName }"
-					/>
-					<div class="invalid-feedback">{{ errors.lastName }}</div>
-				</div>
-				<div class="form-group">
-					<label>Username</label>
-					<input
-						name="username"
-						type="text"
-						class="form-control"
-						:class="{ 'is-invalid': errors.username }"
-					/>
-					<div class="invalid-feedback">{{ errors.username }}</div>
-				</div>
-				<div class="form-group">
-					<label>Email</label>
-					<input
-						name="email"
-						type="email"
-						class="form-control"
-						:class="{ 'is-invalid': errors.email }"
-					/>
-					<div class="invalid-feedback">{{ errors.email }}</div>
-				</div>
-				<div class="form-group">
-					<label>Password</label>
-					<input
-						name="password"
-						type="password"
-						class="form-control"
-						:class="{ 'is-invalid': errors.password }"
-					/>
-					<div class="invalid-feedback">{{ errors.password }}</div>
-				</div>
-				<div class="form-group">
-					<label>Confirm Password</label>
-					<input
-						name="confirmPassword"
-						type="password"
-						class="form-control"
-						:class="{ 'is-invalid': errors.confirmPassword }"
-					/>
-					<div class="invalid-feedback">{{ errors.confirmPassword }}</div>
-				</div>
-				<div class="form-group">
-					<button class="btn btn-primary" :disabled="isSubmitting">
-						<span
-							v-show="isSubmitting"
-							class="spinner-border spinner-border-sm mr-1"
-						></span>
-						Register
-					</button>
-					<router-link to="login" class="btn btn-link">Cancel</router-link>
-				</div>
-			</form>
-		</div>
-	</div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input
+            name="lastName"
+            type="text"
+            class="form-control"
+            :class="{ 'is-invalid': errors.lastName }"
+          />
+          <div class="invalid-feedback">{{ errors.lastName }}</div>
+        </div>
+        <div class="form-group">
+          <label>Username</label>
+          <input
+            name="username"
+            type="text"
+            class="form-control"
+            :class="{ 'is-invalid': errors.username }"
+          />
+          <div class="invalid-feedback">{{ errors.username }}</div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input
+            name="email"
+            type="email"
+            class="form-control"
+            :class="{ 'is-invalid': errors.email }"
+          />
+          <div class="invalid-feedback">{{ errors.email }}</div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input
+            name="password"
+            type="password"
+            class="form-control"
+            :class="{ 'is-invalid': errors.password }"
+          />
+          <div class="invalid-feedback">{{ errors.password }}</div>
+        </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input
+            name="confirmPassword"
+            type="password"
+            class="form-control"
+            :class="{ 'is-invalid': errors.confirmPassword }"
+          />
+          <div class="invalid-feedback">{{ errors.confirmPassword }}</div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" :disabled="isSubmitting">
+            <span
+              v-show="isSubmitting"
+              class="spinner-border spinner-border-sm mr-1"
+            ></span>
+            Register
+          </button>
+          <router-link to="login" class="btn btn-link">Cancel</router-link>
+        </div>
+      </form>
+    </div>
+  </div>
 </template>

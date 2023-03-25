@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, onMounted } from "vue";
 
-import { ActionButton } from "@/common/components/data-input";
+import { ActionButton } from "~/common/components/data-input";
 
-import { useArtworksStore } from "@/stores";
+import { useArtworksStore } from "~/stores";
 
 const artworksStore = useArtworksStore();
 onMounted(artworksStore.FETCH_ARTWORKS);

@@ -2,7 +2,7 @@
 import {
   useUserMovementsStore,
   CLEAR_USER_ARTWORK_FILTER_SELECTIONS,
-} from '@/stores/userMovement'
+} from '~/stores/userMovement'
 
 const props = defineProps({
   uniqueValues: {

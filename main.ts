@@ -1,20 +1,20 @@
-import { createApp } from "vue";
-import { createPinia } from "pinia";
-import VueGtag from "vue-gtag";
-import { VueCookieNext } from "vue-cookie-next";
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import VueGtag from 'vue-gtag'
+import { VueCookieNext } from 'vue-cookie-next'
 
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
 import {
-	faAngleDown,
-	faAngleUp,
-	faSearch,
-	faUser,
-	faExclamation,
-	faXmark,
-	faCheck,
-	// fa-solid fa-xmark-large
-} from "@fortawesome/free-solid-svg-icons";
+  faAngleDown,
+  faAngleUp,
+  faSearch,
+  faUser,
+  faExclamation,
+  faXmark,
+  faCheck,
+  // fa-solid fa-xmark-large
+} from '@fortawesome/free-solid-svg-icons'
 
 // import { Cloudinary } from "@cloudinary/vue";
 
@@ -24,35 +24,35 @@ import {
 // 	api_secret: process.env.CLOUDINARY_API_SECRET,
 // });
 
-import "@/assets/index.css";
-import { router } from "@/router";
-import App from "@/App.vue";
+import '@/assets/index.css'
+import { router } from '@/router'
+import App from '~~/app.vue'
 
 library.add(
-	faAngleDown,
-	faAngleUp,
-	faSearch,
-	faUser,
-	faExclamation,
-	faXmark,
-	faCheck
-);
+  faAngleDown,
+  faAngleUp,
+  faSearch,
+  faUser,
+  faExclamation,
+  faXmark,
+  faCheck
+)
 
-const pinia = createPinia();
+const pinia = createPinia()
 
-const app = createApp(App);
-app.use(router);
-app.use(VueCookieNext);
+const app = createApp(App)
+app.use(router)
+app.use(VueCookieNext)
 app.use(
-	VueGtag,
-	{
-		config: { id: import.meta.env.VITE_GA_MEASUREMENT_ID },
-	},
-	router
-);
-app.use(pinia);
-app.component("font-awesome-icon", FontAwesomeIcon);
+  VueGtag,
+  {
+    config: { id: import.meta.env.VITE_GA_MEASUREMENT_ID },
+  },
+  router
+)
+app.use(pinia)
+app.component('font-awesome-icon', FontAwesomeIcon)
 
-app.provide("gtag", app.config.globalProperties.$gtag);
+app.provide('gtag', app.config.globalProperties.$gtag)
 
-app.mount("#app");
+app.mount('#app')

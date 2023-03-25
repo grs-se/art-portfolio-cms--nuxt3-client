@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useArtworksStore } from '@/stores/artwork'
-import { useUserMovementsStore } from '@/stores/userMovement'
+import { useArtworksStore } from '~/stores/artwork'
+import { useUserMovementsStore } from '~/stores/userMovement'
 
 const artworksStore = useArtworksStore()
 const UNIQUE_ARTWORK_CATEGORIES = computed(

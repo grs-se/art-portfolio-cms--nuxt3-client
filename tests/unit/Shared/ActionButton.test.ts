@@ -1,33 +1,33 @@
-import { render, screen } from "@testing-library/vue";
+import { render, screen } from '@testing-library/vue'
 
-import { ActionButton } from "@/common/components/data-input";
+import { ActionButton } from '~/common/components/data-input'
 
-describe("ActionButton", () => {
-	it("renders text", () => {
-		render(ActionButton, {
-			props: {
-				text: "Click me",
-				type: "primary",
-			},
-		});
+describe('ActionButton', () => {
+  it('renders text', () => {
+    render(ActionButton, {
+      props: {
+        text: 'Click me',
+        type: 'primary',
+      },
+    })
 
-		const button = screen.getByRole("button", {
-			name: /click me/i,
-		});
-		expect(button).toBeInTheDocument();
-	});
+    const button = screen.getByRole('button', {
+      name: /click me/i,
+    })
+    expect(button).toBeInTheDocument()
+  })
 
-	it("applies one of several styles to button", () => {
-		render(ActionButton, {
-			props: {
-				text: "Click me",
-				type: "primary",
-			},
-		});
+  it('applies one of several styles to button', () => {
+    render(ActionButton, {
+      props: {
+        text: 'Click me',
+        type: 'primary',
+      },
+    })
 
-		const button = screen.getByRole("button", {
-			name: /click me/i,
-		});
-		expect(button).toHaveClass("primary");
-	});
-});
+    const button = screen.getByRole('button', {
+      name: /click me/i,
+    })
+    expect(button).toHaveClass('primary')
+  })
+})

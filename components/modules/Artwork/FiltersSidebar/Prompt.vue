@@ -12,9 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ActionButton } from '@/common/components/data-input'
-
-import { useUserMovementsStore } from '@/stores/userMovement'
+import { useUserMovementsStore } from '~/stores/userMovement'
 
 const userMovementsStore = useUserMovementsStore()
 </script>

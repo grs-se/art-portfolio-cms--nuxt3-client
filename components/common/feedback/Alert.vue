@@ -1,36 +1,36 @@
 <script lang="ts" setup>
-import { storeToRefs } from "pinia";
-import { ActionButton } from "@/common/components/data-input";
+import { storeToRefs } from 'pinia'
+import { ActionButton } from '~/common/components/data-input'
 
-import { useAlertStore } from "@/stores";
+import { useAlertStore } from '~/stores'
 
-const alertStore = useAlertStore();
-const { alert } = storeToRefs(alertStore);
+const alertStore = useAlertStore()
+const { alert } = storeToRefs(alertStore)
 </script>
 
 <template>
-	<div v-if="alert" :class="alert.type">
-		<div
-			class="alert flex w-full items-center justify-end rounded-md py-1 px-1"
-		>
-			<span class="mx-3">{{ alert.message }}</span>
-			<ActionButton
-				:class="alert.type"
-				@click="alertStore.clear()"
-				class="btn-close"
-			>
-				&times;
-			</ActionButton>
-		</div>
-	</div>
+  <div v-if="alert" :class="alert.type">
+    <div
+      class="alert flex w-full items-center justify-end rounded-md py-1 px-1"
+    >
+      <span class="mx-3">{{ alert.message }}</span>
+      <ActionButton
+        :class="alert.type"
+        @click="alertStore.clear()"
+        class="btn-close"
+      >
+        &times;
+      </ActionButton>
+    </div>
+  </div>
 </template>
 
 <style scoped>
 .alert {
-	@apply bg-red-50;
+  @apply bg-red-50;
 }
 .alert-dismissable {
-	@apply rounded-md bg-red-50;
+  @apply rounded-md bg-red-50;
 }
 
 /* .btn-close {

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-// import { IAlert } from '@/types/IAlert'
+// import { IAlert } from '~/types/IAlert'
 
 export const useAlertStore = defineStore({
   id: 'alert',
