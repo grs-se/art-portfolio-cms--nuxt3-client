@@ -1,15 +1,88 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const baseUrl = process.env.BASE_URL || 'http://localhost:9090'
+
 export default defineNuxtConfig({
-	components: {
-		dirs: [
-			{
-				path: '~/components',
-				extensions: ['vue'],
-			},
-			{
-				path: '~/components/common',
-				extensions: ['vue'],
-			},
-		],
-	},
-});
+  server: {
+    port: 9090, // default: 3000
+    host: '0.0.0.0',
+  },
+
+  bridge: {
+    nitro: true,
+  },
+
+  nitro: {
+    publicAssets: [],
+  },
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
+
+  // Target: https://go.nuxtjs.dev/config-target
+  target: 'static',
+
+  // Global page headers: https://go.nuxtjs.dev/config-head
+  head: {
+    title: 'GRS - Art Gallery & CMS',
+    titleTemplate: 'Art Gallery & CMS',
+    htmlAttrs: {
+      lang: 'en',
+    },
+    meta: [
+      { name: 'name', content: 'GRS Art CMS' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'format-detection', content: 'telephone=no' },
+    ],
+    link: [
+      { rel: 'icon', href: '/favicon.svg' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@600;700&display=swap',
+      },
+    ],
+    script: [
+      {
+        src: 'https://kit.fontawesome.com/54f29b7997.js',
+        crossorigin: 'anonymous',
+      },
+    ],
+  },
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@pinia/nuxt'],
+  tailwindcss: {
+    cssPath: '~/assets/css/tailwind.css',
+    configPath: 'tailwind.config.js',
+    exposeConfig: false,
+    injectPosition: 0,
+    viewer: true,
+  },
+  components: {
+    dirs: [
+      {
+        path: '~/components/common',
+        extensions: ['vue'],
+      },
+      {
+        path: '~/components/modules',
+        extensions: ['vue'],
+      },
+      {
+        path: '~/components',
+        extensions: ['vue'],
+      },
+    ],
+  },
+  // env: {
+  //   baseUrl : process.env.BASE_URL || 'http://localhost:9090',
+  // },
+  // https://nuxtjs.org/docs/configuration-glossary/configuration-env/,
+  runtimeConfig: {
+    public: {
+      prefix: process.env.URL_PREFIX || 'rmrk',
+      baseUrl: process.env.BASE_URL || 'http://localhost:9090',
+      googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID || '',
+      dev: process.env.NODE_ENV === 'development',
+    },
+  },
+  // In case of using ssr
+  // privateRuntimeConfig: {}
+})

@@ -1,12 +1,5 @@
-# KodaDot Style Guide v1.0
-
-As codebases grow in size and complexity, it is necessary to establish and maintain some kind of **style guide to which each contributor should conform**. While tools like ESLint and Prettier can support us in this regard, additional rules are needed to allow us to better communicate with each other. Since our community is coming from all around the world, working together asynchronously, **clear communication** is of utmost importance.
-
-The following set of conventions should make it easier for you to understand our code and aid you in making meaningful contributions to the project:
-
 ## Naming Conventions
 Give your functions, components and files **speaking/self-explanatory names** (e.g. `getCollectionById()`, `KeyboardShortcuts.vue`, `setIdentity.ts`).
-With a few exceptions, code and comments should be written in **English** only.
 
 ### Nuxt/Vue-specific Files
 - **Pages** and **layouts** use **kebab-case** (`series-insight.vue`)
@@ -36,7 +29,7 @@ With a few exceptions, code and comments should be written in **English** only.
 ```
 
 ### Composition API
-Since we want to upgrade to Nuxt 3 in the near future, we should pre-emptively work towards a compatible codebase, such that the transition will be as smooth as possible. Therefore, every new feature is required to be written in the new **Composition API** and should follow the following recommendations:
+Every new feature is required to be written in the new **Composition API** and should follow the following recommendations:
 
 ```vue
 <script lang="ts" setup>
@@ -87,35 +80,6 @@ onMounted(() => {
 ```
 For more details make sure to checkout [Vue's official documentation](https://vuejs.org/guide/introduction.html).
 
-
-### Property Decorators DEPRECATED! (only use this syntax for maintenance reasons)
-We rely on the package 'nuxt-property-decorator', hence, we urge you to comply with the [Nuxt Class Component Syntax](https://github.com/nuxt-community/nuxt-property-decorator/)
-```typescript
-import {
-  Component,
-  Inject,
-  Model,
-  Prop,
-  Provide,
-  Vue,
-  Watch,
-} from "nuxt-property-decorator"
-
-@Component({})
-export class MyComponent extends Vue {
-  @Inject() foo!: string
-
-  @Model("change") checked!: boolean
-
-  @Prop() propA!: number
-
-  @Provide() foo = "foo"
-
-  @Watch("child")
-  onChildChanged(val: string, oldVal: string) {}
-}
-```
-
 ### Using Components In Templates
 Custom components and prop bindings should be used like this
 ```vue
@@ -130,7 +94,7 @@ Use shorthands for vue attributes
 - ...
 
 ### Fetching Data
-Though we haven't yet transitioned most of our data fetching logic to Nuxt lifecycles, the following syntax should be considered best practice:
+The following syntax should be considered best practice:
 #### Composition API
 ```typescript
 // useGraphql is a composable function that is auto-imported without having to use an explicit import statement

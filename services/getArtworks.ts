@@ -1,13 +1,11 @@
-import axios from 'axios'
-
-import type { Artwork } from '../components/Artwork/types'
+import type { Artwork } from '@/types/IArtwork'
 import ApiUrls from '@/data/constants/urls'
 
 const getArtworks = async () => {
   const baseUrl = import.meta.env.VITE_API_URL
   const endpoint = ApiUrls.getAllArtworksEndpoint
   const url = `${baseUrl}${endpoint}`
-  const response = await axios.get<Artwork[]>(url)
+  const response = await $fetch<Artwork[]>(url)
   return response.data.data.artworks
 }
 

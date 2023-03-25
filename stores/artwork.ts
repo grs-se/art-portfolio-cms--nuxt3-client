@@ -1,0 +1,82 @@
+import { defineStore } from 'pinia'
+import createSetFromNestedArray from '@/utils/createSetFromNestedArray'
+
+import getArtworks from '@/services/getArtworks'
+
+import { useUserMovementsStore } from '@/stores/userMovement'
+import type { IArtwork } from '@/types/IArtwork'
+
+export const FETCH_ARTWORKS = 'FETCH_ARTWORKS'
+export const UNIQUE_ARTWORK_CATEGORIES = 'UNIQUE_ARTWORK_CATEGORIES'
+export const UNIQUE_ARTWORK_LOCATIONS = 'UNIQUE_ARTWORK_LOCATIONS'
+export const FILTERED_ARTWORKS = 'FILTERED_ARTWORKS'
+export const ARTWORK_SPOTLIGHTS = 'ARTWORK_SPOTLIGHTS'
+export const ARTWORK_HERO = 'ARTWORK_HERO'
+export const INCLUDE_ARTWORK_BY_CATEGORY = 'INCLUDE_ARTWORK_BY_CATEGORY'
+export const INCLUDE_ARTWORK_BY_LOCATION = 'INCLUDE_ARTWORK_BY_LOCATION'
+export const INCLUDE_ARTWORK_BY_TAG = 'INCLUDE_ARTWORK_BY_TAG'
+export const SORT_ARTWORKS_BY_DATE = 'SORT_ARTWORKS_BY_DATE'
+
+export interface ArtworksState {
+  artworks: IArtwork[]
+}
+
+export const useArtworksStore = defineStore('artworks', {
+  state: (): ArtworksState => ({
+    artworks: [],
+  }),
+  actions: {
+    async [FETCH_ARTWORKS]() {
+      const artworks = await getArtworks()
+      this.artworks = artworks
+    },
+  },
+  getters: {
+    [UNIQUE_ARTWORK_CATEGORIES](state) {
+      return createSetFromNestedArray(state.artworks, 'categories')
+    },
+    [UNIQUE_ARTWORK_LOCATIONS](state) {
+      return createSetFromNestedArray(state.artworks, 'location')
+    },
+    [INCLUDE_ARTWORK_BY_CATEGORY]: () => (artwork: IArtwork) => {
+      const userMovementsStore = useUserMovementsStore()
+      if (userMovementsStore.selectedArtworkCategories.length === 0) return true
+      return artwork.categories.some((cat) =>
+        userMovementsStore.selectedArtworkCategories.includes(cat)
+      )
+    },
+    [INCLUDE_ARTWORK_BY_LOCATION]: () => (artwork: IArtwork) => {
+      const userMovementsStore = useUserMovementsStore()
+      if (userMovementsStore.selectedArtworkLocations.length === 0) return true
+      return artwork.location.some((loc: string) =>
+        userMovementsStore.selectedArtworkLocations.includes(loc)
+      )
+    },
+    [ARTWORK_SPOTLIGHTS](state) {
+      return state.artworks.filter(
+        (artwork) => artwork.spotlight && artwork.spotlight === true
+      )
+    },
+    [ARTWORK_HERO](state) {
+      return state.artworks.filter(
+        (artwork: IArtwork) => artwork.hero && artwork.hero === true
+      )
+    },
+    [INCLUDE_ARTWORK_BY_TAG]: () => (artwork: IArtwork) => {
+      const userMovementsStore = useUserMovementsStore()
+      if (userMovementsStore.tagsSearchTerm.length === 0) return true
+      return artwork.tags.some((tag: string) =>
+        userMovementsStore.tagsSearchTerm
+          .toLowerCase()
+          .includes(tag.toLowerCase())
+      )
+    },
+    // [SORT_ARTWORKS_BY_DATE_ASCENDING](state) {},
+    [FILTERED_ARTWORKS](state): IArtwork[] {
+      return state.artworks
+        .filter((artwork) => this.INCLUDE_ARTWORK_BY_CATEGORY(artwork))
+        .filter((artwork) => this.INCLUDE_ARTWORK_BY_LOCATION(artwork))
+        .filter((artwork) => this.INCLUDE_ARTWORK_BY_TAG(artwork))
+    },
+  },
+})
