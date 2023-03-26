@@ -3,7 +3,7 @@ import createSetFromNestedArray from '~/utils/createSetFromNestedArray'
 
 import getArtworks from '~/services/getArtworks'
 
-import { useUserMovementsStore } from '~/stores/userMovement'
+import { useFiltersStore } from '~/stores/filters'
 import type { IArtwork } from '~/types/IArtwork'
 
 export const FETCH_ARTWORKS = 'FETCH_ARTWORKS'
@@ -39,17 +39,17 @@ export const useArtworksStore = defineStore('artworks', {
       return createSetFromNestedArray(state.artworks, 'location')
     },
     [INCLUDE_ARTWORK_BY_CATEGORY]: () => (artwork: IArtwork) => {
-      const userMovementsStore = useUserMovementsStore()
-      if (userMovementsStore.selectedArtworkCategories.length === 0) return true
+      const filtersStore = useFiltersStore()
+      if (filtersStore.selectedArtworkCategories.length === 0) return true
       return artwork.categories.some((cat) =>
-        userMovementsStore.selectedArtworkCategories.includes(cat)
+        filtersStore.selectedArtworkCategories.includes(cat)
       )
     },
     [INCLUDE_ARTWORK_BY_LOCATION]: () => (artwork: IArtwork) => {
-      const userMovementsStore = useUserMovementsStore()
-      if (userMovementsStore.selectedArtworkLocations.length === 0) return true
+      const filtersStore = useFiltersStore()
+      if (filtersStore.selectedArtworkLocations.length === 0) return true
       return artwork.location.some((loc: string) =>
-        userMovementsStore.selectedArtworkLocations.includes(loc)
+        filtersStore.selectedArtworkLocations.includes(loc)
       )
     },
     [ARTWORK_SPOTLIGHTS](state) {
@@ -63,12 +63,10 @@ export const useArtworksStore = defineStore('artworks', {
       )
     },
     [INCLUDE_ARTWORK_BY_TAG]: () => (artwork: IArtwork) => {
-      const userMovementsStore = useUserMovementsStore()
-      if (userMovementsStore.tagsSearchTerm.length === 0) return true
+      const filtersStore = useFiltersStore()
+      if (filtersStore.tagsSearchTerm.length === 0) return true
       return artwork.tags.some((tag: string) =>
-        userMovementsStore.tagsSearchTerm
-          .toLowerCase()
-          .includes(tag.toLowerCase())
+        filtersStore.tagsSearchTerm.toLowerCase().includes(tag.toLowerCase())
       )
     },
     // [SORT_ARTWORKS_BY_DATE_ASCENDING](state) {},

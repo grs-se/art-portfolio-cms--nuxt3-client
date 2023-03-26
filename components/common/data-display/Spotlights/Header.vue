@@ -8,7 +8,3 @@
     </template>
   </HeaderContainer>
 </template>
-
-<script lang="ts" setup>
-import { HeaderContainer } from '~/common/components/layout'
-</script>

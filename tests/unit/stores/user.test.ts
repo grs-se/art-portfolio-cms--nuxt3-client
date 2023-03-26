@@ -1,6 +1,6 @@
 import { createPinia, setActivePinia } from 'pinia'
 
-import { useUserStore } from '~/modules/userMovements/userMovements.store'
+import { useUserStore } from '~/modules/filters/filters.store'
 import { stringifyExpression } from '@vue/compiler-core'
 
 describe('state', () => {

@@ -1,15 +1,6 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useAuthStore } from '~/stores'
-
-import {
-  MainNavAccountItems,
-  MainNavLinks,
-  MainNavHamburger,
-  MainNavSiteTitle,
-} from '~/components/common/navigation/MainNav'
-import { SubNav } from '~/common/components/navigation/SubNav'
+import { useAuthStore } from '~/stores/auth'
 
 const authStore = useAuthStore()
 const { user } = storeToRefs(authStore)

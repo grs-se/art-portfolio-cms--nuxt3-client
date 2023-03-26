@@ -10,7 +10,3 @@
     >
   </section>
 </template>
-
-<script lang="ts" setup>
-import HeaderContainer from '~/common/components/Shared/HeaderContainer.vue'
-</script>

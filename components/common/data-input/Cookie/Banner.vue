@@ -4,8 +4,8 @@
       <div class="banner-container">
         <p>
           This site uses 🍪's. For more details click
-          <router-link to="cookiesPolicy" class="text-blue-500 underline"
-            >here</router-link
+          <NuxtLink to="cookiesPolicy" class="text-blue-500 underline"
+            >here</NuxtLink
           >.
         </p>
         <button @click="okBannerClicked" class="text-blue-500 underline">

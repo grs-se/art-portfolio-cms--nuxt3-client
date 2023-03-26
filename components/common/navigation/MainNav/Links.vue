@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { ref } from "vue";
-
 const links = ref([
 	{ text: "Gallery", url: "/gallery" },
 	{ text: "Research", url: "/research" },

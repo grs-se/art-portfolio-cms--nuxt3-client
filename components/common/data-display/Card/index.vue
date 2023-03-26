@@ -8,22 +8,20 @@
       class="flex h-auto flex-col items-center justify-center rounded border border-solid border-brand-gray-2 bg-white p-1 hover:shadow-gray"
     >
       <img
-        :src="'images/' + artwork.imageCover"
+        :src="'images/' + file.imageCover"
         class="sm:max-h-auto items-center justify-center xl:max-h-80"
       />
-      <ModalHover :artwork="artwork" v-if="hover === true" />
+      <ModalHover :file="file" v-if="hover === true" />
     </figure>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { Artwork } from '~/types'
-
 const hover = ref<boolean>(false)
 
 const props = defineProps({
-  artwork: {
-    type: Object as PropType<Artwork>,
+  file: {
+    type: Object,
     required: true,
   },
 })

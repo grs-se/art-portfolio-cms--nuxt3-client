@@ -8,7 +8,7 @@ vi.mock('vue-router')
 
 import ArtworkFiltersSidebarCheckboxGroup from '~/common/components/ArtworkResults/ArtworkFiltersSidebar/ArtworkFiltersSidebarCheckboxGroup.vue'
 
-import { useUserStore } from '~/modules/userMovements/userMovements.store'
+import { useUserStore } from '~/modules/filters/filters.store'
 
 const useRouterMock = useRouter as Mock
 

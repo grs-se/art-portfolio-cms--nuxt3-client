@@ -11,7 +11,7 @@ describe('ArtworkListing', () => {
     render(ArtworkListing, {
       global: {
         stubs: {
-          'router-link': RouterLinkStub,
+          NuxtLink: RouterLinkStub,
         },
       },
       props: {

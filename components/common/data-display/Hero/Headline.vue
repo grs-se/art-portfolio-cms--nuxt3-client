@@ -1,21 +1,28 @@
 <script lang="ts" setup>
-import { computed, ref, onBeforeUnmount, onMounted } from 'vue'
+const props = defineProps({
+  action: {
+    type: String,
+    required: true,
+  },
+  actions: {
+    type: Array,
+    required: true,
+  },
+})
 
-import nextElementInList from '~/utils/nextElementInList'
+const action = ref<string>(props.action)
 
-const action = ref('Build')
 const interval = ref<ReturnType<typeof setInterval>>()
 
 const actionClasses = computed(() => {
   return {
-    [action.value.toLowerCase()]: true,
+    [props.action.toLowerCase()]: true,
   }
 })
 
 const changeTitle = () => {
   interval.value = setInterval(() => {
-    const actions = ['Artist', 'Web-Developer', 'Landscaping']
-    action.value = nextElementInList(actions, action.value)
+    action.value = nextElementInList(props.actions, props.action)
   }, 3000)
 }
 onMounted(changeTitle)

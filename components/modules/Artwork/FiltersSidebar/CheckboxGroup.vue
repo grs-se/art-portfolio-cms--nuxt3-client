@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import {
-  useUserMovementsStore,
+  useFiltersStore,
   CLEAR_USER_ARTWORK_FILTER_SELECTIONS,
-} from '~/stores/userMovement'
+} from '~/stores/filters'
 
 const props = defineProps({
   uniqueValues: {
@@ -23,8 +23,8 @@ const selectValue = () => {
   router.push({ name: 'ArtworkResults' })
 }
 
-const userMovementsStore = useUserMovementsStore()
-userMovementsStore.$onAction(({ after, name }) => {
+const filtersStore = useFiltersStore()
+filtersStore.$onAction(({ after, name }) => {
   after(() => {
     if (name === CLEAR_USER_ARTWORK_FILTER_SELECTIONS) {
       selectedValues.value = []

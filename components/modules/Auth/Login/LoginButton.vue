@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import { ActionButton } from '~/common/components/data-input'
-import { Spinner } from '~/common/components/feedback'
-
 defineProps({
   show: {
     type: Boolean,

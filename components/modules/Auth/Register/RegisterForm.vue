@@ -153,7 +153,7 @@ const register = function (e: Event) {
             ></span>
             Register
           </button>
-          <router-link to="login" class="btn btn-link">Cancel</router-link>
+          <NuxtLink to="login" class="btn btn-link">Cancel</NuxtLink>
         </div>
       </form>
     </div>

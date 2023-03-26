@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { computed, onMounted } from 'vue'
-
 import { useArtworksStore } from '~/stores/artwork'
 
 const artworksStore = useArtworksStore()
@@ -13,7 +11,7 @@ const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS)
   <section>
     <ul class="mt-10 flex w-max flex-row justify-center overflow-x-clip pb-16">
       <li v-for="spotlight in spotlights" :key="spotlight.id" class="slide">
-        <router-link
+        <NuxtLink
           to="/gallery"
           class="slide mx-5 flex flex-col rounded-lg border bg-white"
         >
@@ -39,8 +37,8 @@ const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS)
                 {{ spotlight.description }}
               </p>
               <div class="pb-4 text-sm">
-                <router-link to="/gallery" class="text-brand-blue-1"
-                  >Read more</router-link
+                <NuxtLink to="/gallery" class="text-brand-blue-1"
+                  >Read more</NuxtLink
                 >
               </div>
             </figcaption>
@@ -48,11 +46,11 @@ const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS)
 
           <div class="px-6 pb-4 text-sm">
             <!-- <span>Category: </span> -->
-            <router-link to="/gallery" class="capitalize text-brand-blue-1">{{
+            <NuxtLink to="/gallery" class="capitalize text-brand-blue-1">{{
               spotlight.categories[0]
-            }}</router-link>
+            }}</NuxtLink>
           </div>
-        </router-link>
+        </NuxtLink>
         <!-- </template> -->
       </li>
     </ul>

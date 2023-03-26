@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/vue'
 import userEvent from '@testing-library/user-event'
 import { createTestingPinia } from '@pinia/testing'
 
-import { useUserStore } from '~/modules/userMovements/userMovements.store'
+import { useUserStore } from '~/modules/filters/filters.store'
 
 import ArtworkFiltersSidebarPrompt from '~/common/components/ArtworkResults/ArtworkFiltersSidebar/ArtworkFiltersSidebarPrompt.vue'
 

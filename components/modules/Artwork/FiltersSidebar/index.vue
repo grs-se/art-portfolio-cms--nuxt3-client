@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { useUserMovementsStore } from '~/stores'
+import { useFiltersStore } from '~/stores/filters'
 
 const route = useRoute()
-const userMovementsStore = useUserMovementsStore()
+const filtersStore = useFiltersStore()
 
 const parseTagsSearchTerm = () => {
   const tag = (route.query.tag as string) || ''
-  userMovementsStore.UPDATE_TAGS_SEARCH_TERM(tag)
+  filtersStore.UPDATE_TAGS_SEARCH_TERM(tag)
 }
 
 onMounted(parseTagsSearchTerm)

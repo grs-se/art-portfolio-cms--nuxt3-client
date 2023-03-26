@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { useArtworksStore } from '~/stores/artwork'
+import { ARTWORK_SPOTLIGHTS, useArtworksStore } from '~/stores/artwork'
 
 const artworksStore = useArtworksStore()
 onMounted(artworksStore.FETCH_ARTWORKS)
 const slides = computed(() => artworksStore.FILTERED_ARTWORKS)
+const spotlights = computed(() => artworksStore[ARTWORK_SPOTLIGHTS])
 
 const showToast = ref(false)
 </script>
@@ -11,8 +12,8 @@ const showToast = ref(false)
 <template>
   <main>
     <Hero />
-    <SpotLightsHeader />
-    <SlideShow />
+    <SpotlightsHeader />
+    <SpotlightsSlides :spotlights="spotlights" />
     <Carousel
       :slides="slides"
       :controls="true"

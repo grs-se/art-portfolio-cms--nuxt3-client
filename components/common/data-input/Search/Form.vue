@@ -1,36 +1,50 @@
 <script lang="ts" setup>
-import { onBeforeUnmount, onMounted, ref } from 'vue'
-import nextElementInList from '~/utils/nextElementInList'
-
 import { useRouter } from 'vue-router'
+
+const props = defineProps({
+  searchForRoute: {
+    type: String,
+    required: true,
+  },
+  initialSearchPrompt: {
+    type: String,
+    required: true,
+    default: '',
+  },
+  searchPrompts: {
+    type: Array,
+    required: true,
+    // default: 'Painting',
+  },
+})
 
 const tag = ref('')
 
 const router = useRouter()
 
-const searchForArtworks = () => {
+const searchForData = () => {
   router.push({
-    name: 'ArtworkResults',
+    name: props.searchForRoute,
     query: { tag: tag.value },
   })
 }
 
-const searchTerm = ref('Painting')
+const searchPrompt = ref(props.initialSearchPrompt)
 const interval = ref<ReturnType<typeof setInterval>>()
 
-// const searchTermClasses = computed(() => {
+// const searchPromptClasses = computed(() => {
 // 	return {
-// 		[searchTerm.value.toLowerCase()]: true,
+// 		[searchPrompt.value.toLowerCase()]: true,
 // 	};
 // });
 
-const changeSearchTerm = () => {
+const changeSearchPrompt = () => {
   interval.value = setInterval(() => {
-    const searchTerms = ['Painting', 'Drawing', 'Studio', 'Archetype']
-    searchTerm.value = nextElementInList(searchTerms, searchTerm.value)
+    const searchPrompts = props.searchPrompts
+    searchPrompt.value = nextElementInList(searchPrompts, searchPrompt.value)
   }, 2200)
 }
-onMounted(changeSearchTerm)
+onMounted(changeSearchPrompt)
 
 onBeforeUnmount(() => {
   clearInterval(interval.value)
@@ -38,16 +52,16 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <form
+  <for
     class="flex h-12 w-full items-center justify-center rounded-3xl border border-solid border-brand-gray-3"
-    @submit.prevent="searchForArtworks"
+    @submit.prevent="searchForData"
   >
     <font-awesome-icon :icon="['fas', 'search']" class="ml-4 mr-3" />
 
     <div class="flex h-full flex-1 flex-nowrap text-base font-light">
       <div class="relative flex h-full flex-1 items-center pr-3">
         <!-- <label for="tag" class="absolute left-0 -top-10">Portfolio:</label> -->
-        <text-input id="tag" v-model="tag" :placeholder="searchTerm" />
+        <text-input id="tag" v-model="tag" :placeholder="searchPrompt" />
       </div>
     </div>
 
@@ -56,5 +70,5 @@ onBeforeUnmount(() => {
       btn="secondary"
       class="flex items-center rounded-r-3xl"
     />
-  </form>
+  </for>
 </template>

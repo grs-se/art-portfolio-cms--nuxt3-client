@@ -1,8 +1,6 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-
-import { useArtworksStore } from '~/stores'
+import { useArtworksStore } from '~/stores/artwork'
 
 const route = useRoute()
 const onGalleryPage = computed(() => route.name === 'gallery')

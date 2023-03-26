@@ -3,7 +3,7 @@ import { createPinia, setActivePinia } from 'pinia'
 import axios from 'axios'
 
 import { useTextsStore } from '~/modules/TextResults/store/texts.store'
-import { useUserStore } from '~/modules/userMovements/userMovements.store'
+import { useUserStore } from '~/modules/filters/filters.store'
 import { createText } from '../../utils/createText'
 
 vi.mock('axios')
