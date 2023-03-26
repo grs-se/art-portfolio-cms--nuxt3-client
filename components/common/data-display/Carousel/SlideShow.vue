@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<!-- <script lang="ts" setup>
 import { useArtworksStore } from '~/stores/artwork'
 
 const artworksStore = useArtworksStore()
@@ -81,4 +81,4 @@ const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS)
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
-</style>
+</style> -->
