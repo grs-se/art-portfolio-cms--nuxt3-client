@@ -9,8 +9,6 @@ const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS)
 const hero = computed(() => artworksStore.ARTWORK_HERO)
 
 const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape'])
-
-const showToast = ref(false)
 </script>
 
 <template>
@@ -34,19 +32,5 @@ const showToast = ref(false)
     <SpotlightsHeader />
     <SpotlightsSlides :spotlights="spotlights" />
     <!-- End of Spotlights -->
-    <Carousel
-      :slides="slides"
-      :controls="true"
-      :indicators="false"
-      class="mb-40"
-    />
-    <button @click="showToast = true">Show Toast</button>
-    <Toast
-      message="Message has been sent"
-      :show="showToast"
-      @hide="showToast = false"
-      type="error"
-      position="bottom-right"
-    />
   </main>
 </template>
