@@ -31,6 +31,8 @@ export default defineNuxtConfig({
       { name: 'name', content: 'GRS Art CMS' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'format-detection', content: 'telephone=no' },
+      { name: 'format-detection', content: 'telephone=no' },
+      {},
     ],
     link: [
       { rel: 'icon', href: '/favicon.svg' },
@@ -38,6 +40,10 @@ export default defineNuxtConfig({
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@600;700&display=swap',
+      },
+      {
+        rel: 'preload',
+        href: '//db.onlinewebfonts.com/c/0fac23294cabd9471f8ca7816bf12eae?family=FuturaPTW02-Book',
       },
     ],
     script: [
@@ -55,7 +61,10 @@ export default defineNuxtConfig({
     injectPosition: 0,
     viewer: true,
   },
-  css: ['@fortawesome/fontawesome-svg-core/styles.css'],
+  css: [
+    '@fortawesome/fontawesome-svg-core/styles.css',
+    '~/assets/css/main.css',
+  ],
   components: {
     dirs: [
       {
