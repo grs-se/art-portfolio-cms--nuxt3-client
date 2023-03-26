@@ -1,34 +1,34 @@
 <script lang="ts" setup>
-const props = defineProps({
-  action: {
-    type: String,
-    required: true,
-  },
-  actions: {
-    type: Array,
-    required: true,
-  },
-})
+// const props = defineProps({
+//   action: {
+//     type: String,
+//     required: false,
+//   },
+//   actions: {
+//     type: Array,
+//     required: false,
+//   },
+// })
 
-const action = ref<string>(props.action)
+// const action = ref(props.action)
 
-const interval = ref<ReturnType<typeof setInterval>>()
+// const interval = ref<ReturnType<typeof setInterval>>()
 
-const actionClasses = computed(() => {
-  return {
-    [props.action.toLowerCase()]: true,
-  }
-})
+// const actionClasses = computed(() => {
+//   return {
+//     [action.value.toLowerCase()]: true,
+//   }
+// })
 
-const changeTitle = () => {
-  interval.value = setInterval(() => {
-    action.value = nextElementInList(props.actions, props.action)
-  }, 3000)
-}
-onMounted(changeTitle)
-onBeforeUnmount(() => {
-  clearInterval(interval.value)
-})
+// const changeTitle = () => {
+//   interval.value = setInterval(() => {
+//     action.value = nextElementInList(props.actions, props.action)
+//   }, 3000)
+// }
+// onMounted(changeTitle)
+// onBeforeUnmount(() => {
+//   clearInterval(interval.value)
+// })
 </script>
 
 <template>

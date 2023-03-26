@@ -3,9 +3,9 @@ const siteTitle = ref('George Rice-Smith')
 </script>
 
 <template>
-  <RouterLink
+  <NuxtLink
     :to="'/'"
     class="flex h-full items-center text-xl xs:ml-4 md:ml-0"
-    >{{ siteTitle }}</RouterLink
+    >{{ siteTitle }}</NuxtLink
   >
 </template>

@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 
 const props = defineProps({
-  searchForRoute: {
+  searchRoute: {
     type: String,
     required: true,
   },
@@ -24,7 +24,7 @@ const router = useRouter()
 
 const searchForData = () => {
   router.push({
-    name: props.searchForRoute,
+    name: props.searchRoute,
     query: { tag: tag.value },
   })
 }
@@ -52,7 +52,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <for
+  <form
     class="flex h-12 w-full items-center justify-center rounded-3xl border border-solid border-brand-gray-3"
     @submit.prevent="searchForData"
   >
@@ -70,5 +70,5 @@ onBeforeUnmount(() => {
       btn="secondary"
       class="flex items-center rounded-r-3xl"
     />
-  </for>
+  </form>
 </template>

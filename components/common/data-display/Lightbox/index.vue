@@ -22,11 +22,11 @@
 <script lang="ts" setup>
 import { type PropType } from 'vue'
 
-import type { Artwork } from '~/services/api/types'
+import type { IArtwork } from '~/types/IArtwork'
 
 defineProps({
   artwork: {
-    type: Object as PropType<Artwork>,
+    type: Object as PropType<IArtwork>,
     required: true,
   },
 })

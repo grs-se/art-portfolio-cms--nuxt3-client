@@ -28,14 +28,14 @@ const displayedArtworks = computed(() => {
     id="gallery-wrapper"
     class="relative mx-auto w-full bg-brand-gray-2 p-8"
   >
-    <GridCards>
+    <ArtworkGalleryGridCards>
       <Card
         v-for="artwork in displayedArtworks"
         :key="artwork._id"
         :file="artwork"
         class=""
       ></Card>
-    </GridCards>
+    </ArtworkGalleryGridCards>
 
     <div class="mx-auto mt-8">
       <div class="flex flex-row flex-nowrap">
