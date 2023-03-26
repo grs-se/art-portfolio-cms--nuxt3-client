@@ -4,7 +4,7 @@ import type { IUser } from '~/types/IUser'
 import ApiUrls from '~/data/constants/urls'
 
 const getUsers = async () => {
-  const baseUrl = import.meta.env.VITE_API_URL
+  const baseUrl = import.meta.env.BASE_URL
   const endpoint = ApiUrls.getUsersEndpoint
   const url = `${baseUrl}${endpoint}`
   const response = await axios.get<IUser[]>(url)

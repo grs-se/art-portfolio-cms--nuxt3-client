@@ -1,11 +1,14 @@
+const config = useRuntimeConfig()
 import type { IArtwork } from '~/types/IArtwork'
 import ApiUrls from '~/data/constants/urls'
 
 const getArtworks = async () => {
-  const baseUrl = import.meta.env.VITE_API_URL
+  const baseUrl = config.public.baseUrl + config.public.prefix
   const endpoint = ApiUrls.getAllArtworksEndpoint
   const url = `${baseUrl}${endpoint}`
+  console.log(url)
   const response = await $fetch<IArtwork[]>(url)
+  // console.log(response)
   return response.data.data.artworks
 }
 

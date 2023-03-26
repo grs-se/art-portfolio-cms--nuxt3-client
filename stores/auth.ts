@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
 
-import { fetchWrapper } from '~/services/fetch-wrapper'
+import { fetchWrapper } from '~~/repository/fetch-wrapper'
 // import { router } from "~/router";
 import { useAlertStore } from '~/stores/alert'
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/users`
+const baseUrl = `${import.meta.env.BASE_URL}/users`
 
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'

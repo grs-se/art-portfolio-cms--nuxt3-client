@@ -1,9 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const baseUrl = process.env.BASE_URL || 'http://localhost:9090'
+const baseUrl = process.env.BASE_URL || 'http://localhost:8000'
 
 export default defineNuxtConfig({
   server: {
-    port: 9090, // default: 3000
+    port: 8000, // default: 3000
     host: '0.0.0.0',
   },
 
@@ -106,13 +106,13 @@ export default defineNuxtConfig({
     ],
   },
   // env: {
-  //   baseUrl : process.env.BASE_URL || 'http://localhost:9090',
+  //   baseUrl : process.env.BASE_URL || 'http://localhost:8000',
   // },
   // https://nuxtjs.org/docs/configuration-glossary/configuration-env/,
   runtimeConfig: {
     public: {
-      prefix: process.env.URL_PREFIX || 'rmrk',
-      baseUrl: process.env.BASE_URL || 'http://localhost:9090',
+      prefix: process.env.URL_PREFIX || '/api/v1',
+      baseUrl: process.env.BASE_URL || 'http://localhost:8000',
       googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID || '',
       dev: process.env.NODE_ENV === 'development',
     },

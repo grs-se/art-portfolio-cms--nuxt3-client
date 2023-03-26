@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import createSetFromNestedArray from '~/utils/createSetFromNestedArray'
 
-import getArtworks from '~/services/getArtworks'
+import getArtworks from '~~/repository/modules/getArtworks'
 
 import { useFiltersStore } from '~/stores/filters'
 import type { IArtwork } from '~/types/IArtwork'
