@@ -1,50 +1,66 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
+import { useAlertStore } from './alert';
+import { useLocalStorage } from '~/composables/useLocalStorage';
 
-import { fetchWrapper } from '~~/repository/fetch-wrapper'
-// import { router } from "~/router";
-import { useAlertStore } from '~/stores/alert'
+export const useAuthStore = defineStore('auth', () => {
+  const user = ref(useLocalStorage('user'));
+  const returnUrl = ref(null);
 
-const baseUrl = `${import.meta.env.BASE_URL}/users`
+  const LOGIN = async (
+    emailUname: string,
+    password: string
+  ): Promise<boolean> => {
+    const { $api } = useNuxtApp();
+    try {
+      const user = await $api.auth.login({
+        emailUname: emailUname,
+        password: password,
+      });
+      user.value = user;
+      useLocalStorage('user');
+      await useRouter().push('/gallery');
+      return true;
+    } catch (error) {
+      const alertStore = useAlertStore();
+      alertStore.error(error);
+      console.log(error);
+      return false;
+    }
+  };
+  // actions: {
+  //   async [LOGIN](username: string, password: string) {
+  //     const user = await login(username, password);
+  //   },
+  const LOGOUT = async () => {
+    user.value = null;
+    localStorage.removeItem('user');
+    await useRouter().push('/');
+    // router.push("/auth/login");
+  };
 
-export const LOGIN = 'LOGIN'
-export const LOGOUT = 'LOGOUT'
+  // async [REGISTER_USER](user: IUser) {
+  //   await fetchWrapper.post(`${baseUrl}/register`, user)
+  // },
 
-export const useAuthStore = defineStore({
-  id: 'auth',
-  state: () => ({
-    // initialize state from local storage to enable user to stay logged in
-    user: JSON.parse(localStorage.getItem('user')),
-    returnUrl: null,
-  }),
-  actions: {
-    async [LOGIN](username: string, password: string) {
-      try {
-        const user = await fetchWrapper.post(`${baseUrl}/authenticate`, {
-          username,
-          password,
-        })
+  const REGISTER = async (
+    account: ICreateAccountInput
+  ): Promise<FormValidation | undefined> => {
+    try {
+      const { $api } = useNuxtApp();
+      const user = await $api.auth.register(account);
 
-        // update pinia state
-        this.user = user
-        // this.tokenUser = user;
-        console.log('this.user', this.user)
+      user.value = user;
+      await useRouter().push('/login');
+    } catch (error: any) {
+      console.log('error: ' + error.toString());
+    }
+  };
 
-        // store user details and jwt in local storage to keep user logged in between page refreshes
-        localStorage.setItem('user', JSON.stringify(user))
-        // localStorage.setItem("tokenUser", JSON.stringify(tokenUser));
-
-        // redirect to previous url or default to home page
-        // router.push(this.returnUrl || "/auth");
-      } catch (error) {
-        const alertStore = useAlertStore()
-        alertStore.error(error)
-        console.log(error)
-      }
-    },
-    [LOGOUT]() {
-      this.user = null
-      localStorage.removeItem('user')
-      // router.push("/auth/login");
-    },
-  },
-})
+  return {
+    user,
+    returnUrl,
+    LOGIN,
+    LOGOUT,
+    REGISTER,
+  };
+});

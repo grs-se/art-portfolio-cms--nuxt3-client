@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const links = ref([
-	{ text: "Gallery", url: "/gallery" },
+	{ text: "Gallery", url: "/artworks" },
 	{ text: "Research", url: "/research" },
 	{ text: "Text", url: "/text" },
 	{ text: "Exhibitions", url: "/" },

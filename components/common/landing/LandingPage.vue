@@ -1,13 +1,20 @@
 <script lang="ts" setup>
+// const { $api } = useNuxtApp();
 import { useArtworksStore } from '~/stores/artwork'
 
 const artworksStore = useArtworksStore()
 onMounted(artworksStore.FETCH_ARTWORKS)
 
-const slides = computed(() => artworksStore.FILTERED_ARTWORKS)
 const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS)
 const hero = computed(() => artworksStore.ARTWORK_HERO)
 
+// const spotlights = async () => {
+//   try {
+//     const response = await $api.art.getArtworks()
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
 const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape'])
 </script>
 

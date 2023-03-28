@@ -1,10 +1,8 @@
 import { defineStore } from 'pinia'
 import createSetFromNestedArray from '~/utils/createSetFromNestedArray'
 
-import getArtworks from '~~/repository/modules/getArtworks'
-
 import { useFiltersStore } from '~/stores/filters'
-import type { IArtwork } from '~/types/IArtwork'
+import type { IArtwork } from '~/types'
 
 export const FETCH_ARTWORKS = 'FETCH_ARTWORKS'
 export const UNIQUE_ARTWORK_CATEGORIES = 'UNIQUE_ARTWORK_CATEGORIES'
@@ -27,7 +25,8 @@ export const useArtworksStore = defineStore('artworks', {
   }),
   actions: {
     async [FETCH_ARTWORKS]() {
-      const artworks = await getArtworks()
+      const { $api } = useNuxtApp();
+      const artworks = await $api.art.getArtworks();
       this.artworks = artworks
     },
   },

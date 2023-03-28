@@ -1,10 +1,11 @@
 import { $fetch, FetchOptions } from 'ohmyfetch'
 import { defineNuxtPlugin } from '#app'
 import AuthModule from '~~/repository/modules/auth'
+import ArtModule from '~~/repository/modules/artworks'
 
-/** ApiInstance interface provides us with good typing */
 interface IApiInstance {
-  auth: AuthModule
+  auth: AuthModule,
+  art: ArtModule
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -15,9 +16,10 @@ export default defineNuxtPlugin((nuxtApp) => {
   /** create a new instance of $fetcher with custom option */
   const apiFetcher = $fetch.create(fetchOptions)
 
-  /** an object containing all repositories we need to expose */
+  /** object containing all repositories to expose */
   const modules: IApiInstance = {
     auth: new AuthModule(apiFetcher),
+    art: new ArtModule(apiFetcher)
   }
 
   return {

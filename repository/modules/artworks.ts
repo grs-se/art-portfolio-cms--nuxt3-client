@@ -1,21 +1,22 @@
-const config = useRuntimeConfig()
-import type { IArtwork } from '~/types/IArtwork'
-import ApiUrls from '~/data/constants/urls'
+import HttpFactory from '../factory'
+import { IArtwork, IGetArtworkResponse } from 'types'
 
-const getArtworks = async () => {
-  const baseUrl = config.public.baseUrl + config.public.prefix
-  const endpoint = ApiUrls.getAllArtworksEndpoint
-  const url = `${baseUrl}${endpoint}`
-  console.log(url)
-  const response = await $fetch<IArtwork[]>(url)
-  // console.log(response)
-  return response.data.data.artworks
+class ArtModule extends HttpFactory {
+  private RESOURCE = '/artworks'
+
+  async getArtworks(): Promise<IGetArtworkResponse> {
+    const response = await this.call<IGetArtworkResponse>('GET', this.RESOURCE);
+    console.log(response.data)
+    return response.data;
+  }
+  
+  async createArtwork(artwork: IArtwork): Promise<IGetArtworkResponse>{
+    return await this.call('POST', `${this.RESOURCE}/createArtwork`, artwork )
+  }
+  
+  async createUploadArtwork(artworks: IArtwork): Promise<IGetArtworkResponse>{
+    return await this.call('POST', `${this.RESOURCE}/createUploadArtwork`, artworks )
+  }
 }
 
-// const postArtworks = async () => {
-// 	const url = `${baseUrl}/uploadArtworks`;
-// 	const response = await axios.post<Artwork[]>(url);
-// 	return response.data.data.artworks;
-// };
-
-export default getArtworks
+export default ArtModule

@@ -4,7 +4,7 @@ import { fetchWrapper } from '~~/repository/fetch-wrapper'
 import { useAuthStore } from '~/stores/auth'
 import type { IUser } from '~/types/IUser'
 
-const baseUrl = `${import.meta.env.BASE_URL}/users`
+const baseUrl = `${import.meta.env.API_BASE_URL}/users`
 
 export const REGISTER_USER = 'REGISTER_USER'
 export const FETCH_USERS = 'FETCH_USERS'

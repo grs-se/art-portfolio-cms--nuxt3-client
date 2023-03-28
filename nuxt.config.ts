@@ -1,24 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const baseUrl = process.env.BASE_URL || 'http://localhost:8000'
+const baseUrl = process.env.API_BASE_URL || 'http://localhost:8000'
 
 export default defineNuxtConfig({
-  server: {
-    port: 8000, // default: 3000
-    host: '0.0.0.0',
-  },
+  // server: {
+  //   port: 8000, // default: 3000
+  //   host: '0.0.0.0',
+  // },
 
-  bridge: {
-    nitro: true,
-  },
+  // bridge: {
+  //   nitro: true,
+  // },
 
-  nitro: {
-    publicAssets: [],
-  },
-  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  // nitro: {
+  //   publicAssets: [],
+  // },
+  // // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
-  // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  // // Target: https://go.nuxtjs.dev/config-target
+  // target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -106,13 +106,13 @@ export default defineNuxtConfig({
     ],
   },
   // env: {
-  //   baseUrl : process.env.BASE_URL || 'http://localhost:8000',
+  //   baseUrl : process.env.API_BASE_URL || 'http://localhost:8000',
   // },
   // https://nuxtjs.org/docs/configuration-glossary/configuration-env/,
   runtimeConfig: {
     public: {
-      prefix: process.env.URL_PREFIX || '/api/v1',
-      baseUrl: process.env.BASE_URL || 'http://localhost:8000',
+      // prefix: process.env.URL_PREFIX || '/api/v1',
+      baseUrl: process.env.API_BASE_URL || 'http://localhost:8000/api/v1',
       googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID || '',
       dev: process.env.NODE_ENV === 'development',
     },

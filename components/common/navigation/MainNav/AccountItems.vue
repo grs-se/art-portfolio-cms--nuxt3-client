@@ -16,10 +16,10 @@ const toggleLoginModal = () => {
 <template>
   <div class="ml-auto flex h-full items-center">
     <Avatar v-if="user" />
-    <!-- <NuxtLink v-else to="/LoginRegister"> -->
+    <!-- <router-link v-else to="/LoginRegister"> -->
     <!-- <ActionButton text="Sign in" @click="login" /> -->
     <ActionButton text="Sign in" @click="toggleLoginModal" />
-    <!-- </NuxtLink> -->
+    <!-- </router-link> -->
     <!-- <div class="relative"> -->
     <LoginForm v-if="modalOpen === true" class="absolute top-48 right-1/3" />
     <!-- </div> -->
