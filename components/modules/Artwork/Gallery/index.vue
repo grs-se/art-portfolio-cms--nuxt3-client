@@ -1,26 +1,29 @@
 <script lang="ts" setup>
-import { useRoute } from 'vue-router'
+import { useRoute } from 'vue-router';
 import { useArtworksStore } from '~/stores/artwork'
 
-const artworksStore = useArtworksStore()
-onMounted(artworksStore.FETCH_ARTWORKS)
+const artworksStore = useArtworksStore();
+onMounted(artworksStore.FETCH_ARTWORKS);
 
-const FILTERED_ARTWORKS = computed(() => artworksStore.FILTERED_ARTWORKS)
+const FILTERED_ARTWORKS = computed(() => artworksStore.FILTERED_ARTWORKS);
 
-const route = useRoute()
+const route = useRoute();
 const currentPage = computed(() =>
   Number.parseInt((route.query.page as string) || '1')
-)
-const maxPage = computed(() => Math.ceil(FILTERED_ARTWORKS.value.length / 24))
+);
+const maxPage = computed(() => Math.ceil(FILTERED_ARTWORKS.value.length / 24));
 
-const { previousPage, nextPage } = usePreviousAndNextPages(currentPage, maxPage)
+const { previousPage, nextPage } = usePreviousAndNextPages(
+  currentPage,
+  maxPage
+);
 
 const displayedArtworks = computed(() => {
-  const pageNumber = currentPage.value
-  const firstArtworkIndex = (pageNumber - 1) * 24
-  const lastArtworkIndex = pageNumber * 24
-  return FILTERED_ARTWORKS.value.slice(firstArtworkIndex, lastArtworkIndex)
-})
+  const pageNumber = currentPage.value;
+  const firstArtworkIndex = (pageNumber - 1) * 24;
+  const lastArtworkIndex = pageNumber * 24;
+  return FILTERED_ARTWORKS.value.slice(firstArtworkIndex, lastArtworkIndex);
+});
 </script>
 
 <template>

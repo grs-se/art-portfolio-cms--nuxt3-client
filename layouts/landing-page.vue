@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 // const { $api } = useNuxtApp();
-import { useArtworksStore } from '~/stores/artwork'
+import { useArtworksStore } from '~/stores/artwork';
 
-const artworksStore = useArtworksStore()
-onMounted(artworksStore.FETCH_ARTWORKS)
+const artworksStore = useArtworksStore();
+onMounted(artworksStore.FETCH_ARTWORKS);
 
-const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS)
-const hero = computed(() => artworksStore.ARTWORK_HERO)
+const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS);
+const hero = computed(() => artworksStore.ARTWORK_HERO);
 
 // const spotlights = async () => {
 //   try {
@@ -15,17 +15,17 @@ const hero = computed(() => artworksStore.ARTWORK_HERO)
 //     console.log(error)
 //   }
 // }
-const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape'])
+const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
 </script>
 
 <template>
   <main class="container">
     <!-- Hero -->
-    <TwoColumnSection>
+    <NuxtLayout name="two-column">
       <template #slot-col-1>
         <HeroHeadline action="" />
         <SearchForm
-          search-route="gallery"
+          search-route="artworks"
           initial-search-prompt="painting"
           :search-prompts="searchPrompts"
         />
@@ -33,7 +33,7 @@ const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape'])
       <template #slot-col-2>
         <HeroImage :hero="hero" />
       </template>
-    </TwoColumnSection>
+    </NuxtLayout>
     <!-- End of Hero -->
     <!-- Spotlights -->
     <SpotlightsHeader />

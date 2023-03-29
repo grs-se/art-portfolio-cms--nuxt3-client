@@ -17,7 +17,7 @@ export const useAuthStore = defineStore('auth', () => {
         password: password,
       });
       user.value = user;
-      useLocalStorage('user');
+      useLocalStorage('user', user);
       await useRouter().push('/gallery');
       return true;
     } catch (error) {
@@ -33,7 +33,7 @@ export const useAuthStore = defineStore('auth', () => {
   //   },
   const LOGOUT = async () => {
     user.value = null;
-    localStorage.removeItem('user');
+    useLocalStorage('user');
     await useRouter().push('/');
     // router.push("/auth/login");
   };

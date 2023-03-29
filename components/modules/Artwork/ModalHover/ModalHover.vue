@@ -20,16 +20,16 @@
 </template>
 
 <script lang="ts" setup>
-import { type PropType } from 'vue'
+import { type PropType } from 'vue';
 
-import type { IArtwork } from '~/types/IArtwork'
+import type { IArtwork } from '~/types/models/IArtworkIArtwork';
 
 defineProps({
   artwork: {
     type: Object as PropType<IArtwork>,
     required: true,
   },
-})
+});
 // var tooltip = document.getElementById("tooltip-span");
 
 // const displayModalMousePosition = () => {

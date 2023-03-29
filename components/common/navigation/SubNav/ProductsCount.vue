@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { useRoute } from 'vue-router'
-import { useArtworksStore } from '~/stores/artwork'
+import { useRoute } from 'vue-router';
+import { useArtworksStore } from '~/stores/artwork';
 
-const route = useRoute()
-const onGalleryPage = computed(() => route.name === 'gallery')
+const route = useRoute();
+const onGalleryPage = computed(() => route.name === 'gallery');
 
-const artworksStore = useArtworksStore()
-const FILTERED_ARTWORKS = computed(() => artworksStore.FILTERED_ARTWORKS)
+const artworksStore = useArtworksStore();
+const FILTERED_ARTWORKS = computed(() => artworksStore.FILTERED_ARTWORKS);
 </script>
 
 <template>

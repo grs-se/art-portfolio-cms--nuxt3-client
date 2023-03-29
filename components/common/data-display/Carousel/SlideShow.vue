@@ -1,10 +1,10 @@
-<!-- <script lang="ts" setup>
-import { useArtworksStore } from '~/stores/artwork'
+<script lang="ts" setup>
+import { useArtworksStore } from '~/stores/artwork';
 
-const artworksStore = useArtworksStore()
-onMounted(artworksStore.FETCH_ARTWORKS)
+const artworksStore = useArtworksStore();
+onMounted(artworksStore.FETCH_ARTWORKS);
 
-const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS)
+const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS);
 </script>
 
 <template>
@@ -81,4 +81,4 @@ const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS)
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
-</style> -->
+</style>

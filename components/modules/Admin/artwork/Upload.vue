@@ -1,2 +1,4 @@
-<template></template>
+<template>
+  <div class=""></div>
+</template>
 <script></script>

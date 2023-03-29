@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { useArtworksStore } from '~/stores/artwork'
-import { useFiltersStore } from '~/stores/filters'
+import { useArtworksStore } from '~/stores/artwork';
+import { useFiltersStore } from '~/stores/filters';
 
-const artworksStore = useArtworksStore()
+const artworksStore = useArtworksStore();
 
 const UNIQUE_ARTWORK_LOCATIONS = computed(
   () => artworksStore.UNIQUE_ARTWORK_LOCATIONS
-)
+);
 
-const filtersStore = useFiltersStore()
+const filtersStore = useFiltersStore();
 </script>
 
 <template>

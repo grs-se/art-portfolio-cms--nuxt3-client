@@ -1,2 +1,2 @@
-export * from "./IArtwork";
-export * from "./IGetArtworkResponse";
+export * from './models/IArtwork';
+export * from './IGetArtworkResponse';

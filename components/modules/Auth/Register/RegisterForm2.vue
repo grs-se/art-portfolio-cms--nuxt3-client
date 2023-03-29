@@ -1,4 +1,8 @@
-<script lang="ts" setup>
+<template>
+  <div class=""></div>
+</template>
+
+<!-- <script lang="ts" setup>
 import { Form, Field } from 'vee-validate'
 import * as Yup from 'yup'
 
@@ -212,4 +216,4 @@ async function onSubmit(values: User) {
 .invalid-feedback {
   @apply text-sm text-red-600;
 }
-</style>
+</style> -->

@@ -1,3 +1,6 @@
+<template>
+  <div class=""></div>
+</template>
 <!-- <script lang="ts" setup>
 import { Field, Form } from 'vee-validate'
 import { ForgotPassword, LoginButton, RememberMe, SignUp } from '.'

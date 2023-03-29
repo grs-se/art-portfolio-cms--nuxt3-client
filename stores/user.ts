@@ -1,16 +1,16 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
-import { fetchWrapper } from '~~/repository/fetch-wrapper'
-import { useAuthStore } from '~/stores/auth'
-import type { IUser } from '~/types/IUser'
+import { fetchWrapper } from '~/repository/fetch-wrapper';
+import { useAuthStore } from '~/stores/auth';
+import type { IUser } from '~/types/models/IUser';
 
-const baseUrl = `${import.meta.env.API_BASE_URL}/users`
+const baseUrl = `${import.meta.env.API_BASE_URL}/users`;
 
-export const REGISTER_USER = 'REGISTER_USER'
-export const FETCH_USERS = 'FETCH_USERS'
-export const FETCH_USER = 'FETCH_USER'
-export const UPDATE_USER = 'UPDATE_USER'
-export const DELETE_USER = 'DELETE_USER'
+export const REGISTER_USER = 'REGISTER_USER';
+export const FETCH_USERS = 'FETCH_USERS';
+export const FETCH_USER = 'FETCH_USER';
+export const UPDATE_USER = 'UPDATE_USER';
+export const DELETE_USER = 'DELETE_USER';
 
 export const useUsersStore = defineStore({
   id: 'users',
@@ -20,52 +20,52 @@ export const useUsersStore = defineStore({
   }),
   actions: {
     async [REGISTER_USER](user: IUser) {
-      await fetchWrapper.post(`${baseUrl}/register`, user)
+      await fetchWrapper.post(`${baseUrl}/register`, user);
     },
     async [FETCH_USERS]() {
-      this.users = { loading: true }
+      this.users = { loading: true };
       try {
-        this.users = await fetchWrapper.get(baseUrl)
+        this.users = await fetchWrapper.get(baseUrl);
       } catch (error) {
-        this.users = { error }
+        this.users = { error };
       }
     },
     async [FETCH_USER](id: string) {
-      this.user = { loading: true }
+      this.user = { loading: true };
       try {
-        this.user = await fetchWrapper.get(`${baseUrl}/${id}`)
+        this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
       } catch (error) {
-        this.user = { error }
+        this.user = { error };
       }
     },
     async [UPDATE_USER](id: string, params: string[]) {
-      await fetchWrapper.put(`${baseUrl}/${id}`, params)
+      await fetchWrapper.put(`${baseUrl}/${id}`, params);
 
       // update stored user if the logged in user updated their own record
-      const authStore = useAuthStore()
+      const authStore = useAuthStore();
       if (id === authStore.user.id) {
         // update local storage
-        const user = { ...authStore.user, ...params }
-        localStorage.setItem('user', JSON.stringify(user))
+        const user = { ...authStore.user, ...params };
+        localStorage.setItem('user', JSON.stringify(user));
 
         // update auth user in pinia state
-        authStore.user = user
+        authStore.user = user;
       }
     },
     async [DELETE_USER](id: string) {
       // add isDeleting prop to user being deleted
-      this.users.find((x) => x.id === id).isDeleting = true
+      this.users.find((x) => x.id === id).isDeleting = true;
 
-      await fetchWrapper.delete(`${baseUrl}/${id}`)
+      await fetchWrapper.delete(`${baseUrl}/${id}`);
 
       // remove user from list after deleted
-      this.users = this.users.filter((x) => x.id !== id)
+      this.users = this.users.filter((x) => x.id !== id);
 
       // auto logout if the logged in user deleted their own record
-      const authStore = useAuthStore()
+      const authStore = useAuthStore();
       if (id === authStore.user.id) {
-        authStore.LOGOUT()
+        authStore.LOGOUT();
       }
     },
   },
-})
+});

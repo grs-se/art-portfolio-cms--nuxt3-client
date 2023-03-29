@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router';
 
 const props = defineProps({
   searchRoute: {
@@ -16,21 +16,21 @@ const props = defineProps({
     required: true,
     // default: 'Painting',
   },
-})
+});
 
-const tag = ref('')
+const tag = ref('');
 
-const router = useRouter()
+const router = useRouter();
 
 const searchForData = () => {
   router.push({
     name: props.searchRoute,
     query: { tag: tag.value },
-  })
-}
+  });
+};
 
-const searchPrompt = ref(props.initialSearchPrompt)
-const interval = ref<ReturnType<typeof setInterval>>()
+const searchPrompt = ref(props.initialSearchPrompt);
+const interval = ref<ReturnType<typeof setInterval>>();
 
 // const searchPromptClasses = computed(() => {
 // 	return {
@@ -40,15 +40,15 @@ const interval = ref<ReturnType<typeof setInterval>>()
 
 const changeSearchPrompt = () => {
   interval.value = setInterval(() => {
-    const searchPrompts = props.searchPrompts
-    searchPrompt.value = nextElementInList(searchPrompts, searchPrompt.value)
-  }, 2200)
-}
-onMounted(changeSearchPrompt)
+    const searchPrompts = props.searchPrompts;
+    searchPrompt.value = nextElementInList(searchPrompts, searchPrompt.value);
+  }, 2200);
+};
+onMounted(changeSearchPrompt);
 
 onBeforeUnmount(() => {
-  clearInterval(interval.value)
-})
+  clearInterval(interval.value);
+});
 </script>
 
 <template>

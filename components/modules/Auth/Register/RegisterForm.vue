@@ -1,3 +1,6 @@
+<template>
+  <div class=""></div>
+</template>
 <!-- <script lang="ts" setup>
 import { computed, reactive, ref } from 'vue'
 import { useUsersStore, useAlertStore } from '~/stores'

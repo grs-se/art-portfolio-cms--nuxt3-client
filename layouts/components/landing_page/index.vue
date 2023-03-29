@@ -1,7 +1,3 @@
-<!-- <template>
-  <NuxtLayout name="landing-page" />
-</template> -->
-
 <script lang="ts" setup>
 // const { $api } = useNuxtApp();
 import { useArtworksStore } from '~/stores/artwork';
@@ -11,10 +7,6 @@ onMounted(artworksStore.FETCH_ARTWORKS);
 
 const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS);
 const hero = computed(() => artworksStore.ARTWORK_HERO);
-
-const consoleArtworks = computed(() =>
-  console.log('Spotlights: ' + spotlights.value)
-);
 
 // const spotlights = async () => {
 //   try {
@@ -29,11 +21,11 @@ const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
 <template>
   <main class="container">
     <!-- Hero -->
-    <NuxtLayout name="two-column">
+    <TwoColumnSection>
       <template #slot-col-1>
-        <HeroHeadline action="" @click="consoleArtworks" />
+        <HeroHeadline action="" />
         <SearchForm
-          search-route="artworks"
+          search-route="gallery"
           initial-search-prompt="painting"
           :search-prompts="searchPrompts"
         />
@@ -41,7 +33,7 @@ const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
       <template #slot-col-2>
         <HeroImage :hero="hero" />
       </template>
-    </NuxtLayout>
+    </TwoColumnSection>
     <!-- End of Hero -->
     <!-- Spotlights -->
     <SpotlightsHeader />
