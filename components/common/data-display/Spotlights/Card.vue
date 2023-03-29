@@ -42,3 +42,12 @@ defineProps({
 :description="spotlight.description"
 :categories="spotlight.categories"
 ></slot> -->
+
+<style scoped>
+.line-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+</style>

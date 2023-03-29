@@ -11,20 +11,20 @@
         :src="'images/' + file.imageCover"
         class="sm:max-h-auto items-center justify-center xl:max-h-80"
       />
-      <ModalHover :file="file" v-if="hover === true" />
+      <ModalHover :artwork="props.file" v-if="hover === true" />
     </figure>
   </div>
 </template>
 
 <script lang="ts" setup>
-const hover = ref<boolean>(false)
+const hover = ref<boolean>(false);
 
 const props = defineProps({
   file: {
     type: Object,
     required: true,
   },
-})
+});
 // var tooltip = document.getElementById("tooltip-span");
 
 // const displayModalMousePosition = () => {
@@ -36,5 +36,5 @@ const props = defineProps({
 // 	};
 // };
 
-const artworkPageLink = computed(() => `/artworks/results/${props.artwork.id}`)
+const artworkPageLink = computed(() => `/artworks/results/${props.artwork.id}`);
 </script>

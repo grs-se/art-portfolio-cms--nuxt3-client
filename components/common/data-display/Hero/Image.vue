@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 defineProps({
-  heroImage: {
+  hero: {
     type: Object,
     required: true,
   },
@@ -8,6 +8,7 @@ defineProps({
 </script>
 <template>
   <div class="col-span-5 col-start-7 self-center justify-self-center">
-    <img class="object-contain" :src="'images/' + heroImage.imageCover" />
+    <img class="object-contain" :src="'images/' + hero.imageCover" />
+    <span>{{ hero.description }}</span>
   </div>
 </template>

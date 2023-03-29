@@ -1,9 +1,4 @@
-<!-- <template>
-  <NuxtLayout name="landing-page" />
-</template> -->
-
 <script lang="ts" setup>
-// const { $api } = useNuxtApp();
 import { useArtworksStore } from '~/stores/artwork';
 
 const artworksStore = useArtworksStore();
@@ -12,13 +7,6 @@ onMounted(artworksStore.FETCH_ARTWORKS);
 const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS);
 const hero = computed(() => artworksStore.ARTWORK_HERO);
 
-// const spotlights = async () => {
-//   try {
-//     const response = await $api.art.getArtworks()
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
 const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
 </script>
 
@@ -39,7 +27,7 @@ const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
         />
       </template>
       <template #slot-col-2>
-        <HeroImage :hero-image="hero" />
+        <HeroImage :hero="hero" />
       </template>
     </NuxtLayout>
     <!-- End of Hero -->

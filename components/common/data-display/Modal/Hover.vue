@@ -22,7 +22,7 @@
 <script lang="ts" setup>
 import { type PropType } from 'vue';
 
-import type { IArtwork } from '~/types/models/IArtworkIArtwork';
+import type { IArtwork } from '~/types/models/IArtwork';
 
 defineProps({
   artwork: {
