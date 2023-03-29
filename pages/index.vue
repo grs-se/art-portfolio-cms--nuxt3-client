@@ -12,12 +12,6 @@ onMounted(artworksStore.FETCH_ARTWORKS);
 const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS);
 const hero = computed(() => artworksStore.ARTWORK_HERO);
 
-const consoleArtworks = computed(() => {
-  const runtimeConfig = useRuntimeConfig();
-  console.log('runtimeConfig', runtimeConfig.public.apiBase);
-  console.log('Spotlights: ' + spotlights.value);
-});
-
 // const spotlights = async () => {
 //   try {
 //     const response = await $api.art.getArtworks()
@@ -33,7 +27,11 @@ const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
     <!-- Hero -->
     <NuxtLayout name="two-column">
       <template #slot-col-1>
-        <HeroHeadline action="" @click="consoleArtworks" />
+        <HeroHeadline
+          headline="George Rice-Smith"
+          sub-heading="Paintings & Drawings"
+          action=""
+        />
         <SearchForm
           search-route="artworks"
           initial-search-prompt="painting"
@@ -41,7 +39,7 @@ const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
         />
       </template>
       <template #slot-col-2>
-        <HeroImage :hero="hero" />
+        <HeroImage :hero-image="hero" />
       </template>
     </NuxtLayout>
     <!-- End of Hero -->

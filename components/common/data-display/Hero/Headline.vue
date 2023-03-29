@@ -1,4 +1,14 @@
 <script lang="ts" setup>
+const props = defineProps({
+  headline: {
+    type: String,
+    required: true,
+  },
+  subHeading: {
+    type: String,
+    required: true,
+  },
+});
 // const props = defineProps({
 //   action: {
 //     type: String,
@@ -34,11 +44,11 @@
 <template>
   <section class="mb-24">
     <h1 class="hero-header mb-10 font-normal">
-      <span>George Rice-Smith</span>
+      <span>{{ props.headline }}</span>
       <br />
       <!-- <span :class="actionClasses">{{ action }}</span> -->
     </h1>
-    <h2 class="text-3xl font-light">Paintings and Drawings</h2>
+    <h2 class="text-3xl font-light">{{ props.subHeading }}</h2>
   </section>
 </template>
 

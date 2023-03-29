@@ -3,7 +3,10 @@
     to="/gallery"
     class="flex h-auto max-w-sm flex-col rounded-lg border bg-white"
   >
-    <img :src="spotlight.image" class="h-64 content-start object-contain" />
+    <img
+      :src="'images/' + spotlight.imageCover"
+      class="h-64 content-start object-contain"
+    />
 
     <div class="mt-3 h-48 px-6 py-4">
       <h3 class="text-lg font-medium">
@@ -29,7 +32,7 @@ defineProps({
     type: Object,
     required: true,
   },
-})
+});
 </script>
 <!-- <slot
 :image-cover="spotlight.imageCover"

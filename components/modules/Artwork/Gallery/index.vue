@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
-import { useArtworksStore } from '~/stores/artwork'
+import { useArtworksStore } from '~/stores/artwork';
 
 const artworksStore = useArtworksStore();
 onMounted(artworksStore.FETCH_ARTWORKS);
@@ -32,12 +32,12 @@ const displayedArtworks = computed(() => {
     class="relative mx-auto w-full bg-brand-gray-2 p-8"
   >
     <ArtworkGalleryGridCards>
-      <Card
+      <ArtworkGalleryGridCard
         v-for="artwork in displayedArtworks"
         :key="artwork._id"
         :file="artwork"
         class=""
-      ></Card>
+      ></ArtworkGalleryGridCard>
     </ArtworkGalleryGridCards>
 
     <div class="mx-auto mt-8">
@@ -48,7 +48,7 @@ const displayedArtworks = computed(() => {
           <NuxtLink
             v-if="previousPage"
             role="link"
-            :to="{ name: 'ArtworkResults', query: { page: previousPage } }"
+            :to="{ name: 'artworks', query: { page: previousPage } }"
             class="mx-3 text-sm font-semibold text-brand-blue-1"
             >Previous</NuxtLink
           >
@@ -56,7 +56,7 @@ const displayedArtworks = computed(() => {
           <NuxtLink
             v-if="nextPage"
             role="link"
-            :to="{ name: 'ArtworkResults', query: { page: nextPage } }"
+            :to="{ name: 'artworks', query: { page: nextPage } }"
             class="mx-3 text-sm font-semibold text-brand-blue-1"
             >Next</NuxtLink
           >
