@@ -12,9 +12,11 @@ onMounted(artworksStore.FETCH_ARTWORKS);
 const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS);
 const hero = computed(() => artworksStore.ARTWORK_HERO);
 
-const consoleArtworks = computed(() =>
-  console.log('Spotlights: ' + spotlights.value)
-);
+const consoleArtworks = computed(() => {
+  const runtimeConfig = useRuntimeConfig();
+  console.log('runtimeConfig', runtimeConfig.public.apiBase);
+  console.log('Spotlights: ' + spotlights.value);
+});
 
 // const spotlights = async () => {
 //   try {

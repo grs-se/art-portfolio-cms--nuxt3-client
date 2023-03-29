@@ -5,7 +5,8 @@ class ArtModule extends HttpFactory {
   private RESOURCE = '/artworks';
 
   async getArtworks(): Promise<IGetArtworkResponse> {
-    return await this.call<IGetArtworkResponse>('GET', this.RESOURCE);
+    const res = await this.call<IGetArtworkResponse>('GET', this.RESOURCE);
+    return res.data.data.artworks;
   }
 
   async createArtwork(artwork: IArtwork): Promise<IGetArtworkResponse> {

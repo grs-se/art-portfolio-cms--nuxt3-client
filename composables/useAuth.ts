@@ -1,5 +1,5 @@
 import { useRouter, useState } from '#app';
-import { useLocalStorage } from './useLocalStorage';
+// import { useLocalStorage } from './useLocalStorage';
 import { ISession } from '~/types/ISession';
 import { IUser } from '~/types/models/IUser';
 import { useAlertStore } from '~/stores/alert';
@@ -93,7 +93,8 @@ export async function login(
       password: password,
     });
     useState('user').value = user;
-    useLocalStorage('user');
+    localStorage.setItem('user', JSON.stringify(user));
+    // useLocalStorage('user');
     await useRouter().push('/gallery');
     return true;
   } catch (error) {

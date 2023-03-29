@@ -1,9 +1,9 @@
-import { $Fetch } from 'ohmyfetch';
+// import { $Fetch } from 'ohmyfetch';
 
 class HttpFactory {
-  private $fetch: $Fetch;
+  private $fetch;
 
-  constructor(fetcher: $Fetch) {
+  constructor(fetcher) {
     this.$fetch = fetcher;
   }
 
@@ -18,7 +18,6 @@ class HttpFactory {
     extras = {}
   ): Promise<T> {
     const $res: T = await this.$fetch(url, { method, body: data, ...extras });
-    console.log('$res: ' + $res);
     return $res;
   }
 }

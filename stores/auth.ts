@@ -10,14 +10,15 @@ export const useAuthStore = defineStore('auth', () => {
     emailUname: string,
     password: string
   ): Promise<boolean> => {
-    const { $api } = useNuxtApp();
     try {
+      const { $api } = useNuxtApp();
       const user = await $api.auth.login({
         emailUname: emailUname,
         password: password,
       });
       user.value = user;
-      useLocalStorage('user', user);
+      localStorage.setItem('user', JSON.stringify(user));
+      // useLocalStorage('user', user);
       await useRouter().push('/gallery');
       return true;
     } catch (error) {
@@ -33,7 +34,8 @@ export const useAuthStore = defineStore('auth', () => {
   //   },
   const LOGOUT = async () => {
     user.value = null;
-    useLocalStorage('user');
+    localStorage.removeItem('user');
+    // useLocalStorage('user');
     await useRouter().push('/');
     // router.push("/auth/login");
   };

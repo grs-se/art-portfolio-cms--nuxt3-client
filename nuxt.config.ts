@@ -1,26 +1,27 @@
 import config from './config';
-const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:8000/api/v1';
+// const API_BASE_URL =
+//   process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8000/api/v1';
 
 // @ts-ignore
 export default defineNuxtConfig({
-  mode: 'universal',
-  server: {
-    port: 8000, // default: 3000
-    host: '0.0.0.0',
-  },
+  // mode: 'universal',
+  // server: {
+  //   port: 8000, // default: 3000
+  //   host: '0.0.0.0',
+  // },
 
-  bridge: {
-    nitro: true,
-  },
+  // bridge: {
+  //   nitro: true,
+  // },
 
-  nitro: {
-    publicAssets: [],
-  },
+  // nitro: {
+  //   publicAssets: [],
+  // },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   // ssr: false,
 
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'public',
+  // target: 'public',
 
   routeRules: {
     // prerender: true - this will be generated at build time.
@@ -63,9 +64,9 @@ export default defineNuxtConfig({
   //   proxy: true,
   //   baseURL: API_BASE_URL,
   // },
-  proxy: {
-    '/api/v1': API_BASE_URL,
-  },
+  // proxy: {
+  //   '/api/v1': API_BASE_URL,
+  // },
   // env: {
   //   API_BASE_URL : process.env.API_BASE_URL || 'http://localhost:8000',
   // },
