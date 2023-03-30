@@ -1,14 +1,18 @@
 <script lang="ts" setup>
 defineProps({
-  hero: {
+  heroImages: {
     type: Object,
     required: true,
   },
 });
 </script>
 <template>
-  <div class="col-span-5 col-start-7 self-center justify-self-center">
-    <img class="object-contain" :src="'images/' + hero.imageCover" />
-    <span>{{ hero.description }}</span>
+  <div
+    v-for="heroImage in heroImages"
+    :key="heroImage._id"
+    class="col-span-5 col-start-7 self-center justify-self-center"
+  >
+    <img class="object-contain" :src="'images/' + heroImage.imageCover" />
+    <span>{{ heroImage.description }}</span>
   </div>
 </template>

@@ -4,8 +4,8 @@ import { useArtworksStore } from '~/stores/artwork';
 const artworksStore = useArtworksStore();
 onMounted(artworksStore.FETCH_ARTWORKS);
 
-const spotlights = computed(() => artworksStore.ARTWORK_SPOTLIGHTS);
-const hero = computed(() => artworksStore.ARTWORK_HERO);
+const ARTWORK_SPOTLIGHTS = computed(() => artworksStore.ARTWORK_SPOTLIGHTS);
+const ARTWORK_HERO = computed(() => artworksStore.ARTWORK_HERO);
 
 const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
 </script>
@@ -27,13 +27,13 @@ const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
         />
       </template>
       <template #slot-col-2>
-        <HeroImage :hero="hero" />
+        <HeroImage :hero-images="ARTWORK_HERO" />
       </template>
     </NuxtLayout>
     <!-- End of Hero -->
     <!-- Spotlights -->
     <SpotlightsHeader />
-    <SpotlightsSlides :spotlights="spotlights" />
+    <SpotlightsSlides :spotlights="ARTWORK_SPOTLIGHTS" />
     <!-- End of Spotlights -->
   </main>
 </template>
