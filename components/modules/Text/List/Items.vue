@@ -1,9 +1,9 @@
 <template>
   <main class="w-full flex-auto bg-brand-gray-2 p-8">
     <ol>
-      <text-listing
+      <text-list-item
         v-for="text in displayedTexts"
-        :key="text.id"
+        :key="text._id"
         :text="text"
         class="mx-auto max-w-gallery"
       />
@@ -17,7 +17,7 @@
           <router-link
             v-if="previousPage"
             role="link"
-            :to="{ name: 'TextResults', query: { page: previousPage } }"
+            :to="{ name: 'text', query: { page: previousPage } }"
             class="mx-3 text-sm font-semibold text-brand-blue-1"
           >
             Previous
@@ -26,7 +26,7 @@
           <router-link
             v-if="nextPage"
             role="link"
-            :to="{ name: 'TextResults', query: { page: nextPage } }"
+            :to="{ name: 'text', query: { page: nextPage } }"
             class="mx-3 text-sm font-semibold text-brand-blue-1"
           >
             Next
