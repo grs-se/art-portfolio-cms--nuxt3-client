@@ -2,6 +2,13 @@
 import { useRoute } from 'vue-router';
 import { useArtworksStore } from '~/stores/artwork';
 
+defineProps({
+  selectedArtwork: {
+    type: Object,
+    required: true,
+  },
+});
+
 const artworksStore = useArtworksStore();
 onMounted(artworksStore.FETCH_ARTWORKS);
 
@@ -26,61 +33,79 @@ const displayedArtworks = computed(() => {
 });
 
 const currentCard = ref();
-const modalHvr = ref(false);
+const cardHover = ref(false);
+const cardClick = ref(false);
+const openAside = ref(false);
 
-// const modalHover = ref<boolean>(false);
-const modalHover = (artwork) => {
+// const showAside = ref<boolean>(false);
+const showAside = (artwork) => {
   currentCard.value = artwork;
-  modalHvr.value = !modalHvr.value;
+  cardHover.value = false;
+  cardClick.value = !cardClick.value;
   console.log(currentCard.value);
+};
+
+const showHoverModal = (artwork) => {
+  if (openAside) {
+    currentCard.value = artwork;
+    cardHover.value = !cardHover.value;
+  }
 };
 </script>
 
 <template>
-  <main
-    id="gallery-wrapper"
-    class="relative mx-auto w-full bg-brand-gray-2 p-8"
-  >
-    <ModalHover v-if="modalHvr === true" :artwork="currentCard" />
+  <section :class="[cardClick ? 'flex columns-2 flex-row-reverse' : '']">
+    <Aside
+      v-if="cardClick"
+      :artwork="currentCard"
+      :class="[cardClick ? 'w-1/2' : 'w-0']"
+    />
 
-    <h1>{{ currentCard }}</h1>
-    <ArtworkGalleryGridCards>
-      <Card
-        v-for="artwork in displayedArtworks"
-        :key="artwork._id"
-        :file="artwork"
-        @mouseenter="modalHover(artwork)"
-        class=""
-      >
-        <!-- @mouseout="modalHover = false" -->
-      </Card>
-      <!-- <div v-show="currentCard"> -->
-      <!-- <ModalHover :artwork="currentCard" /> -->
-      <!-- </div> -->
-    </ArtworkGalleryGridCards>
+    <main
+      id="gallery-wrapper"
+      class="relative mx-auto bg-brand-gray-2 p-8"
+      :class="[!cardClick ? 'w-full' : 'w-1/2']"
+    >
+      <ModalHover v-if="cardHover" :artwork="currentCard" />
+      <ArtworkGalleryGridCards>
+        <Card
+          v-for="artwork in displayedArtworks"
+          :key="artwork._id"
+          :file="artwork"
+          @mouseenter="showHoverModal(artwork)"
+          @click="showAside(artwork)"
+          class=""
+        >
+          <!-- @mouseout="showAside = false" -->
+        </Card>
+        <!-- <div v-show="currentCard"> -->
+        <!-- <ModalHover :artwork="currentCard" /> -->
+        <!-- </div> -->
+      </ArtworkGalleryGridCards>
 
-    <div class="mx-auto mt-8">
-      <div class="flex flex-row flex-nowrap">
-        <p class="flex-grow text-sm">Page {{ currentPage }}</p>
+      <div class="mx-auto mt-8">
+        <div class="flex flex-row flex-nowrap">
+          <p class="flex-grow text-sm">Page {{ currentPage }}</p>
 
-        <div class="flex items-center justify-center">
-          <NuxtLink
-            v-if="previousPage"
-            role="link"
-            :to="{ name: 'artworks', query: { page: previousPage } }"
-            class="mx-3 text-sm font-semibold text-brand-blue-1"
-            >Previous</NuxtLink
-          >
+          <div class="flex items-center justify-center">
+            <NuxtLink
+              v-if="previousPage"
+              role="link"
+              :to="{ name: 'artworks', query: { page: previousPage } }"
+              class="mx-3 text-sm font-semibold text-brand-blue-1"
+              >Previous</NuxtLink
+            >
 
-          <NuxtLink
-            v-if="nextPage"
-            role="link"
-            :to="{ name: 'artworks', query: { page: nextPage } }"
-            class="mx-3 text-sm font-semibold text-brand-blue-1"
-            >Next</NuxtLink
-          >
+            <NuxtLink
+              v-if="nextPage"
+              role="link"
+              :to="{ name: 'artworks', query: { page: nextPage } }"
+              class="mx-3 text-sm font-semibold text-brand-blue-1"
+              >Next</NuxtLink
+            >
+          </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </section>
 </template>

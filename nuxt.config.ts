@@ -107,7 +107,7 @@ export default defineNuxtConfig({
   },
   css: [
     '@fortawesome/fontawesome-svg-core/styles.css',
-    '~/assets/css/main.css',
+    '~/assets/css/main.scss',
   ],
   // srcDir: 'src/',
   components: {
