@@ -1,6 +1,6 @@
 <template>
   <li class="mb-7">
-    <router-link
+    <NuxtLink
       :to="textPageLink"
       class="mx-auto block rounded border border-solid border-brand-gray-2 bg-white hover:shadow-gray"
     >
@@ -41,12 +41,12 @@
         </div>
 
         <div class="mt-2 text-center">
-          <router-link :to="textPageLink" class="text-brand-blue-1"
-            >Expand</router-link
+          <NuxtLink :to="textPageLink" class="text-brand-blue-1"
+            >Expand</NuxtLink
           >
         </div>
       </div>
-    </router-link>
+    </NuxtLink>
   </li>
 </template>
 

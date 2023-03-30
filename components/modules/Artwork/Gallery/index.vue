@@ -39,14 +39,17 @@ const openAside = ref(false);
 
 // const showAside = ref<boolean>(false);
 const showAside = (artwork) => {
-  currentCard.value = artwork;
+  openAside.value = true;
   cardHover.value = false;
-  cardClick.value = !cardClick.value;
+  currentCard.value = artwork;
+  cardClick.value = artwork;
   console.log(currentCard.value);
 };
 
 const showHoverModal = (artwork) => {
   if (openAside) {
+    return;
+  } else {
     currentCard.value = artwork;
     cardHover.value = !cardHover.value;
   }

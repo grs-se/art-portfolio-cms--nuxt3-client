@@ -33,7 +33,7 @@ const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
     <!-- End of Hero -->
     <!-- Spotlights -->
     <SpotlightsHeader />
-    <SpotlightsSlides :spotlights="ARTWORK_SPOTLIGHTS" />
+    <SpotlightsCarousel :slides="ARTWORK_SPOTLIGHTS" />
     <!-- End of Spotlights -->
   </main>
 </template>

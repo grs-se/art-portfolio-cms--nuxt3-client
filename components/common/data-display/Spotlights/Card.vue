@@ -4,43 +4,38 @@
     class="flex h-auto max-w-sm flex-col rounded-lg border bg-white"
   >
     <img
-      :src="'images/' + spotlight.imageCover"
+      :src="'images/' + slide.imageCover"
       class="h-64 content-start object-contain"
     />
 
     <div class="mt-3 h-48 px-6 py-4">
       <h3 class="text-lg font-medium">
-        {{ spotlight.title }}
+        {{ slide.title }}
       </h3>
       <p class="line-clamp mt-3 text-sm">
-        {{ spotlight.description }}
+        {{ slide.description }}
       </p>
       <p class="line-clamp mt-3 text-sm">
-        {{ spotlight.medium }}
+        {{ slide.medium }}
       </p>
     </div>
 
     <NuxtLink to="/gallery" class="px-6 pb-4 text-sm text-brand-blue-1"
-      >More from {{ spotlight.categories[0] }}</NuxtLink
+      >More from {{ slide.categories[0] }}</NuxtLink
     >
   </NuxtLink>
 </template>
 
 <script lang="ts" setup>
-defineProps({
-  spotlight: {
-    type: Object,
-    required: true,
-  },
-});
+defineProps(['slide', 'currentSlide', 'index', 'direction']);
 </script>
 <!-- <slot
-:image-cover="spotlight.imageCover"
-:title="spotlight.title"
-:medium="spotlight.medium"
-:dimensions="spotlight.dimensions"
-:description="spotlight.description"
-:categories="spotlight.categories"
+:image-cover="slide.imageCover"
+:title="slide.title"
+:medium="slide.medium"
+:dimensions="slide.dimensions"
+:description="slide.description"
+:categories="slide.categories"
 ></slot> -->
 
 <style scoped>

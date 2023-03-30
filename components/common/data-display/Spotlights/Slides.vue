@@ -15,12 +15,13 @@ defineProps({
         :key="spotlight.id"
         class="slide mx-2"
       >
-        <SpotlightsCard :spotlight="spotlight" />
+        <SpotlightsCard :slide="spotlight" />
         <!-- </template> -->
       </li>
     </ul>
     <!-- <spot-light-slides /> -->
-    <div class="h-32">
+    <!-- <SpotlightsControls /> -->
+    <!-- <div class="h-32">
       <div class="flex justify-between px-40">
         <action-button
           text="<"
@@ -35,6 +36,6 @@ defineProps({
           @click="nextSlide"
         />
       </div>
-    </div>
+    </div> -->
   </section>
 </template>

@@ -1,24 +1,41 @@
 <template>
   <div class="aside">
     <figure class="aside__figure">
-      <img :src="'images/' + artwork.imageCover" class="aside__image" />
+      <!-- <carousel
+        :slides="artwork"
+        controls
+        indicators
+        :interval="3000"
+        :width="1000"
+        :height="450"
+      ></carousel> -->
+      <NuxtLink :to="artworkLightboxLink" class="text-brand-blue-1">
+        <img
+          :src="'images/' + artwork.imageCover"
+          class="aside__image"
+          @click=""
+        />
+        Expand</NuxtLink
+      >
       <figcaption class="flex flex-col text-white">
         <h3>{{ artwork.title }}</h3>
         <div class="flex flex-col text-base">
           <span>{{ artwork.medium }}</span>
-          <span>{{ artwork.date.toLocaleString() }}</span>
+          <span>{{ date(artwork.date) }}</span>
         </div>
       </figcaption>
+      <AsideControls />
     </figure>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { type PropType } from 'vue';
+// const route = useRoute();
 
-import type { IArtwork } from '~/types/models/IArtwork';
+import type { IArtwork } from '~/types';
 
-defineProps({
+const props = defineProps({
   artwork: {
     type: Object as PropType<IArtwork>,
     required: true,
@@ -28,6 +45,21 @@ defineProps({
     default: false,
   },
 });
+
+const slides = ref();
+
+const date = (d) => {
+  const date = new Date(d);
+
+  const options = { year: 'numeric' };
+
+  date.toLocaleString('en-US', options);
+
+  return date;
+};
+
+const artworkLightboxLink = computed(() => `/artworks/${props.artwork.slug}`);
+// const currentArtworkSlug = computed(() => route.params.slug);
 // var tooltip = document.getElementById("tooltip-span");
 
 // const displayModalMousePosition = () => {
@@ -56,7 +88,7 @@ defineProps({
   }
 
   &__image {
-    max-height: 75vh;
+    max-height: 65vh;
     width: auto;
     object-fit: contain;
   }
