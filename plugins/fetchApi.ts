@@ -13,9 +13,10 @@ interface IApiInstance {
 
 export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig();
-  console.log(`BASE URL: ${runtimeConfig.public.apiBase}`);
+  const defaultUrl = runtimeConfig.public.apiBase;
+
   const fetchOptions: FetchOptions = {
-    baseURL: runtimeConfig.public.apiBase,
+    baseURL: defaultUrl,
   };
 
   /** create a new instance of $fetcher with custom option */
@@ -29,7 +30,7 @@ export default defineNuxtPlugin(() => {
 
   return {
     provide: {
-      api: modules,
+      fetchApi: modules,
     },
   };
 });

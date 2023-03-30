@@ -11,7 +11,7 @@ const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
 </script>
 
 <template>
-  <main class="container">
+  <main>
     <!-- Hero -->
     <NuxtLayout name="two-column">
       <template #slot-col-1>

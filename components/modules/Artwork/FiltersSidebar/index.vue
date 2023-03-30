@@ -1,15 +1,24 @@
 <script lang="ts" setup>
-import { useFiltersStore } from '~/stores/filters'
+import { useFiltersStore } from '~/stores/filters';
+import { useArtworksStore } from '~/stores/artwork';
 
-const route = useRoute()
-const filtersStore = useFiltersStore()
+const artworksStore = useArtworksStore();
+const UNIQUE_ARTWORK_CATEGORIES = computed(
+  () => artworksStore.UNIQUE_ARTWORK_CATEGORIES
+);
+const UNIQUE_ARTWORK_LOCATIONS = computed(
+  () => artworksStore.UNIQUE_ARTWORK_LOCATIONS
+);
+
+const route = useRoute();
+const filtersStore = useFiltersStore();
 
 const parseTagsSearchTerm = () => {
-  const tag = (route.query.tag as string) || ''
-  filtersStore.UPDATE_TAGS_SEARCH_TERM(tag)
-}
+  const tag = (route.query.tag as string) || '';
+  filtersStore.UPDATE_TAGS_SEARCH_TERM(tag);
+};
 
-onMounted(parseTagsSearchTerm)
+onMounted(parseTagsSearchTerm);
 </script>
 
 <template>
@@ -17,17 +26,32 @@ onMounted(parseTagsSearchTerm)
     class="flex flex-col border-r border-b border-solid border-brand-gray-1 bg-white p-4 xs:w-full md:w-96"
   >
     <section class="pb-5">
-      <!-- <artwork-filters-sidebar-checkbox-group/> -->
-      <artwork-filters-sidebar-prompt />
+      <!-- <filters-sidebar-checkbox-group/> -->
+      <filters-sidebar-prompt
+        prompt="Gallery Options"
+        @clear-filters="filtersStore.CLEAR_USER_ARTWORK_FILTER_SELECTIONS"
+      />
 
-      <artwork-filters-sidebar-tags />
+      <filters-sidebar-tags
+        tagsPlaceholder="Landscape, Archetype, Sleeping, figure"
+      />
 
       <collapsible-accordian header="Categories">
-        <artwork-filters-sidebar-categories />
+        <filters-sidebar-checkbox-group
+          class="capitalize"
+          :unique-values="UNIQUE_ARTWORK_CATEGORIES"
+          :action="filtersStore.ADD_SELECTED_ARTWORK_CATEGORIES"
+        />
+        <!-- <filters-sidebar-categories /> -->
       </collapsible-accordian>
 
       <collapsible-accordian header="Locations">
-        <artwork-filters-sidebar-locations />
+        <filters-sidebar-checkbox-group
+          class="capitalize"
+          :unique-values="UNIQUE_ARTWORK_LOCATIONS"
+          :action="filtersStore.ADD_SELECTED_ARTWORK_LOCATIONS"
+        />
+        <!-- <filters-sidebar-locations /> -->
       </collapsible-accordian>
     </section>
   </div>

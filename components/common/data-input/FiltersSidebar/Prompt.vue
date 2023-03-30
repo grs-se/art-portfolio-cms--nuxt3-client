@@ -1,17 +1,21 @@
 <script lang="ts" setup>
-import { useFiltersStore } from '~/stores/filters'
-
-const filtersStore = useFiltersStore()
+defineProps({
+  prompt: {
+    type: String,
+    required: true,
+  },
+});
+defineEmits(['clearFilters']);
 </script>
 
 <template>
   <div class="flex flex-row justify-between">
-    <h3 class="my-4 text-base">Gallery Options</h3>
+    <h3 class="my-4 text-base">{{ prompt }}</h3>
     <div class="flex items-center text-sm">
       <ActionButton
         text="Clear Filters"
         btn="tertiary"
-        @click="filtersStore.CLEAR_USER_ARTWORK_FILTER_SELECTIONS"
+        @click="$emit('clearFilters')"
       />
     </div>
   </div>

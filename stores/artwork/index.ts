@@ -26,14 +26,6 @@ export const useArtworksStore = defineStore('artworks', {
     artworks: [],
   }),
   actions: {
-    // async [FETCH_ARTWORKS]() {
-    //   const runtimeConfig = useRuntimeConfig();
-    //   const baseUrl = runtimeConfig.public.apiBase;
-    //   const endpoint = '/artworks';
-    //   const url = `${baseUrl}${endpoint}`;
-    //   const response = await axios.get<Artwork[]>(url);
-    //   console.log(response.data.data.artworks);
-    //   return response.data.data.artworks;
     async [FETCH_ARTWORKS]() {
       const { $axiosApi } = useNuxtApp();
       const artworks = await $axiosApi.art.getArtworks();

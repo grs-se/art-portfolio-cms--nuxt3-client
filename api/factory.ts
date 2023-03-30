@@ -1,9 +1,9 @@
-// import { $Fetch } from 'ohmyfetch';
+import { $Fetch } from 'ohmyfetch';
 
 class HttpFactory {
-  private $fetch;
+  private $fetch: $Fetch;
 
-  constructor(fetcher) {
+  constructor(fetcher: $Fetch) {
     this.$fetch = fetcher;
   }
 
