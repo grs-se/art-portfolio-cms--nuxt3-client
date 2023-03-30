@@ -62,7 +62,7 @@ const props = defineProps({
   },
 });
 
-const textPageLink = computed(() => `/text/${props.text.id}`);
+const textPageLink = computed(() => `/text/${props.text.slug}`);
 </script>
 
 <style scoped>

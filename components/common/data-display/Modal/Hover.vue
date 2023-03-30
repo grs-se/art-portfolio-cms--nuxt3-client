@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="tooltip"
-    class="absolute right-0 z-50 flex h-auto flex-col rounded-lg bg-black"
-  >
+  <div id="tooltip" class="z-50 flex h-auto flex-col rounded-lg bg-black">
     <figure class="w-100 m-2 flex flex-col hover:shadow-gray">
       <img
         :src="'images/' + artwork.imageCover"

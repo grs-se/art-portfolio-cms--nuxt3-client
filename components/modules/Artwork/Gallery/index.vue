@@ -24,6 +24,16 @@ const displayedArtworks = computed(() => {
   const lastArtworkIndex = pageNumber * 24;
   return FILTERED_ARTWORKS.value.slice(firstArtworkIndex, lastArtworkIndex);
 });
+
+const currentCard = ref();
+const modalHvr = ref(false);
+
+// const modalHover = ref<boolean>(false);
+const modalHover = (artwork) => {
+  currentCard.value = artwork;
+  modalHvr.value = !modalHvr.value;
+  console.log(currentCard.value);
+};
 </script>
 
 <template>
@@ -31,13 +41,22 @@ const displayedArtworks = computed(() => {
     id="gallery-wrapper"
     class="relative mx-auto w-full bg-brand-gray-2 p-8"
   >
+    <ModalHover v-if="modalHvr === true" :artwork="currentCard" />
+
+    <h1>{{ currentCard }}</h1>
     <ArtworkGalleryGridCards>
-      <ArtworkGalleryGridCard
+      <Card
         v-for="artwork in displayedArtworks"
         :key="artwork._id"
         :file="artwork"
+        @mouseenter="modalHover(artwork)"
         class=""
-      ></ArtworkGalleryGridCard>
+      >
+        <!-- @mouseout="modalHover = false" -->
+      </Card>
+      <!-- <div v-show="currentCard"> -->
+      <!-- <ModalHover :artwork="currentCard" /> -->
+      <!-- </div> -->
     </ArtworkGalleryGridCards>
 
     <div class="mx-auto mt-8">
