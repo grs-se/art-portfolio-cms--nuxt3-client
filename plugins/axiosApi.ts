@@ -1,6 +1,7 @@
 import axios from 'axios';
 import AuthModule from '~/api/modules/auth';
 import ArtModule from '~/api/modules/artworks';
+import TextModule from '~/api/modules/texts';
 
 export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig();
@@ -18,6 +19,7 @@ export default defineNuxtPlugin(() => {
   const modules = {
     auth: new AuthModule(apiFetcher),
     art: new ArtModule(apiFetcher),
+    text: new TextModule(apiFetcher),
   };
 
   return {

@@ -22,37 +22,33 @@ onMounted(parseTagsSearchTerm);
 </script>
 
 <template>
-  <div
-    class="flex flex-col border-r border-b border-solid border-brand-gray-1 bg-white p-4 xs:w-full md:w-96"
-  >
-    <section class="pb-5">
-      <!-- <filters-sidebar-checkbox-group/> -->
-      <filters-sidebar-prompt
-        prompt="Gallery Options"
-        @clear-filters="filtersStore.CLEAR_USER_ARTWORK_FILTER_SELECTIONS"
+  <filters-sidebar-layout>
+    <!-- <filters-sidebar-checkbox-group/> -->
+    <filters-sidebar-prompt
+      prompt="Gallery Options"
+      @clear-filters="filtersStore.CLEAR_USER_ARTWORK_FILTER_SELECTIONS"
+    />
+
+    <filters-sidebar-tags
+      tagsPlaceholder="Landscape, Archetype, Sleeping, figure"
+    />
+
+    <collapsible-accordian header="Categories">
+      <filters-sidebar-checkbox-group
+        class="capitalize"
+        :unique-values="UNIQUE_ARTWORK_CATEGORIES"
+        :action="filtersStore.ADD_SELECTED_ARTWORK_CATEGORIES"
       />
+      <!-- <filters-sidebar-categories /> -->
+    </collapsible-accordian>
 
-      <filters-sidebar-tags
-        tagsPlaceholder="Landscape, Archetype, Sleeping, figure"
+    <collapsible-accordian header="Locations">
+      <filters-sidebar-checkbox-group
+        class="capitalize"
+        :unique-values="UNIQUE_ARTWORK_LOCATIONS"
+        :action="filtersStore.ADD_SELECTED_ARTWORK_LOCATIONS"
       />
-
-      <collapsible-accordian header="Categories">
-        <filters-sidebar-checkbox-group
-          class="capitalize"
-          :unique-values="UNIQUE_ARTWORK_CATEGORIES"
-          :action="filtersStore.ADD_SELECTED_ARTWORK_CATEGORIES"
-        />
-        <!-- <filters-sidebar-categories /> -->
-      </collapsible-accordian>
-
-      <collapsible-accordian header="Locations">
-        <filters-sidebar-checkbox-group
-          class="capitalize"
-          :unique-values="UNIQUE_ARTWORK_LOCATIONS"
-          :action="filtersStore.ADD_SELECTED_ARTWORK_LOCATIONS"
-        />
-        <!-- <filters-sidebar-locations /> -->
-      </collapsible-accordian>
-    </section>
-  </div>
+      <!-- <filters-sidebar-locations /> -->
+    </collapsible-accordian>
+  </filters-sidebar-layout>
 </template>
