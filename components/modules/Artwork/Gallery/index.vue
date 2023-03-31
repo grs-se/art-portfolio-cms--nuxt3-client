@@ -34,15 +34,17 @@ const displayedArtworks = computed(() => {
 
 const currentCard = ref();
 const cardHover = ref(false);
-const cardClick = ref(false);
+const cardClicked = ref(false);
 const openAside = ref(false);
+
+defineEmits(['card-clicked']);
 
 // const showAside = ref<boolean>(false);
 const showAside = (artwork) => {
   openAside.value = true;
   cardHover.value = false;
   currentCard.value = artwork;
-  cardClick.value = artwork;
+  cardClicked.value = artwork;
   console.log(currentCard.value);
 };
 
@@ -57,17 +59,24 @@ const showHoverModal = (artwork) => {
 </script>
 
 <template>
-  <section :class="[cardClick ? 'flex columns-2 flex-row-reverse' : '']">
+  <section :class="[cardClicked ? 'flex columns-2 flex-row-reverse' : '']">
     <Aside
-      v-if="cardClick"
+      v-if="cardClicked"
       :artwork="currentCard"
-      :class="[cardClick ? 'w-1/2' : 'w-0']"
+      :artworks="displayedArtworks"
+      :class="[cardClicked ? 'w-1/2' : 'w-0']"
     />
+    <!--     
+    <Aside
+      v-if="cardClicked"
+      :artwork="currentCard"
+      :class="[cardClicked ? 'w-1/2' : 'w-0']"
+    /> -->
 
     <main
       id="gallery-wrapper"
       class="relative mx-auto bg-brand-gray-2 p-8"
-      :class="[!cardClick ? 'w-full' : 'w-1/2']"
+      :class="[!cardClicked ? 'w-full' : 'w-1/2']"
     >
       <ModalHover v-if="cardHover" :artwork="currentCard" />
       <ArtworkGalleryGridCards>

@@ -1,15 +1,11 @@
 <template>
   <!-- <SpotlightsSlides :slides="slides" /> -->
   <div class="spotlights-carousel">
-    <div
-      ref="inner"
-      class="spotlights-carousel-inner inner"
-      :style="innerStyles"
-    >
+    <div ref="inner" class="inner" :style="innerStyles">
       <div
         v-for="(slide, index) in slides"
         :key="`slide-${index}`"
-        class="spotlights-carousel-inner"
+        class="card-wrapper"
       >
         <SpotlightsCard :slide="slide" />
         <!-- </template> -->
@@ -51,18 +47,18 @@ const moveRight = () => {
 };
 
 const next = () => {
-  setStep();
+  // setStep();
   moveLeft();
 };
 
 const prev = () => {
-  setStep();
+  // setStep();
   moveRight();
 };
 
-// onMounted(() => {
-//   nextTick(() => setStep());
-// });
+onMounted(() => {
+  setStep();
+});
 </script>
 
 <style scoped>
@@ -70,21 +66,19 @@ const prev = () => {
   display: flex;
   width: max-content;
   margin-top: 2.5rem;
+  overflow-x: clip;
 }
 
 .inner {
+  display: flex;
   transition: transform 1.2s;
   white-space: nowrap;
 }
-.spotlights-carousel-inner {
+.card-wrapper {
   display: flex;
-  width: max-content;
-  justify-content: center;
-  flex-direction: row;
-  justify-content: center;
   padding-bottom: 1rem;
-  overflow-x: clip;
   margin: 0 0.5rem;
+  overflow-x: clip;
   /* transform: translateX(-50%); */
 
   /* position: absolute; */

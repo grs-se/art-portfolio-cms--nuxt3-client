@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mx-auto flex items-center justify-center p-2 xl:max-h-80 xl:w-auto"
+    class="mx-auto flex items-center justify-center p-2 md:max-h-64 xl:max-h-80 xl:w-auto"
   >
     <figure
       @mouseenter="$emit('mouseenter')"
@@ -9,7 +9,7 @@
     >
       <img
         :src="'images/' + file.imageCover"
-        class="sm:max-h-auto items-center justify-center xl:max-h-80"
+        class="sm:max-h-auto items-center justify-center md:max-h-64 xl:max-h-80"
       />
     </figure>
   </div>

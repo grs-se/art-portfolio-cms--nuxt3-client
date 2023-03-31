@@ -4,26 +4,20 @@
       <!-- <carousel
         :slides="artwork"
         controls
-        indicators
+        indicators="false"
         :interval="3000"
         :width="1000"
         :height="450"
-      ></carousel> -->
+      ></carousel>
+       -->
       <NuxtLink :to="artworkLightboxLink" class="text-brand-blue-1">
         <img
           :src="'images/' + artwork.imageCover"
           class="aside__image"
           @click=""
         />
-        Expand</NuxtLink
-      >
-      <figcaption class="flex flex-col text-white">
-        <h3>{{ artwork.title }}</h3>
-        <div class="flex flex-col text-base">
-          <span>{{ artwork.medium }}</span>
-          <span>{{ date(artwork.date) }}</span>
-        </div>
-      </figcaption>
+      </NuxtLink>
+      <AsideDetails :artwork="artwork" />
       <AsideControls />
     </figure>
   </div>
@@ -40,6 +34,10 @@ const props = defineProps({
     type: Object as PropType<IArtwork>,
     required: true,
   },
+  artworks: {
+    type: Object as PropType<IArtwork>,
+    required: true,
+  },
   open: {
     type: Boolean,
     default: false,
@@ -48,15 +46,15 @@ const props = defineProps({
 
 const slides = ref();
 
-const date = (d) => {
-  const date = new Date(d);
+// const date = (d) => {
+//   const date = new Date(d);
 
-  const options = { year: 'numeric' };
+//   const options = { year: 'numeric' };
 
-  date.toLocaleString('en-US', options);
+//   date.toLocaleString('en-US', options);
 
-  return date;
-};
+//   return date;
+// };
 
 const artworkLightboxLink = computed(() => `/artworks/${props.artwork.slug}`);
 // const currentArtworkSlug = computed(() => route.params.slug);
@@ -78,8 +76,10 @@ const artworkLightboxLink = computed(() => `/artworks/${props.artwork.slug}`);
   display: flex;
   flex-direction: column;
   background-color: black;
+
   &__figure {
     margin: 0.5rem;
+    margin: 2rem;
     display: flex;
     flex-direction: column;
     &:hover {

@@ -5,11 +5,12 @@ import { useAuthStore } from '~/stores/auth';
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
 
-const isLoggedIn = computed(() => user.value);
-const navHeightClass = computed(() => ({
-  'h-16': !isLoggedIn.value,
-  'h-32': isLoggedIn.value,
-}));
+// const isLoggedIn = computed(() => user.value);
+// const navHeightClass = computed(() => ({
+//   'h-16': !isLoggedIn.value,
+//   'h-32': isLoggedIn.value,
+// }));
+const navHeightClass = ref('h-16');
 </script>
 
 <template>
@@ -23,7 +24,7 @@ const navHeightClass = computed(() => ({
         <MainNavLinks />
         <MainNavAccountItems />
 
-        <SubNav v-show="authStore.user" />
+        <!-- <SubNav v-show="authStore.user" /> -->
       </div>
     </div>
   </nav>
