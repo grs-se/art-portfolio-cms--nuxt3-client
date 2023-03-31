@@ -1,13 +1,15 @@
 <template>
   <!-- <SpotlightsSlides :slides="slides" /> -->
   <div class="spotlights-carousel">
-    <div class="spotlights-carousel-inner">
+    <div
+      ref="inner"
+      class="spotlights-carousel-inner inner"
+      :style="innerStyles"
+    >
       <div
         v-for="(slide, index) in slides"
         :key="`slide-${index}`"
         class="spotlights-carousel-inner"
-        :index="index"
-        :direction="direction"
       >
         <SpotlightsCard :slide="slide" />
         <!-- </template> -->
@@ -25,49 +27,42 @@ const props = defineProps({
   },
 });
 
-const currentSlide = ref(0);
-const direction = ref('right');
+const step = ref();
+const inner = ref();
+const innerStyles = ref();
 
-// const switchSlide = (index) => {
-//   const step = index - currentSlide.value;
-//   if (step > 0) {
-//     next(0);
-//   } else {
-//     prev(step);
-//   }
-// };
-
-const setCurrentSlide = (index) => {
-  currentSlide.value = index;
+const setStep = () => {
+  const innerWidth = inner.value.scrollWidth;
+  const totalCards = props.slides.length;
+  step.value = `${innerWidth / totalCards}px`;
+  console.log(innerWidth, totalCards);
 };
 
-const prev = (step = -1) => {
-  const index =
-    currentSlide.value > 0
-      ? currentSlide.value + step
-      : props.slides.length - 1;
-  setCurrentSlide(index);
-  direction.value = 'left';
-  console.log(direction.value);
+const moveLeft = () => {
+  innerStyles.value = {
+    transform: `translateX(-${step.value}) translateX(-${step.value})`,
+  };
 };
 
-const _next = (step = 1) => {
-  const index =
-    currentSlide.value < props.slides.length - 1
-      ? currentSlide.value + step
-      : 0;
-  setCurrentSlide(index);
-  direction.value = 'right';
-  console.log(direction.value);
+const moveRight = () => {
+  innerStyles.value = {
+    transform: `translateX(${step.value}) translateX(-${step.value})`,
+  };
 };
 
-const next = (step = 1) => {
-  _next(step);
+const next = () => {
+  setStep();
+  moveLeft();
 };
 
-const transitionName = computed(() => {
-  return direction.value === 'right' ? 'slide-out' : 'slide-in';
-});
+const prev = () => {
+  setStep();
+  moveRight();
+};
+
+// onMounted(() => {
+//   nextTick(() => setStep());
+// });
 </script>
 
 <style scoped>
@@ -75,8 +70,11 @@ const transitionName = computed(() => {
   display: flex;
   width: max-content;
   margin-top: 2.5rem;
+}
 
-  /* position: relative; */
+.inner {
+  transition: transform 1.2s;
+  white-space: nowrap;
 }
 .spotlights-carousel-inner {
   display: flex;

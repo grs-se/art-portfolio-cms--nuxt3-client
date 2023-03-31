@@ -7,7 +7,6 @@
       :src="'images/' + slide.imageCover"
       class="h-64 content-start object-contain"
     />
-
     <div class="mt-3 h-48 px-6 py-4">
       <h3 class="text-lg font-medium">
         {{ slide.title }}
@@ -27,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-defineProps(['slide', 'currentSlide', 'index', 'direction']);
+defineProps(['slide', 'currentSlide', 'index']);
 </script>
 <!-- <slot
 :image-cover="slide.imageCover"
