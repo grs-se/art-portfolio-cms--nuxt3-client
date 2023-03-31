@@ -75,7 +75,7 @@ const showHoverModal = (artwork) => {
 
     <main
       id="gallery-wrapper"
-      class="relative mx-auto bg-brand-gray-2 p-8"
+      class="relative mx-auto bg-brand-gray-2 p-1.5"
       :class="[!cardClicked ? 'w-full' : 'w-1/2']"
     >
       <ModalHover v-if="cardHover" :artwork="currentCard" />

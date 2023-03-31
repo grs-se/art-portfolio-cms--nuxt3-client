@@ -1,5 +1,5 @@
 <template>
-  <figcaption class="mt-4 flex w-1/2 flex-col text-white">
+  <figcaption class="my-4 flex w-1/2 flex-col px-4 py-1 text-white">
     <h3 class="mb-1">
       Title: <span class="text-lg">"{{ artwork.title }}"</span>
     </h3>

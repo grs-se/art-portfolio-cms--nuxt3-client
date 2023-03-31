@@ -79,7 +79,7 @@ const artworkLightboxLink = computed(() => `/artworks/${props.artwork.slug}`);
 
   &__figure {
     margin: 0.5rem;
-    margin: 2rem;
+    margin: 1.5rem;
     display: flex;
     flex-direction: column;
     &:hover {
