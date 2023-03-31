@@ -1,15 +1,19 @@
 <template>
   <!-- <SpotlightsSlides :slides="slides" /> -->
-  <ul class="mt-10 flex w-max flex-row justify-center overflow-x-clip pb-16">
-    <li
-      v-for="(slide, index) in slides"
-      :key="`slide-${index}`"
-      class="slide mx-2"
-    >
-      <SpotlightsCard :slide="slide" />
-      <!-- </template> -->
-    </li>
-  </ul>
+  <div class="spotlights-carousel">
+    <div class="spotlights-carousel-inner">
+      <div
+        v-for="(slide, index) in slides"
+        :key="`slide-${index}`"
+        class="spotlights-carousel-inner"
+        :index="index"
+        :direction="direction"
+      >
+        <SpotlightsCard :slide="slide" />
+        <!-- </template> -->
+      </div>
+    </div>
+  </div>
   <SpotlightsControls @next="next" @prev="prev" />
 </template>
 
@@ -44,6 +48,7 @@ const prev = (step = -1) => {
       : props.slides.length - 1;
   setCurrentSlide(index);
   direction.value = 'left';
+  console.log(direction.value);
 };
 
 const _next = (step = 1) => {
@@ -53,9 +58,38 @@ const _next = (step = 1) => {
       : 0;
   setCurrentSlide(index);
   direction.value = 'right';
+  console.log(direction.value);
 };
 
 const next = (step = 1) => {
   _next(step);
 };
+
+const transitionName = computed(() => {
+  return direction.value === 'right' ? 'slide-out' : 'slide-in';
+});
 </script>
+
+<style scoped>
+.spotlights-carousel {
+  display: flex;
+  width: max-content;
+  margin-top: 2.5rem;
+
+  /* position: relative; */
+}
+.spotlights-carousel-inner {
+  display: flex;
+  width: max-content;
+  justify-content: center;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 1rem;
+  overflow-x: clip;
+  margin: 0 0.5rem;
+  /* transform: translateX(-50%); */
+
+  /* position: absolute; */
+  /* overflow: hidden; */
+}
+</style>

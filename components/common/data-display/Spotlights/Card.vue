@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     to="/gallery"
-    class="flex h-auto max-w-sm flex-col rounded-lg border bg-white"
+    class="flex h-auto max-w-sm flex-col rounded-lg border bg-white shadow-sm"
   >
     <img
       :src="'images/' + slide.imageCover"
