@@ -1,7 +1,7 @@
 <template>
-  <figcaption class="aside__figcaption text-white">
+  <figcaption class="aside__figcaption colum text-white">
     <h3 class="mb-1">
-      Title: <span class="text-lg">"{{ artwork.title }}"</span>
+      Title: <span>"{{ artwork.title }}"</span>
     </h3>
     <div class="mt flex flex-col text-base">
       <span>Medium: {{ artwork.medium[1] }}</span>

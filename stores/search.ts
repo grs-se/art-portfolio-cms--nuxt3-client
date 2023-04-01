@@ -13,6 +13,7 @@ export const useSearchStore = defineStore('search', () => {
 
   const SET_DISPLAY_SEARCH_MODAL = () => {
     state.searchModal = !state.searchModal;
+    console.log(state.searchModal);
   };
 
   return {
