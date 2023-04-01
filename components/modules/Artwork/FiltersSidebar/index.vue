@@ -35,6 +35,14 @@ const searchStore = useSearchStore();
       <filters-sidebar-tags
         tagsPlaceholder="Landscape, Archetype, Sleeping, figure"
       />
+      <collapsible-accordian header="Sort by">
+        <filters-sidebar-checkbox-group
+          class="capitalize"
+          :unique-values="UNIQUE_ARTWORK_CATEGORIES"
+          :action="filtersStore.ADD_SELECTED_ARTWORK_CATEGORIES"
+        />
+        <!-- <filters-sidebar-categories /> -->
+      </collapsible-accordian>
       <collapsible-accordian header="Categories">
         <filters-sidebar-checkbox-group
           class="capitalize"

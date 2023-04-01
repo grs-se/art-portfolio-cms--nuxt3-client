@@ -18,7 +18,7 @@ const toggleLoginModal = () => {
     <Avatar v-if="user" />
     <!-- <router-link v-else to="/LoginRegister"> -->
     <!-- <ActionButton text="Sign in" @click="login" /> -->
-    <ActionButton text="Sign in" @click="toggleLoginModal" />
+    <ActionButton type="auth" text="Sign in" @click="toggleLoginModal" />
     <!-- </router-link> -->
     <!-- <div class="relative"> -->
     <!-- <LoginForm v-if="modalOpen === true" class="absolute top-48 right-1/3" /> -->

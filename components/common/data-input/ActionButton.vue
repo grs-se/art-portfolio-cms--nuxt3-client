@@ -5,7 +5,7 @@ const props = defineProps({
     required: false,
     default: '',
   },
-  btn: {
+  type: {
     type: String,
     required: false,
     default: 'primary',
@@ -17,18 +17,19 @@ const props = defineProps({
         'alert-success',
         'alert-danger',
         'slideshow',
-      ].includes(value)
+        'auth',
+      ].includes(value);
     },
   },
-})
+});
 
-const { btn } = toRefs(props)
+const { type } = toRefs(props);
 
 const buttonClass = computed(() => {
   return {
-    [btn.value]: true,
-  }
-})
+    [type.value]: true,
+  };
+});
 </script>
 
 <template>
@@ -45,8 +46,8 @@ button {
 
 .primary {
   /* @apply rounded bg-brand-gray-3 text-white hover:shadow-blue; */
-  @apply rounded-md bg-brand-blue-1  font-medium
-	text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+  @apply rounded-md bg-brand-blue-1 font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-600
+  dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 }
 
 .secondary {
@@ -57,6 +58,12 @@ button {
 .tertiary {
   @apply rounded-sm bg-transparent px-4 py-2 text-brand-blue-1 hover:border hover:border-brand-blue-1;
   /* @apply flex h-full bg-transparent text-brand-blue-1 hover:bg-brand-blue-2 hover:text-white; */
+}
+
+.auth {
+  @apply rounded-md
+	bg-brand-blue-1 px-4 py-2  font-medium
+	text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 }
 .alert-danger {
   @apply flex h-5 w-5 items-center justify-center rounded-none border-1 border-red-500 bg-white px-1.5 text-3xl font-light text-red-500 hover:bg-red-300;

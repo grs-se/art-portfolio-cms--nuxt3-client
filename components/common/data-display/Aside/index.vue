@@ -1,5 +1,6 @@
 <template>
   <div class="aside">
+    <AsideControlBar />
     <figure class="aside__figure">
       <!-- <carousel
         :slides="artwork"
@@ -21,8 +22,6 @@
         <AsideDetails :artwork="artwork" />
         <Bookmark color="white" class="justify-end" />
       </div>
-
-      <AsideControls />
     </figure>
   </div>
 </template>
@@ -82,8 +81,8 @@ const artworkLightboxLink = computed(() => `/artworks/${props.artwork.slug}`);
   background-color: black;
 
   &__figure {
-    margin: 0.5rem;
-    margin: 1.5rem;
+    // margin: 0.5rem;
+    margin: 0 1.5rem 1.5rem 1.5rem;
     display: flex;
     flex-direction: column;
     &:hover {

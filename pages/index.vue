@@ -13,7 +13,7 @@ const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
 <template>
   <main>
     <!-- Hero -->
-    <NuxtLayout name="two-column">
+    <!-- <NuxtLayout name="two-column">
       <template #slot-col-1>
         <HeroHeadline
           headline="George Rice-Smith"
@@ -29,7 +29,7 @@ const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
       <template #slot-col-2>
         <HeroImage :hero-images="ARTWORK_HERO" />
       </template>
-    </NuxtLayout>
+    </NuxtLayout> -->
     <!-- End of Hero -->
     <!-- Spotlights -->
     <SpotlightsHeader />

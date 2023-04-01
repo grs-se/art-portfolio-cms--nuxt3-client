@@ -9,6 +9,10 @@ import {
   faExclamation,
   faXmark,
   faCheck,
+  faAngleLeft,
+  faAngleRight,
+  faCaretDown,
+  faCaretUp,
   faBookmark as fasBookmark,
   faHeart as fasHeart,
   // fa-solid fa-xmark-large
@@ -17,6 +21,7 @@ import {
 import {
   faHeart as farHeart,
   faBookmark as farBookmark,
+
   // fa-solid fa-xmark-large
 } from '@fortawesome/free-regular-svg-icons';
 
@@ -28,6 +33,10 @@ library.add(
   faExclamation,
   faXmark,
   faCheck,
+  faAngleLeft,
+  faAngleRight,
+  faCaretDown,
+  faCaretUp,
   fasBookmark,
   farBookmark,
   fasHeart,

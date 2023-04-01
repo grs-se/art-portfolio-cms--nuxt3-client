@@ -14,7 +14,7 @@ defineEmits(['clearFilters']);
     <div class="flex items-center text-sm">
       <ActionButton
         text="Clear Filters"
-        btn="tertiary"
+        type="tertiary"
         @click="$emit('clearFilters')"
       />
     </div>

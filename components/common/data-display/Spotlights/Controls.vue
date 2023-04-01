@@ -3,13 +3,13 @@
     <div class="flex justify-between px-40">
       <action-button
         text="<"
-        btn="slide-show"
+        type="slide-show"
         class="spotlights-carousel-controls right-4 shadow-md"
         @click="$emit('prev')"
       />
       <action-button
         text=">"
-        btn="slide-show"
+        type="slide-show"
         class="spotlights-carousel-controls left-4 shadow-md"
         @click="$emit('next')"
       />

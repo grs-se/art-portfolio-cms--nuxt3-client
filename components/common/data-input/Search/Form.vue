@@ -67,7 +67,7 @@ onBeforeUnmount(() => {
 
     <action-button
       text="Search"
-      btn="secondary"
+      type="secondary"
       class="flex items-center rounded-r-3xl"
     />
   </form>
