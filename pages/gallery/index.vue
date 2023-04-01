@@ -77,7 +77,7 @@ const showHoverModal = (artwork) => {
     /> -->
 
       <main
-        class="gallery-cards-wrapper"
+        class="gallery-cards-wrapper bg-brand-gray-2"
         :class="[!cardClicked ? 'w-full' : 'w-2/3']"
       >
         <ModalHover v-if="cardHover" :artwork="currentCard" />
@@ -105,7 +105,7 @@ const showHoverModal = (artwork) => {
               <NuxtLink
                 v-if="previousPage"
                 role="link"
-                :to="{ name: 'artworks', query: { page: previousPage } }"
+                :to="{ name: 'gallery', query: { page: previousPage } }"
                 class="mx-3 text-sm font-semibold text-brand-blue-1"
                 >Previous</NuxtLink
               >
@@ -113,7 +113,7 @@ const showHoverModal = (artwork) => {
               <NuxtLink
                 v-if="nextPage"
                 role="link"
-                :to="{ name: 'artworks', query: { page: nextPage } }"
+                :to="{ name: 'gallery', query: { page: nextPage } }"
                 class="mx-3 text-sm font-semibold text-brand-blue-1"
                 >Next</NuxtLink
               >
@@ -126,7 +126,6 @@ const showHoverModal = (artwork) => {
 </template>
 
 <style scoped>
-
 /* .gallery-wrapper {
   relative flex w-full flex-nowrap xs:flex-col md:flex-row
 } */

@@ -64,7 +64,7 @@ const showHoverModal = (artwork) => {
       v-if="cardClicked"
       :artwork="currentCard"
       :artworks="displayedArtworks"
-      :class="[cardClicked ? 'w-1/2' : 'w-0']"
+      :class="[cardClicked ? 'w-1/3' : 'w-0']"
     />
     <!--     
     <Aside
@@ -75,8 +75,8 @@ const showHoverModal = (artwork) => {
 
     <main
       id="gallery-wrapper"
-      class="relative mx-auto bg-brand-gray-2 p-1.5"
-      :class="[!cardClicked ? 'w-full' : 'w-1/2']"
+      class="relative mx-auto bg-white"
+      :class="[!cardClicked ? 'w-full' : 'w-2/3']"
     >
       <ModalHover v-if="cardHover" :artwork="currentCard" />
       <ArtworkGalleryGridCards>

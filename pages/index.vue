@@ -21,7 +21,7 @@ const searchPrompts = reactive(['painting', 'drawing', 'studio', 'landscape']);
           action=""
         />
         <SearchForm
-          search-route="artworks"
+          search-route="gallery"
           initial-search-prompt="painting"
           :search-prompts="searchPrompts"
         />

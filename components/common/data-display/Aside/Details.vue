@@ -1,5 +1,5 @@
 <template>
-  <figcaption class="my-4 flex w-1/2 flex-col px-4 py-1 text-white">
+  <figcaption class="aside__figcaption text-white">
     <h3 class="mb-1">
       Title: <span class="text-lg">"{{ artwork.title }}"</span>
     </h3>
@@ -24,3 +24,15 @@ defineProps({
   },
 });
 </script>
+
+<style scoped lang="scss">
+.aside {
+  &__figcaption {
+    display: flex;
+    width: 50%;
+    margin: 1rem 0;
+    flex-direction: column;
+    padding: 0.25rem 1rem;
+  }
+}
+</style>

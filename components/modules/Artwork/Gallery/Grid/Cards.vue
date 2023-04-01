@@ -1,7 +1,7 @@
 <template>
   <ol
     data-gallery-mode="grid-cards"
-    class="grid-cards mx-auto grid bg-white p-1.5 sm:grid-cols-1 sm:gap-2 md:grid-cols-2 xl:grid-cols-3 xl:gap-4"
+    class="grid-cards mx-auto grid bg-white sm:grid-cols-1 sm:gap-2 md:grid-cols-2 xl:grid-cols-3 xl:gap-4"
   >
     <slot></slot>
   </ol>
