@@ -10,14 +10,18 @@
         :height="450"
       ></carousel>
        -->
-      <NuxtLink :to="artworkLightboxLink" class="text-brand-blue-1">
+      <NuxtLink :to="artworkLightboxLink" class="group">
         <img
           :src="'images/' + artwork.imageCover"
-          class="aside__image"
+          class="group:hover aside__image hover:box-border hover:border-2 hover:border-brand-blue-2"
           @click=""
         />
       </NuxtLink>
-      <AsideDetails :artwork="artwork" />
+      <div class="aside__details-container">
+        <AsideDetails :artwork="artwork" />
+        <Bookmark color="white" class="justify-end" />
+      </div>
+
       <AsideControls />
     </figure>
   </div>
@@ -91,6 +95,13 @@ const artworkLightboxLink = computed(() => `/artworks/${props.artwork.slug}`);
     max-height: 65vh;
     width: auto;
     object-fit: contain;
+  }
+
+  &__details-container {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0;
+    padding: 0.25rem 1rem;
   }
 }
 </style>

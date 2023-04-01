@@ -29,10 +29,8 @@ defineProps({
 .aside {
   &__figcaption {
     display: flex;
-    width: 50%;
-    margin: 1rem 0;
+    width: 100%;
     flex-direction: column;
-    padding: 0.25rem 1rem;
   }
 }
 </style>

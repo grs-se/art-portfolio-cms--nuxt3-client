@@ -9,8 +9,16 @@ import {
   faExclamation,
   faXmark,
   faCheck,
+  faBookmark as fasBookmark,
+  faHeart as fasHeart,
   // fa-solid fa-xmark-large
 } from '@fortawesome/free-solid-svg-icons';
+
+import {
+  faHeart as farHeart,
+  faBookmark as farBookmark,
+  // fa-solid fa-xmark-large
+} from '@fortawesome/free-regular-svg-icons';
 
 library.add(
   faAngleDown,
@@ -19,7 +27,11 @@ library.add(
   faUser,
   faExclamation,
   faXmark,
-  faCheck
+  faCheck,
+  fasBookmark,
+  farBookmark,
+  fasHeart,
+  farHeart
 );
 
 // This is important, we are going to let Nuxt worry about the CSS
