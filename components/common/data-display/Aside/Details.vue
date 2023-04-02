@@ -1,15 +1,15 @@
 <template>
-  <figcaption class="aside__figcaption colum text-white">
+  <figcaption class="aside-figcaption text-white">
     <h3 class="mb-1">
       Title: <span>"{{ artwork.title }}"</span>
     </h3>
-    <div class="mt flex flex-col text-base">
+    <div class="aside-details">
       <span>Medium: {{ artwork.medium[1] }}</span>
       <!-- <span>{{ date(artwork.date) }}</span> -->
-      <span>Date: {{ artwork.date }}</span>
-      <span class="mt-4">Location: {{ artwork.location }}</span>
+      <span>Date: 2023</span>
+      <span>Location: {{ artwork.location }}</span>
 
-      <span class="mt-4"
+      <span class="aside-details__tags"
         >Tags: <a class="text-brand-blue-2" href="">{{ artwork.tags }}</a></span
       >
     </div>
@@ -27,7 +27,18 @@ defineProps({
 
 <style scoped lang="scss">
 .aside {
-  &__figcaption {
+  &-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    &__tags {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      line-height: 1rem;
+    }
+  }
+  &-figcaption {
     display: flex;
     width: 100%;
     flex-direction: column;

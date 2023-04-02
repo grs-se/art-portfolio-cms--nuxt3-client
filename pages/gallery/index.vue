@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
 import { useArtworksStore } from '~/stores/artwork';
+import { useSettingsStore } from '~~/stores/settings';
 import GalleryLayout from '~~/layouts/gallery.vue';
 
 defineProps({
@@ -32,17 +33,20 @@ const displayedArtworks = computed(() => {
   const lastArtworkIndex = pageNumber * 24;
   return FILTERED_ARTWORKS.value.slice(firstArtworkIndex, lastArtworkIndex);
 });
+const settingsStore = useSettingsStore();
 
 const currentCard = ref();
 const cardHover = ref(false);
 const cardClicked = ref(false);
-const openAside = ref(false);
+const showAside = ref(settingsStore.state.showAside);
 
 defineEmits(['card-clicked']);
 
 // const showAside = ref<boolean>(false);
-const showAside = (artwork) => {
-  openAside.value = true;
+
+const openAside = (artwork) => {
+  settingsStore.state.showAside = true;
+  // showAside.value = !showAside.value;
   cardHover.value = false;
   currentCard.value = artwork;
   cardClicked.value = artwork;
@@ -50,7 +54,7 @@ const showAside = (artwork) => {
 };
 
 const showHoverModal = (artwork) => {
-  if (openAside) {
+  if (showAside) {
     return;
   } else {
     currentCard.value = artwork;
@@ -62,12 +66,14 @@ const showHoverModal = (artwork) => {
 <template>
   <NuxtLayout name="gallery">
     <ArtworkFiltersSidebar />
-    <section :class="[cardClicked ? 'flex columns-2 flex-row-reverse' : '']">
+    <section>
       <Aside
+        v-show="settingsStore.state.showAside === true"
         v-if="cardClicked"
         :artwork="currentCard"
         :artworks="displayedArtworks"
         :class="[cardClicked ? 'w-1/3' : 'w-0']"
+        class="fixed right-0"
       />
       <!--     
     <Aside
@@ -78,7 +84,11 @@ const showHoverModal = (artwork) => {
 
       <main
         class="gallery-cards-wrapper bg-brand-gray-2"
-        :class="[!cardClicked ? 'w-full' : 'w-2/3']"
+        :class="[
+          settingsStore.state.showAside === false
+            ? 'mx-auto w-full'
+            : 'absolute left-0 w-2/3',
+        ]"
       >
         <ModalHover v-if="cardHover" :artwork="currentCard" />
         <ArtworkGalleryGridCards>
@@ -87,8 +97,7 @@ const showHoverModal = (artwork) => {
             :key="artwork._id"
             :file="artwork"
             @mouseenter="showHoverModal(artwork)"
-            @click="showAside(artwork)"
-            class=""
+            @click="openAside(artwork)"
           >
             <!-- @mouseout="showAside = false" -->
           </Card>
@@ -131,7 +140,7 @@ const showHoverModal = (artwork) => {
 } */
 .gallery-cards-wrapper {
   position: relative;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   background: white;
   padding: 1.5rem 1.5rem 2rem 1.5rem;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-12 items-center justify-end justify-between px-4">
+  <div class="flex h-12 items-center justify-between px-4">
     <div class="flex gap-6">
       <button
         @click="$emit('prev')"
@@ -14,17 +14,22 @@
         <font-awesome-icon :icon="['fas', 'angle-right']" />
       </button>
     </div>
-    <button
-      @click="$emit('next')"
-      class="carousel-controls close px-2 text-white"
-    >
+    <button @click="closeAside" class="carousel-controls close px-2 text-white">
       <font-awesome-icon :icon="['fas', 'xmark']" />
     </button>
   </div>
 </template>
 
 <script lang="ts" setup>
-defineEmits(['prev', 'next']);
+import { useSettingsStore } from '~~/stores/settings';
+
+const settingsStore = useSettingsStore();
+
+defineEmits(['prev', 'next', 'close-aside']);
+
+const closeAside = () => {
+  settingsStore.showAside();
+};
 </script>
 
 <style scoped lang="scss">

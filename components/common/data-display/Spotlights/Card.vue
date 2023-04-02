@@ -1,28 +1,32 @@
 <template>
-  <NuxtLink
-    to="/gallery"
-    class="flex h-auto max-w-sm flex-col rounded-lg border bg-white shadow-sm"
+  <figure
+    class="spotlight-card flex h-auto flex-col rounded-lg border bg-white shadow-sm"
   >
-    <img
-      :src="'images/' + slide.imageCover"
-      class="h-64 content-start object-contain"
-    />
-    <div class="mt-3 h-48 px-6 py-4">
-      <h3 class="text-lg font-medium">
+    <NuxtLink to="/gallery" class="flex flex-col">
+      <img
+        :src="'images/' + slide.imageCover"
+        class="h-64 content-start object-contain"
+      />
+    </NuxtLink>
+    <figcaption class="mt-3 block h-44 max-w-sm px-6 py-4">
+      <h3 class="line-clamp text-lg font-medium">
         {{ slide.title }}
       </h3>
-      <p class="line-clamp mt-3 text-sm">
+      <p v-if="slide.description" class="line-clamp mt-3 text-sm">
         {{ slide.description }}
       </p>
       <p class="line-clamp mt-3 text-sm">
         {{ slide.medium }}
       </p>
-    </div>
-
-    <NuxtLink to="/gallery" class="px-6 pb-4 text-sm text-brand-blue-1"
-      >More from {{ slide.categories[0] }}</NuxtLink
+    </figcaption>
+    <!-- <div class="u-spacing h-10"></div> -->
+    <span class="px-6 pb-4 text-sm">
+      Tag:
+      <NuxtLink to="/gallery" class="text-brand-blue-1 underline">{{
+        slide.categories[0]
+      }}</NuxtLink></span
     >
-  </NuxtLink>
+  </figure>
 </template>
 
 <script lang="ts" setup>
@@ -43,5 +47,9 @@ defineProps(['slide', 'currentSlide', 'index']);
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+}
+
+p {
+  word-break: break-all;
 }
 </style>

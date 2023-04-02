@@ -5,7 +5,10 @@ class ArtModule extends HttpFactory {
   private RESOURCE = '/artworks';
 
   async getArtworks(): Promise<IGetArtworkResponse> {
-    const res = await this.call<IGetArtworkResponse>('GET', this.RESOURCE);
+    const res = await this.call<IGetArtworkResponse>(
+      'GET',
+      `${this.RESOURCE}?sort=-date`
+    );
     return res.data.data.artworks;
   }
 
@@ -23,6 +26,10 @@ class ArtModule extends HttpFactory {
       `${this.RESOURCE}/createUploadArtwork`,
       artworks
     );
+  }
+
+  async sortByDate(params) {
+    return await this.call('GET', `${this.RESOURCE}?sort=${params}`);
   }
 }
 

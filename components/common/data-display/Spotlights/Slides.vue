@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <section>
-    <ul class="mt-10 flex w-max flex-row justify-center overflow-x-clip pb-16">
+    <ul class="mt-10 justify-center pb-16">
       <li
         v-for="spotlight in spotlights"
         :key="spotlight.id"

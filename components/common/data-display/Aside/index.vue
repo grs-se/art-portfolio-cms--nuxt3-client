@@ -1,6 +1,6 @@
 <template>
-  <div class="aside">
-    <AsideControlBar />
+  <div class="aside shadow-gray">
+    <AsideControlBar @close-aside="closeAside" />
     <figure class="aside__figure">
       <!-- <carousel
         :slides="artwork"
@@ -11,7 +11,10 @@
         :height="450"
       ></carousel>
        -->
-      <NuxtLink :to="artworkLightboxLink" class="group">
+      <NuxtLink
+        :to="artworkLightboxLink"
+        class="group flex items-center justify-center"
+      >
         <img
           :src="'images/' + artwork.imageCover"
           class="group:hover aside__image hover:box-border hover:border-2 hover:border-brand-blue-2"
@@ -47,6 +50,8 @@ const props = defineProps({
   },
 });
 
+const closeAside = () => {};
+
 const slides = ref();
 
 // const date = (d) => {
@@ -76,9 +81,16 @@ const artworkLightboxLink = computed(() => `/artworks/${props.artwork.slug}`);
 <style scoped lang="scss">
 .aside {
   z-index: 10;
+  border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
   background-color: black;
+  height: 82vh;
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   &__figure {
     // margin: 0.5rem;

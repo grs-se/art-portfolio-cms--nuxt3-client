@@ -11,14 +11,26 @@ export interface SettingsState {
   showSettings: boolean;
   showTagsView: boolean;
   showSidebar: boolean;
+  showAside: boolean;
   galleryMode: string;
+  // cardSize: number;
 }
 
 export const useSettingsStore = defineStore('settings', () => {
-  const state = ref({
+  const state = reactive<SettingsState>({
     theme: '',
     fixedHeader: true,
+    showSettings: true,
+    showTagsView: true,
+    showSidebar: true,
+    showAside: false,
+    galleryMode: '',
+    // cardSize: 0,
   });
 
-  return state;
+  const showAside = () => {
+    state.showAside = !state.showAside;
+  };
+
+  return { state, showAside };
 });
