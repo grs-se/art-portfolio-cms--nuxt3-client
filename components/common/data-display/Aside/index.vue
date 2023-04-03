@@ -1,31 +1,33 @@
 <template>
-  <div class="aside shadow-gray">
-    <AsideControlBar @close-aside="closeAside" />
-    <figure class="aside__figure">
-      <!-- <carousel
-        :slides="artwork"
-        controls
-        indicators="false"
-        :interval="3000"
-        :width="1000"
-        :height="450"
-      ></carousel>
-       -->
-      <NuxtLink
-        :to="artworkLightboxLink"
-        class="group flex items-center justify-center"
-      >
-        <img
-          :src="'images/' + artwork.imageCover"
-          class="group:hover aside__image hover:box-border hover:border-2 hover:border-brand-blue-2"
-          @click=""
-        />
-      </NuxtLink>
-      <div class="aside__details-container">
-        <AsideDetails :artwork="artwork" />
-        <Bookmark color="white" class="justify-end" />
-      </div>
-    </figure>
+  <div class="aside-container">
+    <div class="aside shadow-gray">
+      <AsideControlBar @close-aside="closeAside" />
+      <figure class="aside__figure">
+        <!-- <carousel
+          :slides="artwork"
+          controls
+          indicators="false"
+          :interval="3000"
+          :width="1000"
+          :height="450"
+        ></carousel>
+         -->
+        <NuxtLink
+          :to="artworkLightboxLink"
+          class="group flex items-center justify-center"
+        >
+          <img
+            :src="'images/' + artwork.imageCover"
+            class="group:hover aside__image hover:box-border hover:border-2 hover:border-brand-blue-2"
+            @click=""
+          />
+        </NuxtLink>
+        <div class="aside__details-container">
+          <AsideDetails :artwork="artwork" />
+          <Bookmark color="white" class="justify-end" />
+        </div>
+      </figure>
+    </div>
   </div>
 </template>
 
@@ -79,14 +81,18 @@ const artworkLightboxLink = computed(() => `/artworks/${props.artwork.slug}`);
 </script>
 
 <style scoped lang="scss">
-.aside {
-  z-index: 10;
+.aside-container {
   border-radius: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  background-color: black;
   height: 82vh;
   overflow-y: scroll;
+  background-color: black;
+  padding-bottom: 8rem;
+}
+.aside {
+  height: max-content;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
 
   ::-webkit-scrollbar {
     display: none;
@@ -103,7 +109,7 @@ const artworkLightboxLink = computed(() => `/artworks/${props.artwork.slug}`);
   }
 
   &__image {
-    max-height: 65vh;
+    max-height: 62vh;
     width: auto;
     object-fit: contain;
   }
