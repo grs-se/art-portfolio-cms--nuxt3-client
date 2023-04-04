@@ -1,5 +1,5 @@
-<!-- <template>
-  <div class="mx-auto mt-8">
+<template>
+  <!-- <div class="mx-auto mt-8">
     <div class="flex flex-row flex-nowrap">
       <p class="flex-grow text-sm">Page {{ currentPage }}</p>
 
@@ -21,22 +21,22 @@
         >
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script lang="ts" setup>
-defineProps({
-  data: {
-    type: Object,
-    required: true,
-  },
-  currentPage: {
-    type: Object,
-    required: true,
-  },
-  nextPage: {
-    type: Object,
-    required: true,
-  },
-});
-</script> -->
+// defineProps({
+//   data: {
+//     type: Object,
+//     required: true,
+//   },
+//   currentPage: {
+//     type: Object,
+//     required: true,
+//   },
+//   nextPage: {
+//     type: Object,
+//     required: true,
+//   },
+// });
+</script>

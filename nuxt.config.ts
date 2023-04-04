@@ -45,6 +45,9 @@ export default defineNuxtConfig({
     // '@nuxtjs/axios',
     // '@nuxtjs/auth',
   ],
+  content: {
+    // https://content.nuxtjs.org/api/configuration
+  },
   buildModules: [
     [
       '@pinia/nuxt',

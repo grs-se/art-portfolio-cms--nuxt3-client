@@ -78,31 +78,31 @@ const transitionName = computed(() => {
 //   console.log(innerWidth, totalCards);
 // };
 
-const moveLeft = () => {
-  innerStyles.value = {
-    transform: `translateX(-${step.value}) translateX(-${step.value})`,
-  };
-};
+// const moveLeft = () => {
+//   innerStyles.value = {
+//     transform: `translateX(-${step.value}) translateX(-${step.value})`,
+//   };
+// };
 
-const moveRight = () => {
-  innerStyles.value = {
-    transform: `translateX(${step.value}) translateX(-${step.value})`,
-  };
-};
+// const moveRight = () => {
+//   innerStyles.value = {
+//     transform: `translateX(${step.value}) translateX(-${step.value})`,
+//   };
+// };
 
-const next = () => {
-  // setStep();
-  moveLeft();
-};
+// const next = () => {
+//   // setStep();
+//   moveLeft();
+// };
 
-const prev = () => {
-  // setStep();
-  moveRight();
-};
+// const prev = () => {
+//   // setStep();
+//   moveRight();
+// };
 
-onMounted(() => {
-  setStep();
-});
+// onMounted(() => {
+//   setStep();
+// });
 </script>
 
 <style scoped>

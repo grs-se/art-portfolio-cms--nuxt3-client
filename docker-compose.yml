@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   frontend:
-    container_name: nuxt3-art-cms
+    container_name: nuxt3-art-cms:0.1
     build:
       context: .
       dockerfile: Dockerfile

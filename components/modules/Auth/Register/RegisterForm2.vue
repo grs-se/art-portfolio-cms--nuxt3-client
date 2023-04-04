@@ -6,7 +6,7 @@
 import { Form, Field } from 'vee-validate'
 import * as Yup from 'yup'
 
-import { useUsersStore, useAlertStore } from '~/stores'
+import { useUsersStore, useAlertStore } from '~~/stores/content'
 import { router } from '~/router'
 
 import type { User } from '~/types'
