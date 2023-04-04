@@ -22,6 +22,7 @@ export default defineNuxtConfig({
 
   // Target: https://go.nuxtjs.dev/config-target
   // target: 'public',
+  target: 'static',
 
   routeRules: {
     // prerender: true - this will be generated at build time.
