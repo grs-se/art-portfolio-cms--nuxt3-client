@@ -1,14 +1,18 @@
 import config from './config';
+import GlobalSettings from './environments';
+const appEnv = process.env.NODE_ENV || 'development';
 // const API_BASE_URL =
 //   process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8000/api/v1';
 
 // @ts-ignore
 export default defineNuxtConfig({
   // mode: 'universal',
-  // server: {
-  //   port: 8000, // default: 3000
-  //   host: '0.0.0.0',
-  // },
+  target: 'static',
+  server: {
+    port: 3000, // default: 3000
+    host: '0.0.0.0',
+    timing: false,
+  },
 
   // bridge: {
   //   nitro: true,
@@ -22,7 +26,6 @@ export default defineNuxtConfig({
 
   // Target: https://go.nuxtjs.dev/config-target
   // target: 'public',
-  target: 'static',
 
   routeRules: {
     // prerender: true - this will be generated at build time.
@@ -85,6 +88,7 @@ export default defineNuxtConfig({
       // prefix: process.env.URL_PREFIX || '/api/v1',
       googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID || '',
       dev: process.env.NODE_ENV === 'development',
+      siteEnvironment: GlobalSettings[appEnv].siteEnvironment,
     },
   },
   // In case of using ssr

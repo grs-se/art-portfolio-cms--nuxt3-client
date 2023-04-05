@@ -64,9 +64,11 @@ onMounted(() => {
 <style scoped>
 .spotlights-carousel {
   display: flex;
-  width: max-content;
+  /* width: max-content; */
+  width: 100vw;
   margin-top: 2.5rem;
-  overflow-x: clip;
+  /* overflow-x: clip; */
+  overflow-x: hidden;
 }
 
 .inner {
