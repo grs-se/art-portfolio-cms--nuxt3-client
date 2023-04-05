@@ -31,6 +31,7 @@ export const useArtworksStore = defineStore('artworks', {
       const artworks = await $axiosApi.art.getArtworks();
       this.artworks = artworks;
     },
+    // async [FETCH_ARTWORK_CATEGORIES]()
     // async [FETCH_ARTWORK_BY_TITLE]() {
     //   const { $axiosApi } = useNuxtApp();
     //   const artwork = await $axiosApi.art.getArtworkByTitle();

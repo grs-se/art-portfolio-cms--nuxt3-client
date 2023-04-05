@@ -1,10 +1,16 @@
 <template>
   <div class="h-16 w-full border-b border-solid border-brand-gray-1 bg-white">
     <div class="flex h-full items-center justify-between px-8">
-      <div v-if="onGalleryPage">
+      <div
+        v-if="onGalleryPage"
+        class="flex flex-row items-center justify-center"
+      >
         <SubNavSearchToggler />
         <SubNavProductsCount />
+        <div class="w-20"></div>
+        <SubNavCategories />
       </div>
+
       <div class="flex flex-col">
         <SubNavCollections />
         <span>Collections</span>

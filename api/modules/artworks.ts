@@ -28,6 +28,10 @@ class ArtModule extends HttpFactory {
     );
   }
 
+  // async getArtworksByCategory() {
+
+  // },
+
   async sortByDate(params) {
     return await this.call('GET', `${this.RESOURCE}?sort=${params}`);
   }
