@@ -8,27 +8,9 @@ An artist's portfolio, content management system, and educational workbook built
 
 ## Features
 
-- [x] Gallery Modes - grid, masonry, lightbox, carousel, modal
+- [x] Post Feed
+- [x] Post Filtering
+- [x] Post Sorting
+- [ ] Bookmarking
+- [ ] Optional Gallery Modes: grid, masonry, lightbox, carousel, spotlights, modal
 - [ ] Dark Mode
-- [ ] User Authentication
-- [ ] Post Feed
-- [x] Post Creation
-- [ ] Post Editing
-- [ ] Post Deletion
-- [ ] Post Liking
-- [ ] Post Bookmarking
-- [ ] Post Commenting
-- [ ] Post Searching
-- [ ] Post Filtering
-- [ ] Post Sorting
-- [ ] Post Reporting
-- [ ] Post Blocking
-- [ ] Post Muting
-- [ ] Profile Creation
-- [ ] Profile Editing
-- [ ] Profile Deactivation
-- [ ] User Searching
-- [ ] User Filtering
-- [ ] Trending Posts
-- [ ] Hash Tagging
-- [ ] Post Tagging
