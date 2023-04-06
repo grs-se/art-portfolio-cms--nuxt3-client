@@ -23,4 +23,11 @@ const UNIQUE_ARTWORK_CATEGORIES = reactive([
   'studio',
   'observation',
 ]);
+
+const router = useRouter();
+
+const selectValue = () => {
+  props.action(selectedValues.value);
+  router.push({ name: 'ArtworkResults' });
+};
 </script>

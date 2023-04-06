@@ -66,7 +66,7 @@ const showHoverModal = (artwork) => {
 <template>
   <NuxtLayout name="gallery" class="gallery-layout">
     <section class="flex flex-row">
-      <ArtworkFiltersSidebar />
+      <ArtworkFiltersSidebar isOpen="true"/>
       <Aside
         v-show="settingsStore.state.showAside === true"
         v-if="cardClicked"
