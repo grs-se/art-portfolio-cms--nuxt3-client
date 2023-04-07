@@ -1,5 +1,4 @@
 import { $fetch, FetchOptions } from 'ohmyfetch';
-import { defineNuxtPlugin } from '#app';
 
 import AuthModule from '~/api/modules/auth';
 import ArtModule from '~/api/modules/artworks';
@@ -21,6 +20,7 @@ export default defineNuxtPlugin(() => {
 
   /** create a new instance of $fetcher with custom option */
   const apiFetcher = $fetch.create(fetchOptions);
+  // console.log('apiFetcher', apiFetcher);
 
   /** object containing all repositories to expose */
   const modules: IApiInstance = {

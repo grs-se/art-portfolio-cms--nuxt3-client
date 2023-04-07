@@ -4,9 +4,14 @@ import { IArtwork, IGetArtworkResponse } from 'types';
 class ArtModule extends HttpFactory {
   private RESOURCE = '/artworks';
 
-  async getArtworks(): Promise<IGetArtworkResponse> {
-    const res = await this.call<IGetArtworkResponse>('GET', `${this.RESOURCE}`);
-    return res.data.data.artworks;
+  async getArtworks(params = ''): Promise<IGetArtworkResponse> {
+    const res = await this.call<IGetArtworkResponse>(
+      'GET',
+      this.RESOURCE + params
+    );
+    console.log(this.RESOURCE + params);
+    console.log('res.data.artworks', res.data.artworks);
+    return res.data.artworks;
   }
 
   async getArtworkByTitle(title): Promise<IGetArtworkResponse> {
