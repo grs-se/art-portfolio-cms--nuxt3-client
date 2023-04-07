@@ -2,7 +2,7 @@
 import {
   useFiltersStore,
   CLEAR_USER_ARTWORK_FILTER_SELECTIONS,
-} from '~/stores/filters'
+} from '~/stores/filters';
 
 const props = defineProps({
   uniqueValues: {
@@ -13,24 +13,24 @@ const props = defineProps({
     type: Function,
     required: true,
   },
-})
+});
 
-const selectedValues = ref<string[]>([])
-const router = useRouter()
+const selectedValues = ref<string[]>([]);
+const router = useRouter();
 
 const selectValue = () => {
-  props.action(selectedValues.value)
-  router.push({ name: 'ArtworkResults' })
-}
+  props.action(selectedValues.value);
+  router.push({ name: 'gallery' });
+};
 
-const filtersStore = useFiltersStore()
+const filtersStore = useFiltersStore();
 filtersStore.$onAction(({ after, name }) => {
   after(() => {
     if (name === CLEAR_USER_ARTWORK_FILTER_SELECTIONS) {
-      selectedValues.value = []
+      selectedValues.value = [];
     }
-  })
-})
+  });
+});
 </script>
 
 <template>

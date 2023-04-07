@@ -14,6 +14,8 @@ defineProps({
 const artworksStore = useArtworksStore();
 onMounted(artworksStore.FETCH_ARTWORKS);
 
+// const nestedRoute = route.params;
+
 const FILTERED_ARTWORKS = computed(() => artworksStore.FILTERED_ARTWORKS);
 
 const route = useRoute();
@@ -66,7 +68,7 @@ const showHoverModal = (artwork) => {
 <template>
   <NuxtLayout name="gallery" class="gallery-layout">
     <section class="flex flex-row">
-      <ArtworkFiltersSidebar isOpen="true"/>
+      <ArtworkFiltersSidebar isOpen="true" />
       <Aside
         v-show="settingsStore.state.showAside === true"
         v-if="cardClicked"

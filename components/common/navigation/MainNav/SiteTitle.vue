@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const siteTitle = ref('George Rice-Smith')
+const siteTitle = ref('George Rice-Smith');
 </script>
 
 <template>
@@ -9,3 +9,13 @@ const siteTitle = ref('George Rice-Smith')
     >{{ siteTitle }}</NuxtLink
   >
 </template>
+
+<style lang="scss" scoped>
+.router-link-active {
+  border-bottom-width: 3px;
+  border-color: grey;
+  span {
+    transform: translateY(1.5px);
+  }
+}
+</style>

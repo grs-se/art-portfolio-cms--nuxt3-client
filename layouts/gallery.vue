@@ -1,4 +1,6 @@
 <template>
-  <SubNav />
-  <slot />
+  <div>
+    <SubNav />
+    <slot />
+  </div>
 </template>
