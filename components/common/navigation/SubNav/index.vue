@@ -1,10 +1,9 @@
 <template>
   <div class="h-16 w-full border-b border-solid border-brand-gray-1 bg-white">
     <div class="flex h-full items-center justify-between px-8">
-      <div
-        v-if="onGalleryPage"
-        class="flex flex-row items-center justify-center"
-      >
+      <!-- v-if="onGalleryPage" -->
+
+      <div class="flex flex-row items-center justify-center">
         <SubNavSearchToggler />
         <SubNavProductsCount />
         <div class="w-20"></div>
@@ -24,5 +23,5 @@
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const onGalleryPage = computed(() => route.name === 'gallery');
+// const onGalleryPage = computed(() => route.name === 'gallery');
 </script>

@@ -37,6 +37,7 @@ export default defineNuxtConfig({
     // '/artworks/**': { ssr: false },
     '/admin/**': { ssr: false },
     '/user/**': { ssr: false },
+    // '/gallery/**': { ssr: false },
     // Render on demand - may never be shown in a given build - then cache for a while.
     '/exhibitions/**': { swr: 3600 },
   },

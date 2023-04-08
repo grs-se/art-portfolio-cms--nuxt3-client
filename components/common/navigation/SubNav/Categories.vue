@@ -3,7 +3,7 @@
     <router-link
       v-for="link in links"
       :key="link.text"
-      :to="`/gallery${link.url}`"
+      :to="`${link.url}`"
       class="mx-2"
     >
       <button
