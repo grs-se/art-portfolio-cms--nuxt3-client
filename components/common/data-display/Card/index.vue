@@ -8,7 +8,7 @@
       class="flex h-auto flex-col items-center justify-center rounded border border-solid border-brand-gray-2 bg-white p-1 hover:shadow-gray"
     >
       <img
-        :src="'images/' + file.imageCover"
+        :src="'/images/' + file.imageCover"
         class="sm:max-h-auto items-center justify-center md:max-h-64 xl:max-h-80"
       />
     </figure>

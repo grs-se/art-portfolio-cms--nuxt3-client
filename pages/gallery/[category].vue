@@ -16,18 +16,6 @@ definePageMeta({
   layout: 'gallery',
 });
 
-// const refreshing = ref(false);
-// const refreshAll = async () => {
-//   refreshing.value = true;
-//   try {
-//     await refreshNuxtData();
-//   } finally {
-//     refreshing.value = false;
-//   }
-// };
-
-// onBeforeMount(refreshAll);
-
 const route = useRoute();
 
 useHead({
@@ -35,41 +23,11 @@ useHead({
 });
 
 const artworksStore = useArtworksStore();
-// const categorizedArtworks = artworksStore.FETCH_ARTWORKS(
-//   '/' + route.params.category
-// );
 
-// const categorizedArtworks = useAsyncData(
-//   'artwork',
-//   artworksStore.FETCH_ARTWORKS('/' + route.params.category)
-// );
-// onMounted(categorizedArtworks);
-////////////////
-// onMounted(async () => {
-//   const { data: response } = await useLazyAsyncData(
-//     'category',
-//     () => $fetch(`/artworks/${route.params.category}`),
-//     { server: false }
-//   );
-//   console.log(response);
-//   // artworksStore.FETCH_ARTWORKS('/' + route.params.category);
-// });
-////////////////
 onMounted(() => {
   artworksStore.FETCH_ARTWORKS('/' + route.params.category);
+  console.log('route.params.category', route.name);
 });
-
-/*
-var { artworks, fetchArtworks } = useArtworks();
-
-onMounted(async () => {
-  await nextTick(async () => {
-    console.log('on mounted called');
-    console.log(artworks);
-    fetchArtworks();
-  });
-});
-*/
 
 const FILTERED_ARTWORKS = computed(() => artworksStore.FILTERED_ARTWORKS);
 
@@ -171,7 +129,10 @@ const showHoverModal = (artwork) => {
               <NuxtLink
                 v-if="previousPage"
                 role="link"
-                :to="{ name: 'gallery', query: { page: previousPage } }"
+                :to="{
+                  name: `${String(route.name)}`,
+                  query: { page: previousPage },
+                }"
                 class="mx-3 text-sm font-semibold text-brand-blue-1"
                 >Previous</NuxtLink
               >
@@ -179,7 +140,10 @@ const showHoverModal = (artwork) => {
               <NuxtLink
                 v-if="nextPage"
                 role="link"
-                :to="{ name: 'gallery', query: { page: nextPage } }"
+                :to="{
+                  name: `${String(route.name)}`,
+                  query: { page: nextPage },
+                }"
                 class="mx-3 text-sm font-semibold text-brand-blue-1"
                 >Next</NuxtLink
               >

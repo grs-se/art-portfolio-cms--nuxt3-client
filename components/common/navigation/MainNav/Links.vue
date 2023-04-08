@@ -12,8 +12,6 @@ const links = ref([
 const router = useRouter();
 // const activeRoute = router.
 
-import { useRoute } from 'vue-router';
-
 const route = useRoute();
 // const onGalleryPage = computed(() => route.name === 'gallery');
 
@@ -34,7 +32,7 @@ const route = useRoute();
         data-test="main-nav-list-item"
         class="ml-9 h-full text-base first:ml-0"
       >
-        <router-link :to="link.url" class="flex h-full items-center py-2" exact
+        <router-link :to="link.url" class="flex h-full items-center py-2"
           ><span>{{ link.text }}</span></router-link
         >
       </li>
