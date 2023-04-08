@@ -1,17 +1,13 @@
 <template>
   <div class="flex flex-row">
-    <router-link
-      v-for="link in links"
-      :key="link.text"
-      :to="`${link.url}`"
-      class="mx-2"
-    >
-      <button
+    <button v-for="link in links" :key="link.text" class="mx-2">
+      <router-link
+        :to="`${link.url}`"
         class="rounded-2xl border-1 border-brand-gray-1 px-3 py-1 hover:border-gray-300 hover:shadow-sm"
       >
         <span class="capitalize">{{ link.text }}</span>
-      </button>
-    </router-link>
+      </router-link>
+    </button>
   </div>
 </template>
 
@@ -42,6 +38,6 @@ const router = useRouter();
 
 <style scoped lang="scss">
 .router-link-active {
-  background-color: blue;
+  border: 1px solid black;
 }
 </style>

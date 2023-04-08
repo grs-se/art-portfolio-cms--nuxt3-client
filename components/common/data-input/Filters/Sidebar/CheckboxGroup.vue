@@ -17,10 +17,11 @@ const props = defineProps({
 
 const selectedValues = ref<string[]>([]);
 const router = useRouter();
+const route = useRoute();
 
 const selectValue = () => {
   props.action(selectedValues.value);
-  router.push({ name: 'gallery' });
+  router.push({ name: `${route.params.category}` });
 };
 
 const filtersStore = useFiltersStore();
