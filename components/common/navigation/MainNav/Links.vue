@@ -1,18 +1,22 @@
 <script lang="ts" setup>
+const router = useRouter();
+// const activeRoute = router.
+const route = useRoute();
+
+const category = route.params.category;
+const gallery = route.path;
+console.log('category2', category);
+console.log('gallery', gallery);
+
 const links = ref([
-  { text: 'Gallery', url: '/gallery' },
+  { text: 'Gallery', url: ['/gallery/observation'] },
   { text: 'Research', url: '/research' },
   { text: 'Text', url: '/text' },
-  { text: 'Exhibitions', url: '/exhibitions' },
-  { text: 'Statement', url: '/text/artist-statement' },
+  // { text: 'Exhibitions', url: '/exhibitions' },
+  // { text: 'Statement', url: '/text/artist-statement' },
   { text: 'About', url: '/about' },
   { text: 'Contact', url: '/contact' },
 ]);
-
-const router = useRouter();
-// const activeRoute = router.
-
-const route = useRoute();
 // const onGalleryPage = computed(() => route.name === 'gallery');
 
 // let activeLink;
@@ -32,8 +36,8 @@ const route = useRoute();
         data-test="main-nav-list-item"
         class="ml-9 h-full text-base first:ml-0"
       >
-        <router-link :to="link.url" class="flex h-full items-center py-2"
-          ><span>{{ link.text }}</span></router-link
+        <NuxtLink :to="link.url" class="flex h-full items-center py-2"
+          ><span>{{ link.text }}</span></NuxtLink
         >
       </li>
       <!-- <li

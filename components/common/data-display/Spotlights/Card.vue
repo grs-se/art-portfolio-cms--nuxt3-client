@@ -2,7 +2,7 @@
   <figure
     class="spotlight-card flex h-auto flex-col rounded-lg border bg-white shadow-sm"
   >
-    <NuxtLink to="/gallery" class="flex flex-col">
+    <NuxtLink to="/gallery/observation" class="flex flex-col">
       <img
         :src="'images/' + slide.imageCover"
         class="h-64 content-start object-contain"

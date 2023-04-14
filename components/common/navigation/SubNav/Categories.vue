@@ -20,13 +20,13 @@
 // );
 
 const links = ref([
-  { text: 'Drawing', url: '/drawing' },
-  { text: 'Painting', url: '/painting' },
+  // { text: 'Painting', url: '/painting' },
   { text: 'Observation', url: '/observation' },
-  { text: 'Landscape', url: '/landscape' },
+  { text: 'Drawing', url: '/drawing' },
+  // { text: 'Landscape', url: '/landscape' },
   { text: 'Studio', url: '/studio' },
-  { text: 'Abstract', url: '/abstract' },
-  { text: 'Naive', url: '/naive' },
+  // { text: 'Abstract', url: '/abstract' },
+  // { text: 'Naive', url: '/naive' },
 ]);
 
 // $route.params

@@ -11,11 +11,11 @@ const siteTitle = ref('George Rice-Smith');
 </template>
 
 <style lang="scss" scoped>
-.router-link-active {
-  border-bottom-width: 3px;
-  border-color: grey;
-  span {
-    transform: translateY(1.5px);
-  }
-}
+// .router-link-active {
+//   border-bottom-width: 3px;
+//   border-color: grey;
+//   span {
+//     transform: translateY(1.5px);
+//   }
+// }
 </style>

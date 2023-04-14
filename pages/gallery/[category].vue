@@ -12,10 +12,6 @@ defineProps({
   },
 });
 
-definePageMeta({
-  layout: 'gallery',
-});
-
 const route = useRoute();
 
 useHead({
@@ -26,7 +22,6 @@ const artworksStore = useArtworksStore();
 
 onMounted(() => {
   artworksStore.FETCH_ARTWORKS('/' + route.params.category);
-  console.log('route.params.category', route.name);
 });
 
 const FILTERED_ARTWORKS = computed(() => artworksStore.FILTERED_ARTWORKS);
@@ -81,7 +76,7 @@ const showHoverModal = (artwork) => {
 <template>
   <NuxtLayout name="gallery" class="gallery-layout">
     <section class="flex flex-row">
-      <ArtworkFiltersSidebar isOpen="true" />
+      <ArtworkFiltersSidebar isOpen />
       <Aside
         v-show="settingsStore.state.showAside === true"
         v-if="cardClicked"
@@ -90,13 +85,6 @@ const showHoverModal = (artwork) => {
         :class="[cardClicked ? 'w-1/3' : 'w-0']"
         class="fixed right-0"
       />
-      <!--     
-    <Aside
-      v-if="cardClicked"
-      :artwork="currentCard"
-      :class="[cardClicked ? 'w-1/2' : 'w-0']"
-    /> -->
-
       <main
         class="gallery-cards-wrapper bg-brand-gray-2"
         :class="[
@@ -114,11 +102,7 @@ const showHoverModal = (artwork) => {
             @mouseenter="showHoverModal(artwork)"
             @click="openAside(artwork)"
           >
-            <!-- @mouseout="showAside = false" -->
           </Card>
-          <!-- <div v-show="currentCard"> -->
-          <!-- <ModalHover :artwork="currentCard" /> -->
-          <!-- </div> -->
         </ArtworkGalleryGridCards>
 
         <div class="mx-auto mt-8">

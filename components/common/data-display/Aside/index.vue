@@ -48,7 +48,7 @@ const props = defineProps({
   },
   open: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 });
 
