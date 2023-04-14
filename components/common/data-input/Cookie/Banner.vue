@@ -17,16 +17,16 @@
 </template>
 
 <script lang="ts" setup>
-import { inject } from 'vue'
-import useCookies from '~/composables/useCookies'
+import { inject } from 'vue';
+import useCookies from '~/composables/useCookies';
 
-const gtag = inject<any>('gtag')
-const { showBanner, okClicked } = useCookies(gtag)
+const gtag = inject<any>('gtag');
+const { showBanner, okClicked } = useCookies(gtag);
 const okBannerClicked = () => {
-  okClicked()
-  console.log(okClicked())
-}
-showBanner.value
+  okClicked();
+  // console.log(okClicked())
+};
+showBanner.value;
 // okBannerClicked;
 </script>
 

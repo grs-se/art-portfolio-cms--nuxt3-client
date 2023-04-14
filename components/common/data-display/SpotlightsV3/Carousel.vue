@@ -36,7 +36,7 @@ const innerStyles = ref();
 
 const setCurrentSlide = (index) => {
   currentSlide.value = index;
-  console.log(currentSlide.value);
+  // console.log(currentSlide.value);
 };
 const prev = (step = -1) => {
   const index =
@@ -45,7 +45,7 @@ const prev = (step = -1) => {
       : props.slides.length - 1;
   setCurrentSlide(index);
   direction.value = 'left';
-  console.log(direction.value);
+  // console.log(direction.value);
 };
 const _next = (step = 1) => {
   const index =
@@ -54,8 +54,8 @@ const _next = (step = 1) => {
       : 0;
   setCurrentSlide(index);
   direction.value = 'right';
-  console.log(props.slides.length);
-  console.log(direction.value);
+  // console.log(props.slides.length);
+  // console.log(direction.value);
 };
 const next = (step = 1) => {
   _next(step);

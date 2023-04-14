@@ -31,7 +31,7 @@ const setStep = () => {
   const innerWidth = inner.value.scrollWidth;
   const totalCards = props.slides.length;
   step.value = `${innerWidth / totalCards}px`;
-  console.log(innerWidth, totalCards);
+  // console.log(innerWidth, totalCards);
 };
 
 const moveLeft = () => {

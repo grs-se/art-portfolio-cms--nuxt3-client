@@ -52,7 +52,7 @@ const openAside = (artwork) => {
   cardHover.value = false;
   currentCard.value = artwork;
   cardClicked.value = artwork;
-  console.log(currentCard.value);
+  // console.log(currentCard.value);
 };
 
 const showHoverModal = (artwork) => {

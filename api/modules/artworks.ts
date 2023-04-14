@@ -9,8 +9,8 @@ class ArtModule extends HttpFactory {
       'GET',
       this.RESOURCE + params
     );
-    console.log(this.RESOURCE + params);
-    console.log('res.data.artworks', res.data.artworks);
+    // console.log(this.RESOURCE + params);
+    // console.log('res.data.artworks', res.data.artworks);
     return res.data.artworks;
   }
 

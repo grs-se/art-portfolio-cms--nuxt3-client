@@ -30,14 +30,7 @@ export const useArtworksStore = defineStore('artworks', {
       const { $fetchApi } = useNuxtApp();
       const artworks = await $fetchApi.art.getArtworks(params);
       this.artworks = artworks;
-      console.log(this.artworks);
     },
-    // async [FETCH_ARTWORK_CATEGORIES]()
-    // async [FETCH_ARTWORK_BY_TITLE]() {
-    //   const { $axiosApi } = useNuxtApp();
-    //   const artwork = await $axiosApi.art.getArtworkByTitle();
-    //   this.artwork = artwork;
-    // },
   },
   getters: {
     [UNIQUE_ARTWORK_CATEGORIES](state) {
