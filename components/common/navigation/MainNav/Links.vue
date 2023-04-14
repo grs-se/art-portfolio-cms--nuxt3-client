@@ -4,12 +4,9 @@ const router = useRouter();
 const route = useRoute();
 
 const category = route.params.category;
-const gallery = route.path;
-console.log('category2', category);
-console.log('gallery', gallery);
 
 const links = ref([
-  { text: 'Gallery', url: ['/gallery/observation'] },
+  { text: 'Gallery', url: '/gallery/observation' },
   { text: 'Research', url: '/research' },
   { text: 'Text', url: '/text' },
   // { text: 'Exhibitions', url: '/exhibitions' },
@@ -36,8 +33,8 @@ const links = ref([
         data-test="main-nav-list-item"
         class="ml-9 h-full text-base first:ml-0"
       >
-        <NuxtLink :to="link.url" class="flex h-full items-center py-2"
-          ><span>{{ link.text }}</span></NuxtLink
+        <router-link :to="link.url" class="flex h-full items-center py-2"
+          ><span>{{ link.text }}</span></router-link
         >
       </li>
       <!-- <li
