@@ -1,16 +1,18 @@
 <template>
-  <div
-    class="mx-auto flex items-center justify-center p-2 md:max-h-64 xl:max-h-80 xl:w-auto"
-  >
+  <div class="mx-auto flex items-center justify-center">
     <figure
       @mouseenter="$emit('mouseenter')"
       @mouseout="$emit('mouseout')"
-      class="flex h-auto flex-col items-center justify-center rounded border border-solid border-brand-gray-2 bg-white p-1 hover:shadow-gray"
+      class="flex h-auto flex-col rounded border border-solid border-brand-gray-2 bg-white p-1 hover:shadow-gray"
     >
-      <img
-        :src="'/images/' + file.imageCover"
+      <CloudImage
+        :src="file.imageCover"
         class="sm:max-h-auto items-center justify-center md:max-h-64 xl:max-h-80"
+        :alt="file.title"
       />
+      <figcaption class="line-clamp-1 nowrap overflow-hidden">
+        {{ file.title }}
+      </figcaption>
     </figure>
   </div>
 </template>

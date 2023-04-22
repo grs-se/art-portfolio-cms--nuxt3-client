@@ -3,8 +3,9 @@
     class="spotlight-card flex h-auto flex-col rounded-lg border bg-white shadow-sm"
   >
     <NuxtLink to="/gallery/observation" class="flex flex-col">
-      <img
-        :src="'images/' + slide.imageCover"
+      <CloudImage
+        :src="slide.imageCover"
+        alt=""
         class="h-64 content-start object-contain"
       />
     </NuxtLink>

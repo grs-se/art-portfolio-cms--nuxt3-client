@@ -33,7 +33,7 @@ const searchStore = useSearchStore();
         @clear-filters="filtersStore.CLEAR_USER_ARTWORK_FILTER_SELECTIONS"
       />
       <filters-sidebar-tags
-        tagsPlaceholder="Landscape, Archetype, Sleeping, figure"
+        tagsPlaceholder="Landscape, imagination, figure, oil"
       />
       <!-- <collapsible-accordian header="Sort by">
         <filters-sidebar-checkbox-group

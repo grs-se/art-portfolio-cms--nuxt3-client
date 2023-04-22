@@ -16,11 +16,12 @@
     "production": "set NODE_ENV=production&& nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "images": "cld upload_dir images"
   },
   "devDependencies": {
     "@nuxt/content": "^2.5.2",
-    "@nuxt/image-edge": "^1.0.0-27991759.1a5eea1",
+    "@nuxt/image-edge": "1.0.0-27991759.1a5eea1",
     "@pinia/testing": "^0.0.14",
     "@rushstack/eslint-patch": "^1.2.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -70,10 +71,9 @@
     "vue-gtag-next": "^1.14.0"
   },
   "name": "nuxt3-art-portolio-cms",
-  "main": "tailwind.config.js",
   "directories": {
     "test": "tests"
   },
-  "author": "",
+  "author": "George Rice-Smith",
   "license": "ISC"
 }

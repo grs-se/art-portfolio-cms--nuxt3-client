@@ -1,18 +1,18 @@
-import config from './config';
 import GlobalSettings from './environments';
 const appEnv = process.env.NODE_ENV || 'development';
+const CLOUDINARY_URL = process.env.CLOUDINARY_URL;
 // const API_BASE_URL =
 //   process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8000/api/v1';
 
 // @ts-ignore
 export default defineNuxtConfig({
   // mode: 'universal',
-  target: 'static',
-  server: {
-    port: 3000, // default: 3000
-    host: '0.0.0.0',
-    timing: false,
-  },
+  // target: 'static',
+  // server: {
+  //   port: 3000, // default: 3000
+  //   host: '0.0.0.0',
+  //   timing: false,
+  // },
 
   // bridge: {
   //   nitro: true,
@@ -26,7 +26,7 @@ export default defineNuxtConfig({
 
   // Target: https://go.nuxtjs.dev/config-target
   // target: 'public',
-
+  ssr: false,
   routeRules: {
     // prerender: true - this will be generated at build time.
     // static: true - this is generated on demand, and then cached until the next build
@@ -46,13 +46,23 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
+    '@nuxt/image-edge',
     '@nuxt/content',
     // '@nuxtjs/axios',
     // '@nuxtjs/auth',
   ],
+
+  app: {
+    head: {
+      link: [{ rel: 'preconnect', href: 'https://res.cloudinary.com' }],
+      meta: [{ 'http-equiv': 'accept-ch', content: 'DPR' }],
+    },
+  },
+
   content: {
     // https://content.nuxtjs.org/api/configuration
   },
+
   buildModules: [
     [
       '@pinia/nuxt',
@@ -61,9 +71,24 @@ export default defineNuxtConfig({
       },
     ],
   ],
+
   build: {
     transpile: ['@fortawesome/vue-fontawesome'],
   },
+
+  image: {
+    cloudinary: {
+      baseURL: CLOUDINARY_URL,
+      loader: 'cloudinary',
+      domains: ['res.cloudinary.com'],
+      modifiers: {
+        quality: 'auto:best',
+        dpr: 'auto',
+      },
+    },
+    domains: ['avatars0.githubusercontent.com'],
+  },
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -84,11 +109,9 @@ export default defineNuxtConfig({
     public: {
       // overridden by NUXT_PUBLIC_API_BASE
       apiBase: '',
-      APIv1: config.APIv1,
-      APIv2: config.APIv2,
+      dev: process.env.NODE_ENV === 'development',
       // prefix: process.env.URL_PREFIX || '/api/v1',
       googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID || '',
-      dev: process.env.NODE_ENV === 'development',
       siteEnvironment: GlobalSettings[appEnv].siteEnvironment,
     },
   },
@@ -107,6 +130,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
     configPath: 'tailwind.config.js',
@@ -114,11 +138,13 @@ export default defineNuxtConfig({
     injectPosition: 0,
     viewer: true,
   },
+
   css: [
     '@fortawesome/fontawesome-svg-core/styles.css',
     '~/assets/css/main.scss',
   ],
   // srcDir: 'src/',
+
   components: {
     dirs: [
       {
@@ -159,6 +185,7 @@ export default defineNuxtConfig({
       },
     ],
   },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: process.env.npm_package_name || '',

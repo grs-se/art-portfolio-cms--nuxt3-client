@@ -1,11 +1,18 @@
+node_modules
+dist
+*.log*
 *.env
 *.local
-node_modules
-*.log*
 .nuxt
 .nitro
 .cache
 .output
-dist
+.idea
+images/*
+!images/README.md
+.vercel
 .DS_Store
 .vscode
+
+# Local Netlify folder
+.netlify

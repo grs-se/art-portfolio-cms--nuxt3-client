@@ -11,10 +11,17 @@ nuxtApp.hook('page:finish', () => {
 // await useUser()
 </script>
 <template>
-  <NuxtLayout name="new-default">
-    <NuxtPage />
-  </NuxtLayout>
-  <!-- <NuxtLayout name="main">
+  <Html dir="ltr">
+    <Head>
+      <!-- <SchemaOrgPerson :name="siteMeta.name" /> -->
+    </Head>
+    <Body class="text-gray-800 dark:text-gray-100 antialiased min-h-screen">
+      <NuxtLayout name="new-default">
+        <NuxtPage />
+      </NuxtLayout>
+      <!-- <NuxtLayout name="main">
     <NuxtPage />
   </NuxtLayout> -->
+    </Body>
+  </Html>
 </template>
