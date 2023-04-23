@@ -22,11 +22,10 @@ export default defineNuxtConfig({
   //   publicAssets: [],
   // },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  // ssr: false,
+  ssr: false,
 
   // Target: https://go.nuxtjs.dev/config-target
   // target: 'public',
-  ssr: false,
   routeRules: {
     // prerender: true - this will be generated at build time.
     // static: true - this is generated on demand, and then cached until the next build

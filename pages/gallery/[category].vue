@@ -5,12 +5,12 @@ import { useSettingsStore } from '~/stores/settings';
 
 const { toTitleCase } = useUtilities();
 
-defineProps({
-  selectedArtwork: {
-    type: Object,
-    required: true,
-  },
-});
+// defineProps({
+//   selectedArtwork: {
+//     type: Object,
+//     required: true,
+//   },
+// });
 
 const route = useRoute();
 
@@ -83,7 +83,6 @@ const showHoverModal = (artwork) => {
         :artwork="currentCard"
         :artworks="displayedArtworks"
         :class="[cardClicked ? 'w-1/3' : 'w-0']"
-        class="fixed right-0"
       />
       <main
         class="gallery-cards-wrapper bg-brand-gray-2"

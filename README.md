@@ -14,3 +14,6 @@ An artist's portfolio, content management system, and educational workbook built
 - [ ] Bookmarking
 - [ ] Optional Gallery Modes: grid, masonry, lightbox, carousel, spotlights, modal
 - [ ] Dark Mode
+
+Build usibg netlify-cli:
+netlify build && netlify deploy --prod

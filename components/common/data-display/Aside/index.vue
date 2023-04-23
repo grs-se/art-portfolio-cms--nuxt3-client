@@ -1,7 +1,7 @@
 <template>
   <div class="aside-container">
     <div class="aside shadow-gray">
-      <AsideControlBar @close-aside="closeAside" />
+      <AsideControlBar @close-aside="closeAside" @next="next" @prev="prev" />
       <figure class="aside__figure">
         <!-- <carousel
           :slides="artwork"
@@ -12,20 +12,26 @@
           :height="450"
         ></carousel>
          -->
+        <!-- <ClientOnly> -->
         <NuxtLink
           :to="artworkLightboxLink"
           class="group flex items-center justify-center"
         >
-          <img
-            :src="'images/' + artwork.imageCover"
+          <!-- BUG CloudImage not refreshing image -->
+          <!-- <CloudImage> -->
+          <nuxt-img
+            :src="artwork.imageCover"
             class="group:hover aside__image hover:box-border hover:border-2 hover:border-brand-blue-2"
             @click=""
+            alt=""
+            provider="cloudinary"
           />
         </NuxtLink>
         <div class="aside__details-container">
           <AsideDetails :artwork="artwork" />
           <Bookmark color="white" class="justify-end" />
         </div>
+        <!-- </ClientOnly> -->
       </figure>
     </div>
   </div>
@@ -56,6 +62,12 @@ const closeAside = () => {};
 
 const slides = ref();
 
+const next = () => {};
+
+const prev = () => {};
+
+// If Gallery Category switched show 1st element of array, don't close the aside
+
 // const date = (d) => {
 //   const date = new Date(d);
 
@@ -82,10 +94,10 @@ const artworkLightboxLink = computed(() => `/artworks/${props.artwork.slug}`);
 
 <style scoped lang="scss">
 .aside-container {
-  border-radius: 0.75rem;
-  height: 82vh;
+  // border-radius: 0.75rem;
+  // height: 82vh;
   overflow-y: scroll;
-  background-color: black;
+  background-color: white;
   padding-bottom: 8rem;
 }
 .aside {
