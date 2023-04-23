@@ -10,6 +10,10 @@
         <SubNavCategories />
       </div>
 
+      <div class="">
+        <SubNavSortBy />
+      </div>
+
       <div class="flex flex-col">
         <SubNavCollections />
         <span>Collections</span>

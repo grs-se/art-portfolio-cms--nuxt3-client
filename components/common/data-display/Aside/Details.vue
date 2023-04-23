@@ -11,7 +11,9 @@
       </div>
       <div class="date">
         <dt>Date</dt>
-        <dd><time>2023</time></dd>
+        <dd>
+          <time>{{ convertDate(artwork.date) }}</time>
+        </dd>
       </div>
       <div class="location">
         <dt>Location</dt>
@@ -30,11 +32,17 @@
           </li>
         </ul>
       </div>
+
+      <div class="aside-details__description">
+        <p class="line-clamp-6">{{ artwork.description }}</p>
+      </div>
     </dl>
   </figcaption>
 </template>
 
 <script lang="ts" setup>
+import { convertDate } from '~~/utils';
+
 defineProps({
   artwork: {
     type: Object,
@@ -44,17 +52,18 @@ defineProps({
 </script>
 
 <style scoped lang="scss">
-dt::after {
-  content: ': ';
-}
-:not(.medium) > dd {
-  text-transform: capitalize;
-}
-div {
-  display: flex;
-  flex-direction: row;
-}
 .aside {
+  // overflow: hidden;
+  dt::after {
+    content: ': ';
+  }
+  :not(.medium) > dd {
+    text-transform: capitalize;
+  }
+  div {
+    display: flex;
+    flex-direction: row;
+  }
   &-figcaption {
     display: flex;
     width: 100%;
@@ -76,6 +85,9 @@ div {
       .tag-link {
         @apply text-brand-blue-2;
       }
+    }
+    &__description {
+      @apply text-sm py-4;
     }
   }
 }

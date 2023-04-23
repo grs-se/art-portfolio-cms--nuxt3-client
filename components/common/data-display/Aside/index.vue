@@ -10,8 +10,8 @@
           :interval="3000"
           :width="1000"
           :height="450"
-        ></carousel>
-         -->
+        ></carousel> -->
+
         <!-- <ClientOnly> -->
         <NuxtLink
           :to="artworkLightboxLink"
@@ -19,6 +19,7 @@
         >
           <!-- BUG CloudImage not refreshing image -->
           <!-- <CloudImage> -->
+          <!-- <Carousel /> -->
           <nuxt-img
             :src="artwork.imageCover"
             class="group:hover aside__image hover:box-border hover:border-2 hover:border-brand-blue-2"

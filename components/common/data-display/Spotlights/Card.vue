@@ -1,32 +1,41 @@
 <template>
   <figure
-    class="spotlight-card flex h-auto flex-col rounded-lg border bg-white shadow-sm"
+    class="spotlight-card h-auto rounded-lg border bg-white shadow-sm px-6 pb-8"
   >
-    <NuxtLink to="/gallery/observation" class="flex flex-col">
-      <CloudImage
-        :src="slide.imageCover"
-        alt=""
-        class="h-64 content-start object-contain"
-      />
-    </NuxtLink>
-    <figcaption class="mt-3 block h-44 max-w-sm px-6 py-4">
-      <h3 class="line-clamp text-lg font-medium">
-        {{ slide.title }}
-      </h3>
-      <p v-if="slide.description" class="line-clamp mt-3 text-sm">
-        {{ slide.description }}
-      </p>
-      <p class="line-clamp mt-3 text-sm">
-        {{ slide.medium }}
-      </p>
+    <CloudImage
+      :src="slide.imageCover"
+      class="h-64 content-start object-contain mx-auto hover:opacity-95 hover:cursor-pointer"
+      alt=""
+      @click=""
+    />
+    <figcaption class="mt-3 h-max pt-3 max-w-sm">
+      <dl>
+        <h4
+          class="text-lg font-medium text-ellipsis whitespace-normal tracking-tight leading-tight"
+        >
+          {{ slide.title }}
+        </h4>
+        <div>
+          <dd
+            v-if="slide.description"
+            class="mt-3 text-sm text-ellipsis overflow-clip whitespace-normal line-clamp"
+          >
+            {{ slide.description }}
+          </dd>
+          <span v-if="slide.description" class="underline">Read more</span>
+        </div>
+        <dd class="mt-3 text-sm">
+          {{ slide.medium[1].toString() }}
+        </dd>
+      </dl>
+      <span class="text-sm">
+        Tag:
+        <NuxtLink to="/gallery" class="text-brand-blue-1 underline">{{
+          slide.categories[0]
+        }}</NuxtLink></span
+      >
     </figcaption>
     <!-- <div class="u-spacing h-10"></div> -->
-    <span class="px-6 pb-4 text-sm">
-      Tag:
-      <NuxtLink to="/gallery" class="text-brand-blue-1 underline">{{
-        slide.categories[0]
-      }}</NuxtLink></span
-    >
   </figure>
 </template>
 
@@ -42,15 +51,14 @@ defineProps(['slide', 'currentSlide', 'index']);
 :categories="slide.categories"
 ></slot> -->
 
-<style scoped>
+<style scoped lang="scss">
+figcaption {
+  min-width: 16rem;
+}
 .line-clamp {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
-}
-
-p {
-  word-break: break-all;
 }
 </style>

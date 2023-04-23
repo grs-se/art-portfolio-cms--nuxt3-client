@@ -1,20 +1,16 @@
 <template>
-  <div class="mx-auto flex items-center justify-center">
-    <figure
-      @mouseenter="$emit('mouseenter')"
-      @mouseout="$emit('mouseout')"
-      class="flex h-auto flex-col rounded border border-solid border-brand-gray-2 bg-white p-1 hover:shadow-gray"
-    >
-      <CloudImage
-        :src="file.imageCover"
-        class="sm:max-h-auto items-center justify-center md:max-h-64 xl:max-h-80"
-        :alt="file.title"
-      />
-      <figcaption class="line-clamp-1 nowrap overflow-hidden">
-        {{ file.title }}
-      </figcaption>
-    </figure>
-  </div>
+  <!-- <div class="mx-auto w-auto flex items-center justify-center"> -->
+  <figure @mouseenter="$emit('mouseenter')" @mouseout="$emit('mouseout')">
+    <CloudImage
+      :src="file.imageCover"
+      class="w-auto items-center justify-center md:max-h-64 xl:max-h-80"
+      :alt="file.title"
+    />
+    <figcaption class="line-clamp-1">
+      {{ file.title }}
+    </figcaption>
+  </figure>
+  <!-- </div> -->
 </template>
 
 <script lang="ts" setup>
@@ -41,3 +37,25 @@ defineEmits(['mouseenter', 'mouseout']);
 
 const artworkPageLink = computed(() => `/artworks/results/${props.artwork.id}`);
 </script>
+
+<style scoped lang="scss">
+figure {
+  @apply flex flex-col rounded border border-solid border-brand-gray-2 bg-white p-1 hover:shadow-gray max-w-fit m-auto justify-center;
+}
+
+figcaption {
+  max-width: 90%;
+  text-overflow: ellipsis;
+  // // white-space: nowrap;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+
+  &:hover {
+    // overflow: visible;
+    // white-space: pre-wrap;
+    // max-width: 90%;
+  }
+}
+</style>
