@@ -24,7 +24,7 @@ dependencies:
     version: 3.2.0
   '@nuxtjs/supabase':
     specifier: ^0.3.0
-    version: 0.3.0
+    version: 0.3.0(encoding@0.1.13)
   '@nuxtjs/tailwindcss':
     specifier: ^6.1.3
     version: 6.1.3(webpack@5.80.0)
@@ -34,12 +34,12 @@ dependencies:
   axios:
     specifier: ^1.3.4
     version: 1.3.4
+  encoding:
+    specifier: ^0.1.13
+    version: 0.1.13
   node-fetch-native:
     specifier: ^1.1.0
     version: 1.1.0
-  ohmyfetch:
-    specifier: ^0.4.21
-    version: 0.4.21
   pinia:
     specifier: ^2.0.33
     version: 2.0.33(typescript@4.9.4)(vue@3.2.47)
@@ -125,7 +125,7 @@ devDependencies:
     version: 20.0.3
   nuxt:
     specifier: ^3.3.1
-    version: 3.3.1(@types/node@18.11.17)(eslint@8.28.0)(sass@1.60.0)(typescript@4.9.4)
+    version: 3.3.1(@types/node@18.11.17)(encoding@0.1.13)(eslint@8.28.0)(sass@1.60.0)(typescript@4.9.4)
   postcss:
     specifier: ^8.4.19
     version: 8.4.19
@@ -1059,14 +1059,14 @@ packages:
       - supports-color
     dev: false
 
-  /@mapbox/node-pre-gyp@1.0.10:
+  /@mapbox/node-pre-gyp@1.0.10(encoding@0.1.13):
     resolution: {integrity: sha512-4ySo4CjzStuprMwk35H5pPbkymjv1SF3jGLj6rAHp/xT/RF7TL7bd9CTm1xDY49K2qF7jmR/g7k+SkLETP6opA==}
     hasBin: true
     dependencies:
       detect-libc: 2.0.1
       https-proxy-agent: 5.0.1
       make-dir: 3.1.0
-      node-fetch: 2.6.9
+      node-fetch: 2.6.9(encoding@0.1.13)
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
@@ -1475,11 +1475,11 @@ packages:
       - debug
     dev: false
 
-  /@nuxtjs/supabase@0.3.0:
+  /@nuxtjs/supabase@0.3.0(encoding@0.1.13):
     resolution: {integrity: sha512-fSZVv7WQ8QqoZ/Ap9zQoM9UOyGaHgC2FdndkZB2IZU3e0kVobdt+MxAEbe8SjzK89/eqBs/bbvbxNJHarc6PfQ==}
     dependencies:
       '@nuxt/kit': 3.4.2
-      '@supabase/supabase-js': 2.1.0
+      '@supabase/supabase-js': 2.1.0(encoding@0.1.13)
       defu: 6.1.2
       pathe: 1.1.0
     transitivePeerDependencies:
@@ -1689,26 +1689,26 @@ packages:
     resolution: {integrity: sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==}
     dev: true
 
-  /@supabase/functions-js@2.1.1:
+  /@supabase/functions-js@2.1.1(encoding@0.1.13):
     resolution: {integrity: sha512-bIR1Puae6W+1/MzPfYBWOG/SCWGo4B5CB7c0ZZksvliNEAzhxNBJ0UFKYINcGdGtxG8ZC+1xr3utWpNZNwnoRw==}
     dependencies:
-      cross-fetch: 3.1.5
+      cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@supabase/gotrue-js@2.23.0:
+  /@supabase/gotrue-js@2.23.0(encoding@0.1.13):
     resolution: {integrity: sha512-N6o+MMGsPDbdiz0R0Oy9GlgefYFjJJvoBduR16s8c1H3yG2jp6jq+pMEP18P1bg7uk2DljEjyBnVN7Wj7SJ2Zw==}
     dependencies:
-      cross-fetch: 3.1.5
+      cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@supabase/postgrest-js@1.6.0:
+  /@supabase/postgrest-js@1.6.0(encoding@0.1.13):
     resolution: {integrity: sha512-HCphMC6KjtoaGcowSlkKRVKBOlNpmKWE2CwoumMwwsfhnRxplIy1zBiIYIL3zIYo/Bm20H/1C6enqjBeTvSwXg==}
     dependencies:
-      cross-fetch: 3.1.5
+      cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -1723,23 +1723,23 @@ packages:
       - supports-color
     dev: false
 
-  /@supabase/storage-js@2.5.1:
+  /@supabase/storage-js@2.5.1(encoding@0.1.13):
     resolution: {integrity: sha512-nkR0fQA9ScAtIKA3vNoPEqbZv1k5B5HVRYEvRWdlP6mUpFphM9TwPL2jZ/ztNGMTG5xT6SrHr+H7Ykz8qzbhjw==}
     dependencies:
-      cross-fetch: 3.1.5
+      cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@supabase/supabase-js@2.1.0:
+  /@supabase/supabase-js@2.1.0(encoding@0.1.13):
     resolution: {integrity: sha512-hODrAUDSC6RV6EhwuSMyhaQCF32gij0EBTceuDR+8suJsg7XcyUG0fYgeYecWIvt0nz61xAMY6E+Ywb0tJaAng==}
     dependencies:
-      '@supabase/functions-js': 2.1.1
-      '@supabase/gotrue-js': 2.23.0
-      '@supabase/postgrest-js': 1.6.0
+      '@supabase/functions-js': 2.1.1(encoding@0.1.13)
+      '@supabase/gotrue-js': 2.23.0(encoding@0.1.13)
+      '@supabase/postgrest-js': 1.6.0(encoding@0.1.13)
       '@supabase/realtime-js': 2.7.2
-      '@supabase/storage-js': 2.5.1
-      cross-fetch: 3.1.5
+      '@supabase/storage-js': 2.5.1(encoding@0.1.13)
+      cross-fetch: 3.1.5(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -2144,12 +2144,12 @@ packages:
       vue: 3.2.47
     dev: true
 
-  /@vercel/nft@0.22.6:
+  /@vercel/nft@0.22.6(encoding@0.1.13):
     resolution: {integrity: sha512-gTsFnnT4mGxodr4AUlW3/urY+8JKKB452LwF3m477RFUJTAaDmcz2JqFuInzvdybYIeyIv1sSONEJxsxnbQ5JQ==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
-      '@mapbox/node-pre-gyp': 1.0.10
+      '@mapbox/node-pre-gyp': 1.0.10(encoding@0.1.13)
       '@rollup/pluginutils': 4.2.1
       acorn: 8.8.2
       async-sema: 3.1.1
@@ -2396,7 +2396,7 @@ packages:
       '@vueuse/core': 9.13.0(vue@3.2.47)
       '@vueuse/metadata': 9.13.0
       local-pkg: 0.4.3
-      nuxt: 3.3.1(@types/node@18.11.17)(eslint@8.28.0)(sass@1.60.0)(typescript@4.9.4)
+      nuxt: 3.3.1(@types/node@18.11.17)(encoding@0.1.13)(eslint@8.28.0)(sass@1.60.0)(typescript@4.9.4)
       vue-demi: 0.14.0(vue@3.2.47)
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -2946,13 +2946,6 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /busboy@1.6.0:
-    resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}
-    engines: {node: '>=10.16.0'}
-    dependencies:
-      streamsearch: 1.1.0
-    dev: false
-
   /bytes@3.1.2:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==}
     engines: {node: '>= 0.8'}
@@ -3372,10 +3365,10 @@ packages:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
     dev: true
 
-  /cross-fetch@3.1.5:
+  /cross-fetch@3.1.5(encoding@0.1.13):
     resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}
     dependencies:
-      node-fetch: 2.6.7
+      node-fetch: 2.6.7(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -3855,6 +3848,11 @@ packages:
   /encodeurl@1.0.2:
     resolution: {integrity: sha512-TPJXq8JqFaVYm2CWmPvnP2Iyo4ZSM7/QKcSmuMLDObfpH5fi7RUGmd/rTDf+rut/saiDiQEeVTNgAmJEdAOx0w==}
     engines: {node: '>= 0.8'}
+
+  /encoding@0.1.13:
+    resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
+    dependencies:
+      iconv-lite: 0.6.3
 
   /end-of-stream@1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
@@ -5154,7 +5152,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
-    dev: true
 
   /icss-utils@5.1.0(postcss@8.4.19):
     resolution: {integrity: sha512-soFhflCVWLfRNOPU3iv5Z9VUdT44xFRbzjLsEzSr5AQmgqPMTHdU3PMT1Cf1ssx8fLNJDA1juftYl+PUcv3MqA==}
@@ -6625,7 +6622,7 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: false
 
-  /nitropack@2.3.3:
+  /nitropack@2.3.3(encoding@0.1.13):
     resolution: {integrity: sha512-1g/4zdwWo+tWSvno57rhRXeGk6jNbG5W1yRNtOywInT1nyoEG1ksOwQ3W3JHGB2E1GNjZwAVi611UVOVL+JgYw==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0}
     hasBin: true
@@ -6641,7 +6638,7 @@ packages:
       '@rollup/plugin-terser': 0.4.1(rollup@3.21.0)
       '@rollup/plugin-wasm': 6.1.2(rollup@3.21.0)
       '@rollup/pluginutils': 5.0.2(rollup@3.21.0)
-      '@vercel/nft': 0.22.6
+      '@vercel/nft': 0.22.6(encoding@0.1.13)
       archiver: 5.3.1
       c12: 1.4.1
       chalk: 5.2.0
@@ -6725,14 +6722,10 @@ packages:
       lodash: 4.17.21
     dev: true
 
-  /node-fetch-native@0.1.8:
-    resolution: {integrity: sha512-ZNaury9r0NxaT2oL65GvdGDy+5PlSaHTovT6JV5tOW07k1TQmgC0olZETa4C9KZg0+6zBr99ctTYa3Utqj9P/Q==}
-    dev: false
-
   /node-fetch-native@1.1.0:
     resolution: {integrity: sha512-nl5goFCig93JZ9FIV8GHT9xpNqXbxQUzkOmKIMKmncsBH9jhg7qKex8hirpymkBFmNQ114chEEG5lS4wgK2I+Q==}
 
-  /node-fetch@2.6.7:
+  /node-fetch@2.6.7(encoding@0.1.13):
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
@@ -6741,10 +6734,11 @@ packages:
       encoding:
         optional: true
     dependencies:
+      encoding: 0.1.13
       whatwg-url: 5.0.0
     dev: false
 
-  /node-fetch@2.6.9:
+  /node-fetch@2.6.9(encoding@0.1.13):
     resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==}
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
@@ -6753,6 +6747,7 @@ packages:
       encoding:
         optional: true
     dependencies:
+      encoding: 0.1.13
       whatwg-url: 5.0.0
     dev: true
 
@@ -6828,7 +6823,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /nuxt@3.3.1(@types/node@18.11.17)(eslint@8.28.0)(sass@1.60.0)(typescript@4.9.4):
+  /nuxt@3.3.1(@types/node@18.11.17)(encoding@0.1.13)(eslint@8.28.0)(sass@1.60.0)(typescript@4.9.4):
     resolution: {integrity: sha512-1DTFXEr+FlZO/hyw765cb9a/AiGysHIGLNl8NGJtURwUWC4gd+Z3y5DnL04PE5fVJ08yB/KJwc0t6StijbL8wQ==}
     engines: {node: ^14.18.0 || ^16.10.0 || ^17.0.0 || ^18.0.0 || ^19.0.0}
     hasBin: true
@@ -6858,7 +6853,7 @@ packages:
       knitwork: 1.0.0
       magic-string: 0.30.0
       mlly: 1.2.0
-      nitropack: 2.3.3
+      nitropack: 2.3.3(encoding@0.1.13)
       nuxi: 3.3.1
       ofetch: 1.0.1
       ohash: 1.1.2
@@ -6953,15 +6948,6 @@ packages:
 
   /ohash@1.1.2:
     resolution: {integrity: sha512-9CIOSq5945rI045GFtcO3uudyOkYVY1nyfFxVQp+9BRgslr8jPNiSSrsFGg/BNTUFOLqx0P5tng6G32brIPw0w==}
-
-  /ohmyfetch@0.4.21:
-    resolution: {integrity: sha512-VG7f/JRvqvBOYvL0tHyEIEG7XHWm7OqIfAs6/HqwWwDfjiJ1g0huIpe5sFEmyb+7hpFa1EGNH2aERWR72tlClw==}
-    dependencies:
-      destr: 1.2.2
-      node-fetch-native: 0.1.8
-      ufo: 0.8.6
-      undici: 5.22.0
-    dev: false
 
   /on-finished@2.4.1:
     resolution: {integrity: sha512-oVlzkg3ENAhCk2zdv7IJwd/QUD4z2RxRwpkcGY8psCVcCYZNq4wYnVWALHM+brtuJjePWiYF/ClmuDr8Ch5+kg==}
@@ -8487,11 +8473,6 @@ packages:
       internal-slot: 1.0.5
     dev: true
 
-  /streamsearch@1.1.0:
-    resolution: {integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==}
-    engines: {node: '>=10.0.0'}
-    dev: false
-
   /string-width@4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
     engines: {node: '>=8'}
@@ -8955,13 +8936,6 @@ packages:
       estree-walker: 3.0.3
       magic-string: 0.30.0
       unplugin: 1.3.1
-
-  /undici@5.22.0:
-    resolution: {integrity: sha512-fR9RXCc+6Dxav4P9VV/sp5w3eFiSdOjJYsbtWfd4s5L5C4ogyuVpdKIVHeW0vV1MloM65/f7W45nR9ZxwVdyiA==}
-    engines: {node: '>=14.0'}
-    dependencies:
-      busboy: 1.6.0
-    dev: false
 
   /unenv@1.4.1:
     resolution: {integrity: sha512-DuFZUDfaBC92zy3fW7QqKTLdYJIPkpwTN0yGZtaxnpOI7HvIfl41NYh9NVv4zcqhT8CGXJ1ELpvO2tecaB6NfA==}

@@ -97,7 +97,7 @@ const artworkLightboxLink = computed(() => `/artworks/${props.artwork.slug}`);
 .aside-container {
   // border-radius: 0.75rem;
   // height: 82vh;
-  overflow-y: scroll;
+  @apply border-r border-brand-gray-1;
   background-color: white;
   padding-bottom: 8rem;
 }

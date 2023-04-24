@@ -11,7 +11,7 @@ class ArtModule extends HttpFactory {
     );
     // console.log(this.RESOURCE + params);
     // console.log('res.data.artworks', res.data.artworks);
-    return res.data.artworks;
+    return res.data.data.artworks;
   }
 
   async getArtworkByTitle(title): Promise<IGetArtworkResponse> {

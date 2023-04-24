@@ -85,7 +85,7 @@ const showHoverModal = (artwork) => {
         :class="[cardClicked ? 'w-1/3' : 'w-0']"
       />
       <main
-        class="gallery-cards-wrapper bg-brand-gray-2"
+        class="gallery-cards-wrapper"
         :class="[
           settingsStore.state.showAside === false
             ? 'mx-auto w-full'
@@ -149,5 +149,7 @@ const showHoverModal = (artwork) => {
   /* margin: 0 auto; */
   background: white;
   padding: 1.5rem 1.5rem 2rem 1.5rem;
+  overflow-y: scroll;
+  height: 100vh;
 }
 </style>
