@@ -3,7 +3,7 @@
     <NuxtLink to="/gallery/observation">
       <nuxt-img
         provider="cloudinary"
-        :src="slide.imageCover"
+        :src="slide.imageUrl"
         alt=""
         class="img"
       />
@@ -33,7 +33,7 @@
 defineProps(['slide', 'currentSlide', 'index']);
 </script>
 <!-- <slot
-:image-cover="slide.imageCover"
+:image-cover="slide.imageUrl"
 :title="slide.title"
 :medium="slide.medium"
 :dimensions="slide.dimensions"

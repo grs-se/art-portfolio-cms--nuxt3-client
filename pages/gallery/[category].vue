@@ -2,34 +2,26 @@
 import { useRoute } from 'vue-router';
 import { useArtworksStore } from '~/stores/artwork';
 import { useSettingsStore } from '~/stores/settings';
+import { IArtwork } from '~~/types';
+const artworksStore = useArtworksStore();
+const settingsStore = useSettingsStore();
 
 const { toTitleCase } = useUtilities();
-
-// defineProps({
-//   selectedArtwork: {
-//     type: Object,
-//     required: true,
-//   },
-// });
-
 const route = useRoute();
-
 useHead({
   title: toTitleCase(route.params.category),
 });
-
-const artworksStore = useArtworksStore();
 
 onMounted(() => {
   artworksStore.FETCH_ARTWORKS('/' + route.params.category);
 });
 
-const FILTERED_ARTWORKS = computed(() => artworksStore.FILTERED_ARTWORKS);
+const filteredArtworks = computed(() => artworksStore.FILTERED_ARTWORKS);
 
 const currentPage = computed(() =>
   Number.parseInt((route.query.page as string) || '1')
 );
-const maxPage = computed(() => Math.ceil(FILTERED_ARTWORKS.value.length / 24));
+const maxPage = computed(() => Math.ceil(filteredArtworks.value.length / 24));
 
 const { previousPage, nextPage } = usePreviousAndNextPages(
   currentPage,
@@ -40,34 +32,26 @@ const displayedArtworks = computed(() => {
   const pageNumber = currentPage.value;
   const firstArtworkIndex = (pageNumber - 1) * 24;
   const lastArtworkIndex = pageNumber * 24;
-  return FILTERED_ARTWORKS.value.slice(firstArtworkIndex, lastArtworkIndex);
+  return filteredArtworks.value.slice(firstArtworkIndex, lastArtworkIndex);
 });
 
-const settingsStore = useSettingsStore();
-
-const currentCard = ref();
-const cardHover = ref(false);
-const cardClicked = ref(false);
 const showAside = ref(settingsStore.state.showAside);
+const asideArtwork = ref<IArtwork>(displayedArtworks.value[0]);
+const cardHover = ref(false);
 
 defineEmits(['card-clicked']);
 
-// const showAside = ref<boolean>(false);
-
-const openAside = (artwork) => {
+const openAside = (artwork: IArtwork) => {
+  asideArtwork.value = artwork;
   settingsStore.state.showAside = true;
-  // showAside.value = !showAside.value;
   cardHover.value = false;
-  currentCard.value = artwork;
-  cardClicked.value = artwork;
-  console.log(currentCard.value);
 };
 
-const showHoverModal = (artwork) => {
+const showHoverModal = (artwork: IArtwork) => {
   if (showAside) {
     return;
   } else {
-    currentCard.value = artwork;
+    // clickedCard.value = artwork;
     cardHover.value = !cardHover.value;
   }
 };
@@ -79,10 +63,9 @@ const showHoverModal = (artwork) => {
       <ArtworkFiltersSidebar isOpen />
       <Aside
         v-show="settingsStore.state.showAside === true"
-        v-if="cardClicked"
-        :artwork="currentCard"
-        :artworks="displayedArtworks"
-        :class="[cardClicked ? 'w-1/3' : 'w-0']"
+        :currentArtwork="asideArtwork"
+        :slides="displayedArtworks"
+        :class="[asideArtwork ? 'w-1/3' : 'w-0']"
       />
       <main
         class="gallery-cards-wrapper"
@@ -92,7 +75,7 @@ const showHoverModal = (artwork) => {
             : 'absolute left-0 w-2/3',
         ]"
       >
-        <ModalHover v-if="cardHover" :artwork="currentCard" />
+        <!-- <ModalHover v-if="cardHover" :currentArtwork="currentCard" /> -->
         <ArtworkGalleryGridCards>
           <Card
             v-for="artwork in displayedArtworks"

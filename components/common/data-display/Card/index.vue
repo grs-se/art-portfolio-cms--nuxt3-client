@@ -2,7 +2,7 @@
   <!-- <div class="mx-auto w-auto flex items-center justify-center"> -->
   <figure @mouseenter="$emit('mouseenter')" @mouseout="$emit('mouseout')">
     <CloudImage
-      :src="file.imageCover"
+      :src="file.imageUrl"
       class="w-auto items-center justify-center md:max-h-64 xl:max-h-80"
       :alt="file.title"
     />

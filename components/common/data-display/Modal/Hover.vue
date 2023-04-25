@@ -5,14 +5,14 @@
   >
     <figure class="w-100 m-2 flex flex-col hover:shadow-gray">
       <!-- <img
-        :src="'images/' + artwork.imageCover"
+        :src="'images/' + artwork.imageUrl"
         class="items-center justify-center sm:max-h-80 xl:max-h-80"
       /> -->
       <figcaption class="flex flex-col text-white">
-        <h3>{{ artwork.title }}</h3>
+        <h3>{{ currentArtwork.title }}</h3>
         <div class="flex flex-col text-base">
-          <span>{{ artwork.medium }}</span>
-          <span>{{ artwork.date.toLocaleString() }}</span>
+          <span>{{ currentArtwork.medium }}</span>
+          <span>{{ currentArtwork.date.toLocaleString() }}</span>
         </div>
       </figcaption>
     </figure>
@@ -25,7 +25,7 @@ import { type PropType } from 'vue';
 import type { IArtwork } from '~/types/models/IArtwork';
 
 defineProps({
-  artwork: {
+  currentArtwork: {
     type: Object as PropType<IArtwork>,
     required: true,
   },

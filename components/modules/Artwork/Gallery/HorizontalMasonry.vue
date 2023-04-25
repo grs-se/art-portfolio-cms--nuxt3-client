@@ -1,11 +1,11 @@
 <template>
   <Card class="repeat">
-    <template #default="{ imageCover, title, medium, year }">
+    <template #default="{ imageUrl, title, medium, year }">
       <figure
         class="flex flex-col rounded border border-solid border-brand-gray-2 hover:shadow-gray"
       >
         <img
-          :src="'public/images/artworks/' + imageCover"
+          :src="'public/images/artworks/' + imageUrl"
           class="items-center justify-center sm:max-h-60 xl:max-h-80"
         />
         <figcaption class="bg-white">
@@ -29,7 +29,7 @@
 // return {
 // 	flexWidth: (this.artwork.width.px * 220) / this.artwork.height.px,
 // 	flexHeight: (this.artwork.height.px / this.artwork.width.px) * 100,
-// 	imageCover: "public/images/artworks/" + this.artwork.imageCover,
+// 	imageUrl: "public/images/artworks/" + this.artwork.imageUrl,
 // };
 // },
 </script>

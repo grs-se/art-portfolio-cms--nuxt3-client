@@ -3,7 +3,7 @@
     class="spotlight-card h-auto rounded-lg border bg-white shadow-sm px-6 pb-8"
   >
     <CloudImage
-      :src="slide.imageCover"
+      :src="slide.imageUrl"
       class="h-64 content-start object-contain mx-auto hover:opacity-95 hover:cursor-pointer"
       alt=""
       @click=""
@@ -30,9 +30,11 @@
       </dl>
       <span class="text-sm">
         Tag:
-        <NuxtLink to="/gallery" class="text-brand-blue-1 underline">{{
-          slide.categories[0]
-        }}</NuxtLink></span
+        <NuxtLink
+          :to="'/gallery/' + slide.categories[0]"
+          class="text-brand-blue-1 underline"
+          >{{ slide.categories[0] }}</NuxtLink
+        ></span
       >
     </figcaption>
     <!-- <div class="u-spacing h-10"></div> -->
@@ -43,7 +45,7 @@
 defineProps(['slide', 'currentSlide', 'index']);
 </script>
 <!-- <slot
-:image-cover="slide.imageCover"
+:image-cover="slide.imageUrl"
 :title="slide.title"
 :medium="slide.medium"
 :dimensions="slide.dimensions"

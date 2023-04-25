@@ -1,43 +1,45 @@
 <template>
-  <figcaption class="aside-figcaption">
-    <dl class="aside-details">
-      <div class="aside-title">
-        <dt>Title</dt>
-        <dd>"{{ artwork.title }}"</dd>
-      </div>
-      <div class="medium">
-        <dt>Medium</dt>
-        <dd>{{ artwork.medium[1] }}</dd>
-      </div>
-      <div class="date">
-        <dt>Date</dt>
-        <dd>
-          <time>{{ convertDate(artwork.date) }}</time>
-        </dd>
-      </div>
-      <div class="location">
-        <dt>Location</dt>
-        <dd>{{ artwork.location.join(', ') }}</dd>
-      </div>
+  <div class="aside-details-container">
+    <figcaption class="aside-figcaption">
+      <dl class="aside-details">
+        <div class="aside-title">
+          <dt>Title</dt>
+          <dd>"{{ artwork.title }}"</dd>
+        </div>
+        <div class="medium">
+          <dt>Medium</dt>
+          <dd>{{ artwork.medium[1] }}</dd>
+        </div>
+        <div class="date">
+          <dt>Date</dt>
+          <dd>
+            <time>{{ convertDate(artwork.date) }}</time>
+          </dd>
+        </div>
+        <div class="location">
+          <dt>Location</dt>
+          <dd>{{ artwork.location.join(', ') }}</dd>
+        </div>
 
-      <div class="aside-details__tags">
-        <dt>Tags</dt>
-        <ul>
-          <li>
-            <a class="tag-link" href=""
-              ><dd>
-                {{ artwork.tags.join(', ') }}
-              </dd></a
-            >
-          </li>
-        </ul>
-      </div>
+        <div class="aside-details__tags">
+          <dt>Tags</dt>
+          <ul>
+            <li>
+              <a class="tag-link" href=""
+                ><dd>
+                  {{ artwork.tags.join(', ') }}
+                </dd></a
+              >
+            </li>
+          </ul>
+        </div>
 
-      <div class="aside-details__description">
-        <p class="line-clamp-6">{{ artwork.description }}</p>
-      </div>
-    </dl>
-  </figcaption>
+        <div class="aside-details__description">
+          <p class="line-clamp-6">{{ artwork.description }}</p>
+        </div>
+      </dl>
+    </figcaption>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -52,6 +54,13 @@ defineProps({
 </script>
 
 <style scoped lang="scss">
+.aside-details-container {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0;
+  padding: 0.25rem 1rem;
+  gap: 2rem;
+}
 .aside {
   // overflow: hidden;
   dt::after {

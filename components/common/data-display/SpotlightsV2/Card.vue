@@ -4,7 +4,7 @@
     class="card-item flex h-auto max-w-sm flex-col rounded-lg border bg-white shadow-sm"
   >
     <img
-      :src="'images/' + slide.imageCover"
+      :src="'images/' + slide.imageUrl"
       class="h-64 content-start object-contain"
     />
     <div class="mt-3 h-48 px-6 py-4">
@@ -29,7 +29,7 @@
 defineProps(['slide', 'currentSlide', 'index']);
 </script>
 <!-- <slot
-:image-cover="slide.imageCover"
+:image-cover="slide.imageUrl"
 :title="slide.title"
 :medium="slide.medium"
 :dimensions="slide.dimensions"

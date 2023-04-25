@@ -5,7 +5,7 @@
   >
     <figure class="w-100 m-2 flex flex-col hover:shadow-gray">
       <img
-        :src="'images/' + artwork.imageCover"
+        :src="'images/' + artwork.imageUrl"
         class="items-center justify-center sm:max-h-80 xl:max-h-80"
       />
       <figcaption class="flex flex-col text-white">

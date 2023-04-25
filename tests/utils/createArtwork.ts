@@ -1,9 +1,9 @@
-import type { Artwork } from '~/services/api/types'
+import type { Artwork } from '~/services/api/types';
 
 export const createArtwork = (artwork: Partial<Artwork> = {}): Artwork => ({
   title: 'Artwork',
   medium: ['Coloured Chalks', 'Coloured Chalks on Paper'],
-  imageCover: 'artwork.jpg',
+  imageUrl: 'artwork.jpg',
   date: '2022-11-12',
   description: 'lorem ipsum',
   dimensions: {
@@ -15,4 +15,4 @@ export const createArtwork = (artwork: Partial<Artwork> = {}): Artwork => ({
   categories: ['a', 'b', 'c'],
   tags: ['art', 'painting'],
   ...artwork,
-})
+});

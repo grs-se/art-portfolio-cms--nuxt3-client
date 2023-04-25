@@ -2,10 +2,34 @@
   <div class="aside-container">
     <div class="aside shadow-gray">
       <AsideControlBar @next="next" @prev="prev" @close-aside="closeAside" />
-      <!-- Aside Slide -->
-      <AsideSlide :current-slide="currentArtwork" />
-      <AsideDetails :artwork="currentArtwork" />
-      <Bookmark color="white" class="justify-end" />
+      <figure class="aside__figure">
+        <!-- <carousel
+          :slides="artwork"
+          controls
+          indicators="false"
+          :interval="3000"
+          :width="1000"
+          :height="450"
+        ></carousel> -->
+
+        <!-- <ClientOnly> -->
+        <NuxtLink
+          :to="artworkLightboxLink"
+          class="group flex items-center justify-center"
+        >
+          <!-- BUG CloudImage not refreshing image -->
+          <!-- <CloudImage> -->
+          <!-- <Carousel /> -->
+          <nuxt-img
+            :src="currentArtwork.imageUrl"
+            class="group:hover aside__image hover:box-border hover:border-2 hover:border-brand-blue-2"
+            @click=""
+            alt=""
+            provider="cloudinary"
+          />
+        </NuxtLink>
+        <slot name="aside-details" />
+      </figure>
     </div>
   </div>
 </template>
@@ -22,7 +46,7 @@ const props = defineProps({
     required: true,
   },
   slides: {
-    type: Array as PropType<IArtwork[]>,
+    type: Array,
     required: true,
   },
   open: {
@@ -129,6 +153,14 @@ const artworkLightboxLink = computed(
     max-height: 62vh;
     width: auto;
     object-fit: contain;
+  }
+
+  &__details-container {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0;
+    padding: 0.25rem 1rem;
+    gap: 2rem;
   }
 }
 </style>
