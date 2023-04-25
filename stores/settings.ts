@@ -13,6 +13,7 @@ export interface SettingsState {
   showSidebar: boolean;
   showAside: boolean;
   galleryMode: string;
+  resPerPage: number;
   // cardSize: number;
 }
 
@@ -25,6 +26,7 @@ export const useSettingsStore = defineStore('settings', () => {
     showSidebar: true,
     showAside: false,
     galleryMode: '',
+    resPerPage: 24,
     // cardSize: 0,
   });
 

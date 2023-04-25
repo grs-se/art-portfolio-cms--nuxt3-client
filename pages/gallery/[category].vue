@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { before } from 'node:test';
 import { useRoute } from 'vue-router';
 import { useArtworksStore } from '~/stores/artwork';
 import { useSettingsStore } from '~/stores/settings';
@@ -7,6 +8,7 @@ const artworksStore = useArtworksStore();
 const settingsStore = useSettingsStore();
 
 const { toTitleCase } = useUtilities();
+const router = useRouter();
 const route = useRoute();
 useHead({
   title: toTitleCase(route.params.category),
@@ -18,10 +20,14 @@ onMounted(() => {
 
 const filteredArtworks = computed(() => artworksStore.FILTERED_ARTWORKS);
 
+const resPerPage = settingsStore.state.resPerPage;
+
 const currentPage = computed(() =>
   Number.parseInt((route.query.page as string) || '1')
 );
-const maxPage = computed(() => Math.ceil(filteredArtworks.value.length / 24));
+const maxPage = computed(() =>
+  Math.ceil(filteredArtworks.value.length / resPerPage)
+);
 
 const { previousPage, nextPage } = usePreviousAndNextPages(
   currentPage,
@@ -30,22 +36,82 @@ const { previousPage, nextPage } = usePreviousAndNextPages(
 
 const displayedArtworks = computed(() => {
   const pageNumber = currentPage.value;
-  const firstArtworkIndex = (pageNumber - 1) * 24;
-  const lastArtworkIndex = pageNumber * 24;
+  const firstArtworkIndex = (pageNumber - 1) * resPerPage;
+  const lastArtworkIndex = pageNumber * resPerPage;
   return filteredArtworks.value.slice(firstArtworkIndex, lastArtworkIndex);
 });
 
+const artworksIndex = () => {
+  let i;
+  for (i = 0; i < displayedArtworks.value.length; i++) {
+    console.log(displayedArtworks.value[i]);
+    return displayedArtworks.value[i];
+  }
+};
+onMounted(artworksIndex);
+console.log('artworksIndex', artworksIndex, displayedArtworks.value.length);
+
+const currentSlideIndex = ref(0);
+
 const showAside = ref(settingsStore.state.showAside);
-const asideArtwork = ref<IArtwork>(displayedArtworks.value[0]);
+const selectedArtwork = ref<IArtwork>(
+  displayedArtworks.value[currentSlideIndex.value]
+);
 const cardHover = ref(false);
 
 defineEmits(['card-clicked']);
 
 const openAside = (artwork: IArtwork) => {
-  asideArtwork.value = artwork;
+  selectedArtwork.value = artwork;
   settingsStore.state.showAside = true;
   cardHover.value = false;
 };
+
+const next = () => {
+  console.log(currentSlideIndex.value);
+  if (
+    currentSlideIndex.value === resPerPage - 1 &&
+    currentPage.value === maxPage.value
+  ) {
+    currentSlideIndex.value = resPerPage - 1;
+    return;
+  }
+  // if (
+  //   currentSlideIndex.value != resPerPage - 1 &&
+  //   currentPage.value != maxPage.value
+  // ) {
+  currentSlideIndex.value++;
+  selectedArtwork.value = displayedArtworks.value[currentSlideIndex.value];
+  if (currentSlideIndex.value === resPerPage - 1 && nextPage.value) {
+    router.replace(`${route.params.category}?page=${nextPage.value}`);
+    currentSlideIndex.value = 0;
+  }
+};
+// };
+
+const prev = () => {
+  if (currentSlideIndex.value === 0 && currentPage.value === 1) return;
+  if (currentSlideIndex.value === 0 && currentPage.value >= 1) {
+    currentSlideIndex.value--;
+    selectedArtwork.value = displayedArtworks.value[currentSlideIndex.value];
+    router.replace(`${route.params.category}?page=${previousPage.value}`);
+    currentSlideIndex.value = resPerPage - 1;
+  }
+};
+
+const handleKeyDown = (e: KeyboardEvent) => {
+  switch (e.key) {
+    case 'ArrowLeft':
+      prev();
+      break;
+    case 'ArrowRight':
+      next();
+      break;
+  }
+};
+
+onBeforeMount(() => window.addEventListener('keydown', handleKeyDown));
+onBeforeUnmount(() => window.removeEventListener('keydown', handleKeyDown));
 
 const showHoverModal = (artwork: IArtwork) => {
   if (showAside) {
@@ -63,9 +129,9 @@ const showHoverModal = (artwork: IArtwork) => {
       <ArtworkFiltersSidebar isOpen />
       <Aside
         v-show="settingsStore.state.showAside === true"
-        :currentArtwork="asideArtwork"
+        :currentArtwork="selectedArtwork"
         :slides="displayedArtworks"
-        :class="[asideArtwork ? 'w-1/3' : 'w-0']"
+        :class="[settingsStore.state.showAside === true ? 'w-1/3' : 'w-0']"
       />
       <main
         class="gallery-cards-wrapper"
