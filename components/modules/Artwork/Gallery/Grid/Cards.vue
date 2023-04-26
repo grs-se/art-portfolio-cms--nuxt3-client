@@ -36,23 +36,11 @@ const props = defineProps({
 });
 
 defineEmits(['mouseenter', 'mouseout', 'open-aside', 'switch']);
-// var tooltip = document.getElementById("tooltip-span");
-
-// const displayModalMousePosition = () => {
-// 	window.onmousemove = function (e) {
-// 		var x = e.clientX,
-// 			y = e.clientY;
-// 		tooltip.style.top = y + 20 + "px";
-// 		tooltip.style.left = x + 20 + "px";
-// 	};
-// };
-
-const artworkPageLink = computed(() => `/artworks/results/${props.file.id}`);
 </script>
 
 <style scoped lang="scss">
 figure {
-  @apply flex flex-col rounded border border-solid border-brand-gray-2 bg-white p-1 hover:shadow-gray max-w-fit m-auto justify-center;
+  @apply flex flex-col rounded border border-solid border-brand-gray-2 bg-white p-1 hover:shadow-gray max-w-fit m-auto justify-center hover:cursor-pointer;
 }
 
 figcaption {

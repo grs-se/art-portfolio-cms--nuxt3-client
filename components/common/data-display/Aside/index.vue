@@ -6,8 +6,8 @@
     <div class="aside shadow-gray">
       <AsideControlBar @next="next" @prev="prev" @close-aside="closeAside" />
       <!-- Aside Slide -->
-      <AsideSlide :current-slide="currentArtwork" />
-      <AsideDetails :artwork="currentArtwork" />
+      <AsideSlide :current-slide="currentItem" />
+      <AsideDetails :artwork="currentItem" />
       <Bookmark color="white" class="justify-end" />
     </div>
   </div>
@@ -22,7 +22,7 @@ import { type PropType } from 'vue';
 import type { IArtwork } from '~/types';
 
 const props = defineProps({
-  currentArtwork: {
+  currentItem: {
     type: Object as PropType<IArtwork>,
     required: true,
   },
@@ -73,33 +73,6 @@ const switchSlide = (index: number) => {
     prev(step);
   }
 };
-
-// If Gallery Category switched show 1st element of array, don't close the aside
-
-// const date = (d) => {
-//   const date = new Date(d);
-
-//   const options = { year: 'numeric' };
-
-//   date.toLocaleString('en-US', options);
-
-//   return date;
-// };
-
-const artworkLightboxLink = computed(
-  () => `/artworks/${props.currentArtwork.slug}`
-);
-// const currentArtworkSlug = computed(() => route.params.slug);
-// var tooltip = document.getElementById("tooltip-span");
-
-// const displayModalMousePosition = () => {
-// 	window.onmousemove = function (e) {
-// 		var x = e.clientX,
-// 			y = e.clientY;
-// 		tooltip.style.top = y + 20 + "px";
-// 		tooltip.style.left = x + 20 + "px";
-// 	};
-// };
 </script>
 
 <style scoped lang="scss">
@@ -109,31 +82,15 @@ const artworkLightboxLink = computed(
   @apply border-r border-brand-gray-1;
   background-color: white;
   padding-bottom: 8rem;
-}
-.aside {
-  height: max-content;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
-
-  &__figure {
-    // margin: 0.5rem;
-    margin: 0 1.5rem 1.5rem 1.5rem;
+  .aside {
+    height: max-content;
+    z-index: 10;
     display: flex;
     flex-direction: column;
-    &:hover {
-      box-shadow: grey;
-    }
-  }
 
-  &__image {
-    max-height: 62vh;
-    width: auto;
-    object-fit: contain;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 </style>

@@ -92,10 +92,11 @@ const openAside = (artwork: IArtwork) => {
   cardHover.value = false;
 };
 
-const artworkIndex = ref(0);
+const artworkIndex = ref();
 
 onMounted(() => {
   console.log('ref:artworkIndex', artworkIndex.value);
+  return artworkIndex.value;
 });
 
 const next = () => {
@@ -159,11 +160,10 @@ const showHoverModal = (artwork: IArtwork) => {
     <ArtworkFiltersSidebar isOpen />
     <Aside
       v-show="settingsStore.state.showAside === true"
-      :currentArtwork="selectedArtwork"
+      :currentItem="selectedArtwork"
       :slides="displayedArtworks"
     />
 
-    <!-- <ModalHover v-if="cardHover" :currentArtwork="currentCard" /> -->
     <ArtworkGalleryLayout>
       <ArtworkGalleryGridCards
         v-for="(item, index) in displayedArtworks"
@@ -175,6 +175,7 @@ const showHoverModal = (artwork: IArtwork) => {
         ref="artworkIndex"
       >
       </ArtworkGalleryGridCards>
+      <ModalHover v-if="cardHover" :data="currentCard" />
 
       <template #pagination>
         <Pagination

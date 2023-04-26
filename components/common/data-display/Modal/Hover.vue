@@ -9,10 +9,10 @@
         class="items-center justify-center sm:max-h-80 xl:max-h-80"
       /> -->
       <figcaption class="flex flex-col text-white">
-        <h3>{{ currentArtwork.title }}</h3>
+        <h3>{{ data.title }}</h3>
         <div class="flex flex-col text-base">
-          <span>{{ currentArtwork.medium }}</span>
-          <span>{{ currentArtwork.date.toLocaleString() }}</span>
+          <span>{{ data.medium }}</span>
+          <span>{{ data.date.toLocaleString() }}</span>
         </div>
       </figcaption>
     </figure>
@@ -20,13 +20,9 @@
 </template>
 
 <script lang="ts" setup>
-import { type PropType } from 'vue';
-
-import type { IArtwork } from '~/types/models/IArtwork';
-
 defineProps({
-  currentArtwork: {
-    type: Object as PropType<IArtwork>,
+  data: {
+    type: Object,
     required: true,
   },
 });
