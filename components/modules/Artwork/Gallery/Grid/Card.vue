@@ -2,7 +2,7 @@
   <figure
     @mouseenter="$emit('mouseenter')"
     @mouseout="$emit('mouseout')"
-    @click="$emit('open-aside'), $emit('switch', index)"
+    @click="$emit('open-aside', 'switch', 'card-clicked', index)"
     :class="{ active: active === index }"
   >
     <CloudImage
@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-const hover = ref<boolean>(false);
+const cardHover = ref(false);
 
 const props = defineProps({
   data: {
@@ -35,7 +35,16 @@ const props = defineProps({
   },
 });
 
-defineEmits(['mouseenter', 'mouseout', 'open-aside', 'switch']);
+defineEmits(['mouseenter', 'mouseout', 'open-aside', 'switch', 'card-clicked']);
+
+// function showHoverModal(artwork: IArtwork) {
+//   if (showAside) {
+//     return;
+//   } else {
+//     // clickedCard.value = artwork;
+//     cardHover.value = !cardHover.value;
+//   }
+// }
 </script>
 
 <style scoped lang="scss">
