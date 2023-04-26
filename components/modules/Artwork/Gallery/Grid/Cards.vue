@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="mx-auto w-auto flex items-center justify-center"> -->
   <figure
     @mouseenter="$emit('mouseenter')"
     @mouseout="$emit('mouseout')"
@@ -7,28 +6,29 @@
     :class="{ active: active === index }"
   >
     <CloudImage
-      :src="file.imageUrl"
+      :src="data.imageUrl"
       class="w-auto items-center justify-center md:max-h-64 xl:max-h-80"
-      :alt="file.title"
+      :alt="data.title"
     />
     <figcaption class="line-clamp-1">
-      {{ file.title }}
+      <p>{{ index }}</p>
+      <h3>{{ data.title }}</h3>
     </figcaption>
   </figure>
-  <!-- </div> -->
+  <!-- <ModalHover v-if="cardHover" :data="data" /> -->
 </template>
 
 <script lang="ts" setup>
 const hover = ref<boolean>(false);
 
 const props = defineProps({
-  file: {
+  data: {
     type: Object,
     required: true,
   },
   active: {
-    type: Boolean,
-    default: false,
+    type: Number,
+    default: 0,
   },
   index: {
     type: Number,

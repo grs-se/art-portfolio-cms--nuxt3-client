@@ -1,46 +1,46 @@
 <template>
-  <!-- <div class="mx-auto w-auto flex items-center justify-center"> -->
-  <figure @mouseenter="$emit('mouseenter')" @mouseout="$emit('mouseout')">
+  <figure
+    @mouseenter="$emit('mouseenter')"
+    @mouseout="$emit('mouseout')"
+    @click="$emit('open-aside'), $emit('switch', index)"
+    :class="{ active: active === index }"
+  >
     <CloudImage
-      :src="file.imageUrl"
+      :src="data.imageUrl"
       class="w-auto items-center justify-center md:max-h-64 xl:max-h-80"
-      :alt="file.title"
+      :alt="data.title"
     />
     <figcaption class="line-clamp-1">
-      {{ file.title }}
+      <p>{{ index }}</p>
+      <h3>{{ data.title }}</h3>
     </figcaption>
   </figure>
-  <!-- </div> -->
+  <!-- <ModalHover v-if="cardHover" :data="data" /> -->
 </template>
 
 <script lang="ts" setup>
 const hover = ref<boolean>(false);
 
 const props = defineProps({
-  file: {
+  data: {
     type: Object,
     required: true,
   },
+  active: {
+    type: Number,
+    default: 0,
+  },
+  index: {
+    type: Number,
+  },
 });
 
-defineEmits(['mouseenter', 'mouseout']);
-// var tooltip = document.getElementById("tooltip-span");
-
-// const displayModalMousePosition = () => {
-// 	window.onmousemove = function (e) {
-// 		var x = e.clientX,
-// 			y = e.clientY;
-// 		tooltip.style.top = y + 20 + "px";
-// 		tooltip.style.left = x + 20 + "px";
-// 	};
-// };
-
-const artworkPageLink = computed(() => `/artworks/results/${props.artwork.id}`);
+defineEmits(['mouseenter', 'mouseout', 'open-aside', 'switch']);
 </script>
 
 <style scoped lang="scss">
 figure {
-  @apply flex flex-col rounded border border-solid border-brand-gray-2 bg-white p-1 hover:shadow-gray max-w-fit m-auto justify-center;
+  @apply flex flex-col rounded border border-solid border-brand-gray-2 bg-white p-1 hover:shadow-gray max-w-fit m-auto justify-center hover:cursor-pointer;
 }
 
 figcaption {
@@ -57,5 +57,9 @@ figcaption {
     // white-space: pre-wrap;
     // max-width: 90%;
   }
+}
+
+.active-card {
+  border: 1px solid black;
 }
 </style>

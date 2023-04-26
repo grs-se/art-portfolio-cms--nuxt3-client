@@ -22,7 +22,7 @@
     <!-- <div class="u-spacing h-10"></div> -->
     <span class="px-6 pb-4 text-sm">
       Tag:
-      <NuxtLink to="/gallery" class="tag-link">{{
+      <NuxtLink to="/" class="tag-link">{{
         slide.categories[0]
       }}</NuxtLink></span
     >

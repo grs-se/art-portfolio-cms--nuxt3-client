@@ -30,6 +30,7 @@ const maxPage = computed(() =>
 const excess = computed(() =>
   Math.ceil(filteredArtworks.value.length % resPerPage)
 );
+
 console.log('excess', excess.value);
 
 const { previousPage, nextPage } = usePreviousAndNextPages(
@@ -43,6 +44,37 @@ const displayedArtworks = computed(() => {
   const lastArtworkIndex = pageNumber * resPerPage;
   return filteredArtworks.value.slice(firstArtworkIndex, lastArtworkIndex);
 });
+
+// const artworkIndex = () => {
+//   console.log('displayedArtworks', displayedArtworks.value.length);
+// };
+
+// const artworksIndex = () => {
+//   let i;
+//   for (i = 0; i < displayedArtworks.value.length; i++) {
+//     console.log(displayedArtworks.value[i]);
+//     return displayedArtworks.value[i];
+//   }
+// };
+
+// for (let [index, value] of displayedArtworks.value.entries()) {
+//   console.log(index, value);
+// }
+
+/*
+// const artworksIndex = () => {
+//   for (let [index, value] of displayedArtworks.value.entries()) {
+//     console.log(index, value);
+//     return [index, value];
+//   }
+// };
+// artworksIndex();
+*/
+
+// const { index, value } = artworksIndex();
+
+// onMounted(artworksIndex);
+// console.log('artworksIndex', artworksIndex, displayedArtworks.value.length);
 
 const currentSlideIndex = ref(0);
 
@@ -73,7 +105,7 @@ onMounted(() => {
 });
 
 const next = () => {
-  console.log('currentSlideIndex.value', currentSlideIndex.value);
+  console.log(currentSlideIndex.value);
   if (
     currentSlideIndex.value === resPerPage - 1 &&
     currentPage.value === maxPage.value
@@ -132,7 +164,7 @@ const showHoverModal = (artwork: IArtwork) => {
   <NuxtLayout name="gallery">
     <ArtworkFiltersSidebar isOpen />
     <Aside
-      v-show="settingsStore.state.showAside === true"
+      v-show="displayedArtworks && settingsStore.state.showAside === true"
       :currentItem="selectedArtwork"
       :slides="displayedArtworks"
     />

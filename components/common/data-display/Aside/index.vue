@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="currentItem"
     class="aside-container"
     :class="[settingsStore.state.showAside === true ? 'w-1/3' : 'w-0']"
   >

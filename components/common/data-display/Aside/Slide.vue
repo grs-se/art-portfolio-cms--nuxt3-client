@@ -1,6 +1,6 @@
 <template>
   <figure class="aside-figure">
-    <nuxt-link :to="lightboxLink">
+    <nuxt-link>
       <nuxt-img
         :src="currentSlide.imageUrl"
         class="aside-image"
@@ -18,7 +18,7 @@ const props = defineProps({
   currentSlide: Object,
 });
 
-const lightboxLink = computed(() => `${route.name}/${props.currentSlide.id}`);
+// const lightboxLink = computed(() => `gallery/item/${props.currentSlide.id}`);
 </script>
 
 <style scoped lang="scss">
