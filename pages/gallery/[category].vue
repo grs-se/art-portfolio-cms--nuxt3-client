@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { before } from 'node:test';
-import { useRoute } from 'vue-router';
 import { useArtworksStore } from '~/stores/artwork';
 import { useSettingsStore } from '~/stores/settings';
 import { IArtwork } from '~~/types';
@@ -29,6 +27,12 @@ const maxPage = computed(() =>
   Math.ceil(filteredArtworks.value.length / resPerPage)
 );
 
+const excess = computed(() =>
+  Math.ceil(filteredArtworks.value.length % resPerPage)
+);
+
+console.log('excess', excess.value);
+
 const { previousPage, nextPage } = usePreviousAndNextPages(
   currentPage,
   maxPage
@@ -41,15 +45,36 @@ const displayedArtworks = computed(() => {
   return filteredArtworks.value.slice(firstArtworkIndex, lastArtworkIndex);
 });
 
-const artworksIndex = () => {
-  let i;
-  for (i = 0; i < displayedArtworks.value.length; i++) {
-    console.log(displayedArtworks.value[i]);
-    return displayedArtworks.value[i];
-  }
-};
-onMounted(artworksIndex);
-console.log('artworksIndex', artworksIndex, displayedArtworks.value.length);
+// const artworkIndex = () => {
+//   console.log('displayedArtworks', displayedArtworks.value.length);
+// };
+
+// const artworksIndex = () => {
+//   let i;
+//   for (i = 0; i < displayedArtworks.value.length; i++) {
+//     console.log(displayedArtworks.value[i]);
+//     return displayedArtworks.value[i];
+//   }
+// };
+
+// for (let [index, value] of displayedArtworks.value.entries()) {
+//   console.log(index, value);
+// }
+
+/*
+// const artworksIndex = () => {
+//   for (let [index, value] of displayedArtworks.value.entries()) {
+//     console.log(index, value);
+//     return [index, value];
+//   }
+// };
+// artworksIndex();
+*/
+
+// const { index, value } = artworksIndex();
+
+// onMounted(artworksIndex);
+// console.log('artworksIndex', artworksIndex, displayedArtworks.value.length);
 
 const currentSlideIndex = ref(0);
 
@@ -66,6 +91,12 @@ const openAside = (artwork: IArtwork) => {
   settingsStore.state.showAside = true;
   cardHover.value = false;
 };
+
+const artworkIndex = ref(0);
+
+onMounted(() => {
+  console.log('ref:artworkIndex', artworkIndex.value);
+});
 
 const next = () => {
   console.log(currentSlideIndex.value);
@@ -124,81 +155,34 @@ const showHoverModal = (artwork: IArtwork) => {
 </script>
 
 <template>
-  <NuxtLayout name="gallery" class="gallery-layout">
-    <section class="flex flex-row">
-      <ArtworkFiltersSidebar isOpen />
-      <Aside
-        v-show="settingsStore.state.showAside === true"
-        :currentArtwork="selectedArtwork"
-        :slides="displayedArtworks"
-        :class="[settingsStore.state.showAside === true ? 'w-1/3' : 'w-0']"
-      />
-      <main
-        class="gallery-cards-wrapper"
-        :class="[
-          settingsStore.state.showAside === false
-            ? 'mx-auto w-full'
-            : 'absolute left-0 w-2/3',
-        ]"
+  <NuxtLayout name="gallery">
+    <ArtworkFiltersSidebar isOpen />
+    <Aside
+      v-show="settingsStore.state.showAside === true"
+      :currentArtwork="selectedArtwork"
+      :slides="displayedArtworks"
+    />
+
+    <!-- <ModalHover v-if="cardHover" :currentArtwork="currentCard" /> -->
+    <ArtworkGalleryLayout>
+      <ArtworkGalleryGridCards
+        v-for="(item, index) in displayedArtworks"
+        :key="index"
+        :file="item"
+        :index="index"
+        @open-aside="openAside(item)"
+        @switch="switch"
+        ref="artworkIndex"
       >
-        <!-- <ModalHover v-if="cardHover" :currentArtwork="currentCard" /> -->
-        <ArtworkGalleryGridCards>
-          <Card
-            v-for="artwork in displayedArtworks"
-            :key="artwork._id"
-            :file="artwork"
-            @mouseenter="showHoverModal(artwork)"
-            @click="openAside(artwork)"
-          >
-          </Card>
-        </ArtworkGalleryGridCards>
+      </ArtworkGalleryGridCards>
 
-        <div class="mx-auto mt-8">
-          <div class="flex flex-row flex-nowrap">
-            <p class="flex-grow text-sm">Page {{ currentPage }}</p>
-
-            <div class="flex items-center justify-center">
-              <NuxtLink
-                v-if="previousPage"
-                role="link"
-                :to="{
-                  name: `${String(route.name)}`,
-                  query: { page: previousPage },
-                }"
-                class="mx-3 text-sm font-semibold text-brand-blue-1"
-                >Previous</NuxtLink
-              >
-
-              <NuxtLink
-                v-if="nextPage"
-                role="link"
-                :to="{
-                  name: `${String(route.name)}`,
-                  query: { page: nextPage },
-                }"
-                class="mx-3 text-sm font-semibold text-brand-blue-1"
-                >Next</NuxtLink
-              >
-            </div>
-          </div>
-        </div>
-      </main>
-    </section>
+      <template #pagination>
+        <Pagination
+          :current-page="currentPage"
+          :previous-page="previousPage"
+          :next-page="nextPage"
+        />
+      </template>
+    </ArtworkGalleryLayout>
   </NuxtLayout>
 </template>
-<style scoped>
-/* .gallery-layout {
-  width: 150vw;
-} */
-/* .gallery-wrapper {
-  relative flex w-full flex-nowrap xs:flex-col md:flex-row
-} */
-.gallery-cards-wrapper {
-  position: relative;
-  /* margin: 0 auto; */
-  background: white;
-  padding: 1.5rem 1.5rem 2rem 1.5rem;
-  overflow-y: scroll;
-  height: 100vh;
-}
-</style>

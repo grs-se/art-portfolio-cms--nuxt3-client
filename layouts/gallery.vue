@@ -1,6 +1,8 @@
 <template>
   <div>
     <SubNav />
-    <slot />
+    <section class="flex flex-row">
+      <slot />
+    </section>
   </div>
 </template>

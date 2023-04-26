@@ -1,5 +1,8 @@
 <template>
-  <div class="aside-container">
+  <div
+    class="aside-container"
+    :class="[settingsStore.state.showAside === true ? 'w-1/3' : 'w-0']"
+  >
     <div class="aside shadow-gray">
       <AsideControlBar @next="next" @prev="prev" @close-aside="closeAside" />
       <!-- Aside Slide -->
@@ -11,6 +14,8 @@
 </template>
 
 <script lang="ts" setup>
+import { useSettingsStore } from '~~/stores/settings';
+const settingsStore = useSettingsStore();
 import { type PropType } from 'vue';
 // const route = useRoute();
 
