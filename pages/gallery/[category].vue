@@ -39,7 +39,7 @@ const artworksStore = useArtworksStore();
 const router = useRouter();
 const route = useRoute();
 onMounted(() => {
-  artworksStore.FETCH_ARTWORKS('/' + route.params.category);
+  artworksStore.FETCH_ARTWORKS(route.params.category.toString());
 });
 const currentSlideIndex = ref(0);
 const filteredArtworks = computed(() => artworksStore.FILTERED_ARTWORKS);
@@ -47,8 +47,6 @@ const resPerPage = settingsStore.state.resPerPage;
 const elements = ref([]);
 onBeforeMount(() => window.addEventListener('keydown', handleKeyDown));
 onBeforeUnmount(() => window.removeEventListener('keydown', handleKeyDown));
-
-// Previous and Next Pages
 const currentPage = computed(() =>
   Number.parseInt((route.query.page as string) || '1')
 );
@@ -65,18 +63,14 @@ const displayedArtworks = computed(() => {
   const lastArtworkIndex = pageNumber * resPerPage;
   return filteredArtworks.value.slice(firstArtworkIndex, lastArtworkIndex);
 });
-
 const showAside = ref(settingsStore.state.showAside);
-
 const selectedArtwork = ref<IArtwork>(
   displayedArtworks.value[currentSlideIndex.value]
 );
-
 function openAside(artwork: IArtwork) {
   selectedArtwork.value = artwork;
   settingsStore.state.showAside = true;
 }
-
 function next() {
   console.log('currentSlideIndex.value', currentSlideIndex.value);
   if (
@@ -93,7 +87,6 @@ function next() {
     currentSlideIndex.value = 0;
   }
 }
-
 function prev() {
   if (currentSlideIndex.value === 0 && currentPage.value === 1) return;
   if (currentSlideIndex.value === 0 && currentPage.value >= 1) {
@@ -103,7 +96,6 @@ function prev() {
     currentSlideIndex.value = resPerPage - 1;
   }
 }
-
 function handleKeyDown(e: KeyboardEvent) {
   switch (e.key) {
     case 'ArrowLeft':
