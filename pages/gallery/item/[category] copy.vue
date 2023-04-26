@@ -36,6 +36,7 @@ import { useSettingsStore } from '~/stores/settings';
 import { IArtwork } from '~~/types';
 const settingsStore = useSettingsStore();
 const artworksStore = useArtworksStore();
+const router = useRouter();
 const route = useRoute();
 onMounted(() => {
   artworksStore.FETCH_ARTWORKS(route.params.category.toString());
@@ -71,44 +72,34 @@ function openAside(artwork: IArtwork) {
   selectedArtwork.value = artwork;
 }
 function next(step = 1) {
-  const index =
-    currentSlide.value < displayedArtworks.value.length - 1
-      ? currentSlide.value + step
-      : 0;
-  setCurrentSlide(index);
-  // if (
-  //   currentSlide.value === resPerPage - 1 &&
-  //   currentPage.value === maxPage.value
-  // ) {
-  //   currentSlide.value = resPerPage - 1;
-  //   return;
-  // }
-  // currentSlide.value++;
-  // selectedArtwork.value = displayedArtworks.value[currentSlide.value];
-  // if (currentSlide.value === resPerPage - 1 && nextPage.value) {
-  //   router.replace({
-  //     query: { page: nextPage.value },
-  //   });
-  //   currentSlide.value = 0;
-  // }
+  if (
+    currentSlide.value === resPerPage - 1 &&
+    currentPage.value === maxPage.value
+  ) {
+    currentSlide.value = resPerPage - 1;
+    return;
+  }
+  currentSlide.value++;
+  selectedArtwork.value = displayedArtworks.value[currentSlide.value];
+  if (currentSlide.value === resPerPage - 1 && nextPage.value) {
+    router.replace({
+      query: { page: nextPage.value },
+    });
+    currentSlide.value = 0;
+  }
 }
 function prev(step = -1) {
-  const index =
-    currentSlide.value > 0
-      ? currentSlide.value + step
-      : displayedArtworks.value.length - 1;
-  setCurrentSlide(index);
-  // if (currentSlide.value === 0 && currentPage.value === 1) return;
-  // if (currentSlide.value === 0 && currentPage.value > 1) {
-  //   // currentSlide.value--;
-  //   // selectedArtwork.value = displayedArtworks.value[currentSlide.value];
-  //   // router.replace({
-  //   //   query: { page: previousPage.value },
-  //   // });
-  //   // currentSlide.value = resPerPage - 1;
-  // }
+  if (currentSlide.value === 0 && currentPage.value === 1) return;
+  if (currentSlide.value === 0 && currentPage.value > 1) {
+    currentSlide.value--;
+    selectedArtwork.value = displayedArtworks.value[currentSlide.value];
+    router.replace({
+      query: { page: previousPage.value },
+    });
+    currentSlide.value = resPerPage - 1;
+  }
 }
-function setCurrentSlide(index: number) {
+function setCurrentSlide(index) {
   currentSlide.value = index;
 }
 function switchSlide(index: number) {
