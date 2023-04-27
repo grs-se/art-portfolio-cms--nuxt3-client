@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useSettingsStore } from '~~/stores/settings';
+import { useSettingsStore } from '~~/store/modules/settings';
 const settingsStore = useSettingsStore();
 import { type PropType } from 'vue';
 // const route = useRoute();
@@ -44,7 +44,9 @@ const setCurrentSlide = (index: number) => {
   currentSlide.value = index;
 };
 
-const closeAside = () => {};
+const closeAside = () => {
+  settingsStore.state.showAside === false;
+};
 
 const direction = ref('right');
 

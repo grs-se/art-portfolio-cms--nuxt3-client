@@ -7,7 +7,7 @@ import { ForgotPassword, LoginButton, RememberMe, SignUp } from '.'
 
 import * as Yup from 'yup'
 
-import { useAuthStore } from '~/stores/auth'
+import { useAuthStore } from '~/store/modules/auth'
 
 const schema = Yup.object().shape({
   // email: Yup.string().required("Email is required"),

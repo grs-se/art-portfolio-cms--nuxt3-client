@@ -1,6 +1,5 @@
 <template>
   <NuxtLayout name="gallery">
-    <!-- <button @click="changeGalleryMode">Change Gallery Mode</button> -->
     <ArtworkFiltersSidebar isOpen />
     <Aside
       v-show="settingsStore.state.showAside === true"
@@ -11,23 +10,13 @@
     <ArtworkGalleryLayout>
       <template v-for="(item, i) in displayedArtworks" :key="item._id">
         <ArtworkGalleryGridCard
-          v-if="appConfigStore.galleryMode === GalleryMode.GRID"
           :data="item"
           :index="i"
           @open-aside="openAside(item)"
-          @click="switchSlide(item, i)"
+          @switch="switchSlide"
           :ref="(el) => (elements[i] = el)"
         >
         </ArtworkGalleryGridCard>
-        <ArtworkGalleryMasonry
-          v-if="appConfigStore.galleryMode === GalleryMode.MASONRY"
-          :data="item"
-          :index="i"
-          @open-aside="openAside(item)"
-          @click="switchSlide(item, i)"
-          :ref="(el) => (elements[i] = el)"
-        >
-        </ArtworkGalleryMasonry>
       </template>
 
       <template #pagination>
@@ -42,16 +31,9 @@
 </template>
 
 <script lang="ts" setup>
-import useAppConfigStore from '~~/store/modules/app-config';
-import { useSettingsStore } from '~~/store/modules/settings';
 import { useArtworksStore } from '~~/store/modules/artwork';
-// const galleryMode = computed(() => {
-//   return appConfig.galleryMode;
-// });
+import { useSettingsStore } from '~/store/modules/settings';
 import { IArtwork } from '~~/types';
-import { GalleryMode } from '@/store/types';
-
-const appConfigStore = useAppConfigStore();
 const settingsStore = useSettingsStore();
 const artworksStore = useArtworksStore();
 const router = useRouter();
@@ -64,15 +46,6 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeyDown));
 const filteredArtworks = computed(() => artworksStore.FILTERED_ARTWORKS);
 const resPerPage = settingsStore.state.resPerPage;
 const elements = ref([]);
-
-const galleryMode = computed(() => {
-  return appConfigStore.galleryMode;
-});
-
-const changeGalleryMode = computed(() => {
-  appConfigStore.galleryMode = GalleryMode.MASONRY;
-});
-
 const currentSlide = ref(0);
 const currentPage = computed(() =>
   Number.parseInt((route.query.page as string) || '1')
@@ -90,25 +63,15 @@ const displayedArtworks = computed(() => {
   const lastArtworkIndex = pageNumber * resPerPage;
   return filteredArtworks.value.slice(firstArtworkIndex, lastArtworkIndex);
 });
-const showAside = ref(settingsStore.state.showAside);
 
 const selectedArtwork = ref<IArtwork>(
   displayedArtworks.value[currentSlide.value]
 );
-
-function switchSlide(item: IArtwork, index: number) {
-  currentSlide.value = index;
-  console.log(index);
-}
-onMounted(() => {});
-
 function openAside(artwork: IArtwork) {
+  settingsStore.state.showAside === true;
   selectedArtwork.value = artwork;
-  settingsStore.state.showAside = true;
 }
-
-function next() {
-  console.log('currentSlide.value', currentSlide.value);
+function next(step = 1) {
   if (
     currentSlide.value === resPerPage - 1 &&
     currentPage.value === maxPage.value
@@ -119,21 +82,34 @@ function next() {
   currentSlide.value++;
   selectedArtwork.value = displayedArtworks.value[currentSlide.value];
   if (currentSlide.value === resPerPage - 1 && nextPage.value) {
-    router.replace(`${route.params.category}?page=${nextPage.value}`);
+    router.replace({
+      query: { page: nextPage.value },
+    });
     currentSlide.value = 0;
   }
 }
-
-function prev() {
+function prev(step = -1) {
   if (currentSlide.value === 0 && currentPage.value === 1) return;
-  if (currentSlide.value === 0 && currentPage.value >= 1) {
+  if (currentSlide.value === 0 && currentPage.value > 1) {
     currentSlide.value--;
     selectedArtwork.value = displayedArtworks.value[currentSlide.value];
-    router.replace(`${route.params.category}?page=${previousPage.value}`);
+    router.replace({
+      query: { page: previousPage.value },
+    });
     currentSlide.value = resPerPage - 1;
   }
 }
-
+function setCurrentSlide(index) {
+  currentSlide.value = index;
+}
+function switchSlide(index: number) {
+  const step = index - currentSlide.value;
+  if (step > 0) {
+    next(step);
+  } else {
+    prev(step);
+  }
+}
 function handleKeyDown(e: KeyboardEvent) {
   switch (e.key) {
     case 'ArrowLeft':

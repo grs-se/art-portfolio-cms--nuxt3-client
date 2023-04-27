@@ -41,7 +41,7 @@
 import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
-import { useTextsStore } from '~/stores/text';
+import { useTextsStore } from '~/store/modules/text';
 
 import usePreviousAndNextPages from '~/composables/usePreviousAndNextPages';
 

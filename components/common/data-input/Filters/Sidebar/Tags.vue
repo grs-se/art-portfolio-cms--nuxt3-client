@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useFiltersStore } from '~/stores/filters';
+import { useFiltersStore } from '~/store/modules/filters';
 
 defineProps({
   tagsPlaceholder: {

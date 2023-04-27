@@ -31,8 +31,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useArtworksStore } from '~/stores/artwork';
-import { useSettingsStore } from '~/stores/settings';
+import { useArtworksStore } from '~~/store/modules/artwork';
+import { useSettingsStore } from '~/store/modules/settings';
 import { IArtwork } from '~~/types';
 const settingsStore = useSettingsStore();
 const artworksStore = useArtworksStore();
@@ -68,7 +68,7 @@ const selectedArtwork = ref<IArtwork>(
   displayedArtworks.value[currentSlide.value]
 );
 function openAside(artwork: IArtwork) {
-  settingsStore.showAside();
+  settingsStore.state.showAside === true;
   selectedArtwork.value = artwork;
 }
 function next(step = 1) {

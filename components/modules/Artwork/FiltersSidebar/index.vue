@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useFiltersStore } from '~/stores/filters';
-import { useArtworksStore } from '~/stores/artwork';
-import { useSearchStore } from '~/stores/search';
+import { useFiltersStore } from '~/store/modules/filters';
+import { useArtworksStore } from '~~/store/modules/artwork';
+import { useSearchStore } from '~/store/modules/search';
 
 const artworksStore = useArtworksStore();
 const UNIQUE_ARTWORK_CATEGORIES = computed(

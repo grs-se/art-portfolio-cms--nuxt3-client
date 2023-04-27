@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { storeToRefs } from 'pinia'
-import { useAlertStore } from '~/stores/alert'
+import { storeToRefs } from 'pinia';
+import { useAlertStore } from '~~/store/modules/alert';
 
-const alertStore = useAlertStore()
-const { alert } = storeToRefs(alertStore)
+const alertStore = useAlertStore();
+const { alert } = storeToRefs(alertStore);
 </script>
 
 <template>

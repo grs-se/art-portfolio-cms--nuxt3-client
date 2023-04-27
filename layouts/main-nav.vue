@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import { storeToRefs } from 'pinia'
-import { useAuthStore } from '~/stores/auth'
+import { storeToRefs } from 'pinia';
+import { useAuthStore } from '~/store/modules/auth';
 
-const authStore = useAuthStore()
-const { user } = storeToRefs(authStore)
+const authStore = useAuthStore();
+const { user } = storeToRefs(authStore);
 
-const isLoggedIn = computed(() => user.value)
+const isLoggedIn = computed(() => user.value);
 const navHeightClass = computed(() => ({
   'h-16': !isLoggedIn.value,
   'h-32': isLoggedIn.value,
-}))
+}));
 </script>
 
 <template>

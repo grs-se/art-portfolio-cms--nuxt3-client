@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useArtworksStore } from '~/stores/artwork';
+import { useArtworksStore } from '~~/store/modules/artwork';
 
 const artworksStore = useArtworksStore();
 onMounted(artworksStore.FETCH_ARTWORKS);

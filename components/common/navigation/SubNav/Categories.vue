@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-// import { useArtworksStore } from '~~/stores/artwork';
+// import { useArtworksStore } from '~~/store/modules/artwork';
 // const artworksStore = useArtworksStore();
 
 // const UNIQUE_ARTWORK_CATEGORIES = computed(

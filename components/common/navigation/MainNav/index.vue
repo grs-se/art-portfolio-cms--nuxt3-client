@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
-import { useAuthStore } from '~/stores/auth';
+import { useAuthStore } from '~/store/modules/auth';
 
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);

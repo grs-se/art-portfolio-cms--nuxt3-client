@@ -2,7 +2,7 @@ import { useRouter, useState } from '#app';
 // import { useLocalStorage } from './useLocalStorage';
 import { ISession } from '~/types/ISession';
 import { IUser } from '~/types/models/IUser';
-import { useAlertStore } from '~/stores/alert';
+import { useAlertStore } from '~~/store/modules/alert';
 import consolaGlobalInstance from 'consola';
 
 export const useAuthCookie = () => useCookie('auth_token');

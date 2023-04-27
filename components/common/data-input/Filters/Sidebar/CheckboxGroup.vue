@@ -2,7 +2,7 @@
 import {
   useFiltersStore,
   CLEAR_USER_ARTWORK_FILTER_SELECTIONS,
-} from '~/stores/filters';
+} from '~/store/modules/filters';
 
 const props = defineProps({
   uniqueValues: {

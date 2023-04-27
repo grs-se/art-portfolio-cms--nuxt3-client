@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import useContentStore from '~~/stores/content';
+import useContentStore from '~~/store/modules/content';
 const contentStore = computed(() => useContentStore());
 export default {};
 </script>

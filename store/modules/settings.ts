@@ -24,7 +24,7 @@ export const useSettingsStore = defineStore('settings', () => {
     showSettings: true,
     showTagsView: true,
     showSidebar: true,
-    showAside: false,
+    showAside: true,
     galleryMode: '',
     resPerPage: 24,
     // cardSize: 0,

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useSearchStore } from '~/stores/search';
+import { useSearchStore } from '~/store/modules/search';
 const searchStore = useSearchStore();
 
 // const SET_DISPLAY_SEARCH_MODAL = computed(() => {

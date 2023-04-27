@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { before } from 'node:test';
 import { useRoute } from 'vue-router';
-import { useArtworksStore } from '~/stores/artwork';
-import { useSettingsStore } from '~/stores/settings';
+import { useArtworksStore } from '~~/store/modules/artwork';
+import { useSettingsStore } from '~/store/modules/settings';
 import { IArtwork } from '~~/types';
 const artworksStore = useArtworksStore();
 const settingsStore = useSettingsStore();

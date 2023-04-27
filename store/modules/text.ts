@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 import createSetFromNestedArray from '~/utils/createSetFromNestedArray';
 
-import { useFiltersStore } from '~/stores/filters';
+import { useFiltersStore } from '~/store/modules/filters';
 
 export const FETCH_TEXTS = 'FETCH_TEXTS';
 export const UNIQUE_TEXT_CATEGORIES = 'UNIQUE_TEXT_CATEGORIES';

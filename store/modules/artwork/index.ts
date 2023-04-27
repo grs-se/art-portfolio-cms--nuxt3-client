@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 import createSetFromNestedArray from '~/utils/createSetFromNestedArray';
 
-import { useFiltersStore } from '~/stores/filters';
+import { useFiltersStore } from '~/store/modules/filters';
 import { ArtworkActionTypes, ArtworkGetterTypes } from './action-getter-types';
 import type { IArtwork } from '~/types';
 

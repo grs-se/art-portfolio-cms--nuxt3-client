@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useFiltersStore } from '~/stores/filters';
-import { useTextsStore } from '~/stores/text';
+import { useFiltersStore } from '~/store/modules/filters';
+import { useTextsStore } from '~/store/modules/text';
 
 const textStore = useTextsStore();
 const UNIQUE_TEXT_CATEGORIES = computed(() => textStore.UNIQUE_TEXT_CATEGORIES);

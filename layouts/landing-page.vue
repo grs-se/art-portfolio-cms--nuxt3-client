@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 // const { $api } = useNuxtApp();
-import { useArtworksStore } from '~/stores/artwork';
+import { useArtworksStore } from '~~/store/modules/artwork';
 
 const artworksStore = useArtworksStore();
 onMounted(artworksStore.FETCH_ARTWORKS);
