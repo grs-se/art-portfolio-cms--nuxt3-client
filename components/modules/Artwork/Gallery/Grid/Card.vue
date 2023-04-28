@@ -10,9 +10,11 @@
       class="w-auto items-center justify-center md:max-h-64 xl:max-h-80"
       :alt="data.title"
     />
-    <figcaption class="line-clamp-1">
-      <p>{{ index }}</p>
-      <h3>{{ data.title }}</h3>
+    <figcaption>
+      <span class="line-clamp-1 flex">
+        <!-- <div class="index">{{ index }}</div> -->
+        <h3>{{ data.title }}</h3>
+      </span>
     </figcaption>
   </figure>
   <!-- <ModalHover v-if="cardHover" :data="data" /> -->
@@ -21,7 +23,7 @@
 <script lang="ts" setup>
 const cardHover = ref(false);
 
-const props = defineProps({
+defineProps({
   data: {
     type: Object,
     required: true,
@@ -66,9 +68,13 @@ figcaption {
     // white-space: pre-wrap;
     // max-width: 90%;
   }
+
+  .index::after {
+    content: '. ';
+  }
 }
 
-.active-card {
+.active {
   border: 1px solid black;
 }
 </style>

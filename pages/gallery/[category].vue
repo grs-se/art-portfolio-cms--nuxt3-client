@@ -15,6 +15,7 @@
           :index="index"
           @open-aside="openAside(item)"
           @click="setCurrentSlide(index)"
+          :active="currentSlide"
         >
         </ArtworkGalleryGridCard>
       </template>
@@ -60,7 +61,9 @@ const displayedResults = computed(() => {
   const lastArtworkIndex = pageNumber * maxResPerPage;
   return filteredArtworks.value.slice(firstArtworkIndex, lastArtworkIndex);
 });
-const showAside = ref(settingsStore.state.showAside);
+const showAside = computed(() => {
+  return settingsStore.state.showAside;
+});
 const selectedArtwork = ref<IArtwork>(
   displayedResults.value[currentSlide.value]
 );
