@@ -34,6 +34,8 @@ export enum PageAnim {
   SCALE = 'scale',
 }
 
+export enum ResPerPage {}
+
 export interface UserState {
   userId: number;
   token: string;
@@ -55,6 +57,7 @@ export interface AppConfigState {
   galleryMode: GalleryMode;
   isFixedNavBar: boolean;
   isCollapse: boolean;
+  isShowAside: boolean;
   actionBar: {
     isShowSearch: boolean;
     isShowMessage: boolean;

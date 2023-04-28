@@ -8,6 +8,7 @@ import {
   ThemeMode,
   DeviceType,
   GalleryMode,
+  ResPerPage,
 } from '../types';
 
 const useAppConfigStore = defineStore('app-config', {
@@ -43,6 +44,7 @@ const useAppConfigStore = defineStore('app-config', {
       const r = document.querySelector(':root') as HTMLElement;
       r.style.setProperty('--menu-width', sideWidth + 'px');
     },
+    toggleAsidePanel() {},
     toggleCollapse(isCollapse: boolean) {
       this.isCollapse = isCollapse;
     },

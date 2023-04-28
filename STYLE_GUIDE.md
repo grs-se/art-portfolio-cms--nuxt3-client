@@ -1,87 +1,93 @@
 ## Naming Conventions
+
 Give your functions, components and files **speaking/self-explanatory names** (e.g. `getCollectionById()`, `KeyboardShortcuts.vue`, `setIdentity.ts`).
 
 ### Nuxt/Vue-specific Files
+
 - **Pages** and **layouts** use **kebab-case** (`series-insight.vue`)
 - **All other components** (in folder `/components`) use **PascalCase** (`CookieBanner.vue`)
 
 ### Others
+
 - **Folders** are written in **lowercase** (`components/spotlight`)
 - **Typescript**, **Javascript** and **GraphQL** files use **camelCase** (`globalVariables.ts`, `getKey.js`, `collectionById.graphql`)
 - **SCSS** files use **kebab-case** (`initial-variables.scss`)
 - **JSON** files use **snake_case** (`all_lang.json`) while **Markdown** files use **SCREAMING_SNAKE_CASE** (`CONTRIBUTING.md`)
 
 ## SFC Conventions
+
 ### Skeleton
+
 99% of the time your SCSS should be **scoped**, which makes sure your CSS won't bleed outside of your component and pollute the global namespace!
+
 ```vue
 <template>
-    <div>
-        ...
-    </div>
+  <div>...</div>
 </template>
 
 <script lang="ts" setup>
-  ...
+...
 </script>
 
 <style scoped lang="scss"></style>
 ```
 
 ### Composition API
+
 Every new feature is required to be written in the new **Composition API** and should follow the following recommendations:
 
 ```vue
 <script lang="ts" setup>
-import type { CarouselNFT } from '@/components/base/types'
+import type { CarouselNFT } from '@/components/base/types';
 
 // declaring props
 const props = defineProps<{
-  nfts: CarouselNFT[]
-}>()
+  nfts: CarouselNFT[];
+}>();
 
 // reactive state
-const count = ref(0)
+const count = ref(0);
 
 // functions that mutate state and trigger updates
 function increment() {
-  count.value++
+  count.value++;
 }
-
 
 const author = reactive({
   name: 'John Doe',
   books: [
     'Vue 2 - Advanced Guide',
     'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
+    'Vue 4 - The Mystery',
+  ],
+});
 
 // a computed ref
 const publishedBooksMessage = computed(() => {
-  return author.books.length > 0 ? 'Yes' : 'No'
-})
+  return author.books.length > 0 ? 'Yes' : 'No';
+});
 
 watch(count, (newCount) => {
-  console.log(`count is ${newCount}`)
-})
+  console.log(`count is ${newCount}`);
+});
 
 // lifecycle hooks
 onMounted(() => {
-  console.log(`The initial count is ${count.value}.`)
-})
+  console.log(`The initial count is ${count.value}.`);
+});
 </script>
 
 <template>
   <button @click="increment">Count is: {{ count }}</button>
 </template>
-
 ```
+
 For more details make sure to checkout [Vue's official documentation](https://vuejs.org/guide/introduction.html).
 
 ### Using Components In Templates
+
 Custom components and prop bindings should be used like this
+
 ```vue
 <MyCustomComponent :propertyName="doSomething">
     {{ someProperty }}
@@ -89,13 +95,17 @@ Custom components and prop bindings should be used like this
 ```
 
 Use shorthands for vue attributes
+
 - `:href` instead of `v-bind:href`
 - `@click` instead of `v-on:click`
 - ...
 
 ### Fetching Data
+
 The following syntax should be considered best practice:
+
 #### Composition API
+
 ```typescript
 // useGraphql is a composable function that is auto-imported without having to use an explicit import statement
 // you can then call a specific GraphQL query like this in any of your SFCs
@@ -104,46 +114,54 @@ const { data } = useGraphql({
   variables: {
     id: address,
   },
-})
+});
 ```
+
 For reference you can take a look at `useCarousel.ts` and its usage throughout the app. It will show you how to best abstract such calls into its own [composables](https://vuejs.org/guide/reusability/composables.html), which is one of the core concepts behind the Composition API.
 
-
 ### Reusability Through Abstraction
+
 If your component will be used on several occasions in many different contexts, you should think about how you pass data to your components and how events are handled.
 Regarding event handling, you should always aim to emit events happening in your component, while the handling should be done in the parent or page itself. Thereby, the click of a button can trigger all kinds of functionality without being aware of its context.
+
 ```vue
 <template>
-    <!-- ParentComponent.vue -->
-    <ChildComponent @remove="removeItemFromList" />
+  <!-- ParentComponent.vue -->
+  <ChildComponent @remove="removeItemFromList" />
 </template>
 ```
+
 ```vue
 <template>
-    <!-- ChildComponent.vue -->
-    <div @click="$emit('remove')" />
+  <!-- ChildComponent.vue -->
+  <div @click="$emit('remove')" />
 </template>
 ```
 
 Make reusable components as generic as possible. Therefore, the naming should only imply the functionality of the component itself and not what it does in the given context.
+
 ```vue
 <script lang="ts" setup>
 // List.vue
-import { computed } from 'vue'
-import ListItem from './ListItem.vue'
-import type { IListItem } from '@/components/base/types'
+import { computed } from 'vue';
+import ListItem from './ListItem.vue';
+import type { IListItem } from '@/components/base/types';
 
 const props = defineProps<{
-  items: IListItem[]
-}>()
+  items: IListItem[];
+}>();
 
-const getItemsWithText = computed(() => props.items.filter(item => item.text) || [])
+const getItemsWithText = computed(
+  () => props.items.filter((item) => item.text) || []
+);
 </script>
 ```
 
 ## Vuex Conventions (old, now we're using pinia)
+
 - each module is defined in its own file -> Explorer Module has its state, actions, mutations, getters defined in `explorer.ts`
 - **mutations** should only be **triggered via actions** and should be named in **SCREAMING_SNAKE_CASE**:
+
 ```typescript
 // action
 setLayoutClass({ commit }: { commit: Commit }, data) {
@@ -154,7 +172,9 @@ SET_LAYOUT_CLASS(state: PreferencesState, data) {
     state.layoutClass = data
 }
 ```
+
 - **state properties** should always be **accessed via getters**:
+
 ```typescript
 get classLayout() {
     return this.$store.getters['preferences/getLayoutClass']
@@ -169,32 +189,33 @@ Even if the statement of a block is just one line, stick to a more elaborate
 syntax and consistent way to do brace-style
 
 ❗ bad
+
 ```js
-if (something) return 1
+if (something) return 1;
 
-if (something) return 1
-else return 2
+if (something) return 1;
+else return 2;
 
-function foo()
-{
+function foo() {
   return true;
 }
 ```
 
 ✅ good
+
 ```js
 if (something) {
-  return 1
+  return 1;
 }
 
 if (something) {
-  return 1
+  return 1;
 } else {
-  return 2
+  return 2;
 }
 
 function foo() {
-  return true
+  return true;
 }
 ```
 
@@ -205,14 +226,16 @@ Beside if you really need using `for` loop, you should using `for-of` loop
 since by doing so we can avoid off-by-one errors
 
 ❗ bad
+
 ```js
 for (let x = 0; x < 10; x++) {
-  const element = list[x]
+  const element = list[x];
   // your statement
 }
 ```
 
 ✅ good
+
 ```js
 // Best
 list.forEach(element => ...)
