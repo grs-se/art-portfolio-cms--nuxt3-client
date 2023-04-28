@@ -20,17 +20,17 @@ onMounted(() => {
 
 const filteredArtworks = computed(() => artworksStore.FILTERED_ARTWORKS);
 
-const resPerPage = settingsStore.state.resPerPage;
+const maxResPerPage = settingsStore.state.maxResPerPage;
 
 const currentPage = computed(() =>
   Number.parseInt((route.query.page as string) || '1')
 );
 const maxPage = computed(() =>
-  Math.ceil(filteredArtworks.value.length / resPerPage)
+  Math.ceil(filteredArtworks.value.length / maxResPerPage)
 );
 
 const excess = computed(() =>
-  Math.ceil(filteredArtworks.value.length % resPerPage)
+  Math.ceil(filteredArtworks.value.length % maxResPerPage)
 );
 
 console.log('excess', excess.value);
@@ -42,8 +42,8 @@ const { previousPage, nextPage } = usePreviousAndNextPages(
 
 const displayedArtworks = computed(() => {
   const pageNumber = currentPage.value;
-  const firstArtworkIndex = (pageNumber - 1) * resPerPage;
-  const lastArtworkIndex = pageNumber * resPerPage;
+  const firstArtworkIndex = (pageNumber - 1) * maxResPerPage;
+  const lastArtworkIndex = pageNumber * maxResPerPage;
   return filteredArtworks.value.slice(firstArtworkIndex, lastArtworkIndex);
 });
 
@@ -103,19 +103,19 @@ onMounted(() => {
 const next = () => {
   console.log(currentSlideIndex.value);
   if (
-    currentSlideIndex.value === resPerPage - 1 &&
+    currentSlideIndex.value === maxResPerPage - 1 &&
     currentPage.value === maxPage.value
   ) {
-    currentSlideIndex.value = resPerPage - 1;
+    currentSlideIndex.value = maxResPerPage - 1;
     return;
   }
   // if (
-  //   currentSlideIndex.value != resPerPage - 1 &&
+  //   currentSlideIndex.value != maxResPerPage - 1 &&
   //   currentPage.value != maxPage.value
   // ) {
   currentSlideIndex.value++;
   selectedArtwork.value = displayedArtworks.value[currentSlideIndex.value];
-  if (currentSlideIndex.value === resPerPage - 1 && nextPage.value) {
+  if (currentSlideIndex.value === maxResPerPage - 1 && nextPage.value) {
     router.replace(`${route.params.category}?page=${nextPage.value}`);
     currentSlideIndex.value = 0;
   }
@@ -128,7 +128,7 @@ const prev = () => {
     currentSlideIndex.value--;
     selectedArtwork.value = displayedArtworks.value[currentSlideIndex.value];
     router.replace(`${route.params.category}?page=${previousPage.value}`);
-    currentSlideIndex.value = resPerPage - 1;
+    currentSlideIndex.value = maxResPerPage - 1;
   }
 };
 

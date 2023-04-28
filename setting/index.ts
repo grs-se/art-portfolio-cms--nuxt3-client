@@ -20,6 +20,7 @@ export default {
   sideWidth: 210,
   deviceType: DeviceType.PC,
   pageAnim: PageAnim.OPACITY,
+  maxResPerPage: 24,
   isFixedNavBar: true,
   isCollapse: false,
   actionBar: {

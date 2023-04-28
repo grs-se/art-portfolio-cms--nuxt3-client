@@ -7,6 +7,7 @@
         @click=""
         alt=""
         provider="cloudinary"
+        loading="lazy"
       />
     </nuxt-link>
   </figure>

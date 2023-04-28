@@ -8,7 +8,6 @@ import {
   ThemeMode,
   DeviceType,
   GalleryMode,
-  ResPerPage,
 } from '../types';
 
 const useAppConfigStore = defineStore('app-config', {
@@ -38,6 +37,9 @@ const useAppConfigStore = defineStore('app-config', {
     },
     changeGalleryMode(mode: GalleryMode) {
       this.galleryMode = mode;
+    },
+    changeMaxResPerPage(res: number) {
+      this.maxResPerPage = res;
     },
     changeSideWidth(sideWidth: number) {
       this.sideWidth = sideWidth;

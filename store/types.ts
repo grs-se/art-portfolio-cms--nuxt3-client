@@ -34,7 +34,7 @@ export enum PageAnim {
   SCALE = 'scale',
 }
 
-export enum ResPerPage {}
+export enum maxResPerPage {}
 
 export interface UserState {
   userId: number;
@@ -55,6 +55,7 @@ export interface AppConfigState {
   sideWidth: number;
   pageAnim: PageAnim;
   galleryMode: GalleryMode;
+  maxResPerPage: maxResPerPage;
   isFixedNavBar: boolean;
   isCollapse: boolean;
   isShowAside: boolean;

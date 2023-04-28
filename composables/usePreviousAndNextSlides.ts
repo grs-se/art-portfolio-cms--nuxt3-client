@@ -7,7 +7,7 @@
 //   const nextSlide = () => {
 //     currentSlideIndex.value++;
 //     selectedArtwork.value = displayedArtworks.value[currentSlideIndex.value];
-//     if (currentSlideIndex.value === resPerPage - 1 && nextPage) {
+//     if (currentSlideIndex.value === maxResPerPage - 1 && nextPage) {
 //       router.replace(`${route.params.category}?page=${nextPage.value}`);
 //       currentSlideIndex.value = 0;
 //     }
@@ -18,7 +18,7 @@
 //     selectedArtwork.value = displayedArtworks.value[currentSlideIndex.value];
 //     if (currentSlideIndex.value === 0 && previousPage) {
 //       router.replace(`${route.params.category}?page=${previousPage.value}`);
-//       currentSlideIndex.value = resPerPage - 1;
+//       currentSlideIndex.value = maxResPerPage - 1;
 //     }
 //   };
 
@@ -30,7 +30,7 @@
 // const next = () => {
 //   currentSlideIndex.value++;
 //   selectedArtwork.value = displayedArtworks.value[currentSlideIndex.value];
-//   if (currentSlideIndex.value === resPerPage - 1 && nextPage) {
+//   if (currentSlideIndex.value === maxResPerPage - 1 && nextPage) {
 //     router.replace(`${route.params.category}?page=${nextPage.value}`);
 //     currentSlideIndex.value = 0;
 //   }
@@ -41,7 +41,7 @@
 //   selectedArtwork.value = displayedArtworks.value[currentSlideIndex.value];
 //   if (currentSlideIndex.value === 0 && previousPage) {
 //     router.replace(`${route.params.category}?page=${previousPage.value}`);
-//     currentSlideIndex.value = resPerPage - 1;
+//     currentSlideIndex.value = maxResPerPage - 1;
 //   }
 // };
 
@@ -50,19 +50,19 @@
 // const next = () => {
 //   console.log(currentSlideIndex.value);
 //   if (
-//     currentSlideIndex.value === resPerPage - 1 &&
+//     currentSlideIndex.value === maxResPerPage - 1 &&
 //     currentPage.value === maxPage.value
 //   ) {
-//     currentSlideIndex.value = resPerPage - 1;
+//     currentSlideIndex.value = maxResPerPage - 1;
 //     return;
 //   }
 //   // if (
-//   //   currentSlideIndex.value != resPerPage - 1 &&
+//   //   currentSlideIndex.value != maxResPerPage - 1 &&
 //   //   currentPage.value != maxPage.value
 //   // ) {
 //   currentSlideIndex.value++;
 //   selectedArtwork.value = displayedArtworks.value[currentSlideIndex.value];
-//   if (currentSlideIndex.value === resPerPage - 1 && nextPage.value) {
+//   if (currentSlideIndex.value === maxResPerPage - 1 && nextPage.value) {
 //     router.replace(`${route.params.category}?page=${nextPage.value}`);
 //     currentSlideIndex.value = 0;
 //   }
@@ -75,7 +75,7 @@
 //     currentSlideIndex.value--;
 //     selectedArtwork.value = displayedArtworks.value[currentSlideIndex.value];
 //     router.replace(`${route.params.category}?page=${previousPage.value}`);
-//     currentSlideIndex.value = resPerPage - 1;
+//     currentSlideIndex.value = maxResPerPage - 1;
 //   }
 // };
 
@@ -84,19 +84,19 @@
 // const next = () => {
 //   console.log(currentSlideIndex.value);
 //   if (
-//     currentSlideIndex.value === resPerPage - 1 &&
+//     currentSlideIndex.value === maxResPerPage - 1 &&
 //     currentPage.value === maxPage.value
 //   ) {
-//     currentSlideIndex.value = resPerPage - 1;
+//     currentSlideIndex.value = maxResPerPage - 1;
 //     return;
 //   }
 //   // if (
-//   //   currentSlideIndex.value != resPerPage - 1 &&
+//   //   currentSlideIndex.value != maxResPerPage - 1 &&
 //   //   currentPage.value != maxPage.value
 //   // ) {
 //   currentSlideIndex.value++;
 //   selectedArtwork.value = displayedArtworks.value[currentSlideIndex.value];
-//   if (currentSlideIndex.value === resPerPage - 1 && nextPage.value) {
+//   if (currentSlideIndex.value === maxResPerPage - 1 && nextPage.value) {
 //     router.replace(`${route.params.category}?page=${nextPage.value}`);
 //     currentSlideIndex.value = 0;
 //   }
@@ -109,6 +109,6 @@
 //     currentSlideIndex.value--;
 //     selectedArtwork.value = displayedArtworks.value[currentSlideIndex.value];
 //     router.replace(`${route.params.category}?page=${previousPage.value}`);
-//     currentSlideIndex.value = resPerPage - 1;
+//     currentSlideIndex.value = maxResPerPage - 1;
 //   }
 // };

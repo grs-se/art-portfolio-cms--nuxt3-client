@@ -42,14 +42,13 @@ const artworksStore = useArtworksStore();
 const router = useRouter();
 const route = useRoute();
 const filteredArtworks = computed(() => artworksStore.FILTERED_ARTWORKS);
-const resPerPage = settingsStore.state.resPerPage;
-const index = ref(0);
+const maxResPerPage = settingsStore.state.maxResPerPage;
 const currentSlide = ref(0);
 const currentPage = computed(() =>
   Number.parseInt((route.query.page as string) || '1')
 );
 const maxPage = computed(() =>
-  Math.ceil(filteredArtworks.value.length / resPerPage)
+  Math.ceil(filteredArtworks.value.length / maxResPerPage)
 );
 const { previousPage, nextPage } = usePreviousAndNextPages(
   currentPage,
@@ -57,8 +56,8 @@ const { previousPage, nextPage } = usePreviousAndNextPages(
 );
 const displayedResults = computed(() => {
   const pageNumber = currentPage.value;
-  const firstArtworkIndex = (pageNumber - 1) * resPerPage;
-  const lastArtworkIndex = pageNumber * resPerPage;
+  const firstArtworkIndex = (pageNumber - 1) * maxResPerPage;
+  const lastArtworkIndex = pageNumber * maxResPerPage;
   return filteredArtworks.value.slice(firstArtworkIndex, lastArtworkIndex);
 });
 const showAside = ref(settingsStore.state.showAside);
@@ -71,20 +70,16 @@ function openAside(artwork: IArtwork) {
 }
 function next(step = 1) {
   if (
-    currentSlide.value === displayedResults.value.length - 1 &&
-    currentPage.value === maxPage.value
-  ) {
-    currentSlide.value = displayedResults.value.length - 1;
+    currentPage.value === maxPage.value &&
+    currentSlide.value === displayedResults.value.length - 1
+  )
     return;
-  }
-  index.value = currentSlide.value + step;
-  setCurrentSlide(index.value);
+  setCurrentSlide(currentSlide.value + step);
   if (
     currentSlide.value === displayedResults.value.length - 1 &&
     nextPage.value
   ) {
-    index.value = 0;
-    setCurrentSlide(index.value);
+    setCurrentSlide(0);
     router.replace({
       query: { page: nextPage.value },
     });
@@ -92,8 +87,7 @@ function next(step = 1) {
 }
 function prev(step = -1) {
   if (currentSlide.value === 0 && currentPage.value === 1) return;
-  index.value = currentSlide.value + step;
-  setCurrentSlide(index.value);
+  setCurrentSlide(currentSlide.value + step);
   if (currentSlide.value === 0 && currentPage.value > 1) {
     router.replace({
       query: { page: previousPage.value },
