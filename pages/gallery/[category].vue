@@ -44,7 +44,6 @@ const router = useRouter();
 const route = useRoute();
 const filteredArtworks = computed(() => artworksStore.FILTERED_ARTWORKS);
 const maxResPerPage = settingsStore.state.maxResPerPage;
-const currentSlide = ref(0);
 const currentPage = computed(() =>
   Number.parseInt((route.query.page as string) || '1')
 );
@@ -61,6 +60,7 @@ const displayedResults = computed(() => {
   const lastArtworkIndex = pageNumber * maxResPerPage;
   return filteredArtworks.value.slice(firstArtworkIndex, lastArtworkIndex);
 });
+const currentSlide = ref(0);
 const showAside = computed(() => {
   return settingsStore.state.showAside;
 });

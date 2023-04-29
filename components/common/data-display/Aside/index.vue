@@ -9,7 +9,6 @@
       <!-- Aside Slide -->
       <AsideSlide :current-slide="currentItem" />
       <AsideDetails :artwork="currentItem" />
-      <Bookmark color="white" class="justify-end" />
     </div>
   </div>
 </template>

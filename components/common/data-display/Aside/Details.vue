@@ -1,8 +1,9 @@
 <template>
   <div class="aside-details-container">
+    <!-- <Bookmark color="black" class="justify-end" /> -->
     <figcaption class="aside-figcaption">
       <dl class="aside-details">
-        <div class="aside-title">
+        <div class="title">
           <dt>Title</dt>
           <dd>"{{ artwork.title }}"</dd>
         </div>
@@ -21,7 +22,7 @@
           <dd>{{ artwork.location.join(', ') }}</dd>
         </div>
 
-        <div class="aside-details__tags">
+        <div class="tags">
           <dt>Tags</dt>
           <ul>
             <li>
@@ -34,7 +35,7 @@
           </ul>
         </div>
 
-        <div class="aside-details__description">
+        <div class="description">
           <p class="line-clamp-6">{{ artwork.description }}</p>
         </div>
       </dl>
@@ -61,42 +62,40 @@ defineProps({
   padding: 0.25rem 1rem;
   gap: 2rem;
 }
-.aside {
+.aside-figcaption {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  color: black;
   // overflow: hidden;
-  dt::after {
-    content: ': ';
-  }
-  :not(.medium) > dd {
-    text-transform: capitalize;
-  }
-  div {
-    display: flex;
-    flex-direction: row;
-  }
-  &-figcaption {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    color: black;
-  }
-  &-title {
-    margin-bottom: 0.5rem;
-  }
-  &-details {
+  .aside-details {
     display: flex;
     flex-direction: column;
     font-size: 1rem;
     line-height: 1.5rem;
-    &__tags {
+    dt::after {
+      content: ': ';
+    }
+    :not(.medium) > dd {
+      text-transform: capitalize;
+    }
+    div {
+      display: flex;
+      flex-direction: row;
+    }
+    .title {
+      margin-bottom: 0.5rem;
+    }
+    .description {
+      @apply text-sm py-4;
+    }
+    .tags {
       margin-top: 1rem;
       font-size: 0.9rem;
       line-height: 1rem;
       .tag-link {
         @apply text-brand-blue-2;
       }
-    }
-    &__description {
-      @apply text-sm py-4;
     }
   }
 }
