@@ -68,35 +68,31 @@ const selectedArtwork = ref<IArtwork>(
   displayedResults.value[currentSlide.value]
 );
 function openAside(artwork: IArtwork) {
-  settingsStore.state.showAside === true;
-  selectedArtwork.value = artwork;
+  settingsStore.state.showAside = true;
 }
-function next(step = 1) {
+async function nextSlide(step = 1) {
   if (
     currentPage.value === maxPage.value &&
     currentSlide.value === displayedResults.value.length - 1
   )
     return;
   setCurrentSlide(currentSlide.value + step);
-  if (
-    currentSlide.value === displayedResults.value.length - 1 &&
-    nextPage.value
-  ) {
-    setCurrentSlide(0);
-    router.replace({
+  if (currentSlide.value === displayedResults.value.length && nextPage.value) {
+    await router.replace({
       query: { page: nextPage.value },
     });
+    setCurrentSlide(0);
   }
 }
-function prev(step = -1) {
+async function prevSlide(step = -1) {
   if (currentSlide.value === 0 && currentPage.value === 1) return;
-  setCurrentSlide(currentSlide.value + step);
   if (currentSlide.value === 0 && currentPage.value > 1) {
-    router.replace({
+    await router.replace({
       query: { page: previousPage.value },
     });
-    currentSlide.value = displayedResults.value.length - 1;
+    setCurrentSlide(displayedResults.value.length);
   }
+  setCurrentSlide(currentSlide.value + step);
 }
 function setCurrentSlide(index: number) {
   currentSlide.value = index;
@@ -105,10 +101,10 @@ function setCurrentSlide(index: number) {
 function handleKeyDown(e: KeyboardEvent) {
   switch (e.key) {
     case 'ArrowLeft':
-      prev();
+      prevSlide();
       break;
     case 'ArrowRight':
-      next();
+      nextSlide();
       break;
   }
 }
