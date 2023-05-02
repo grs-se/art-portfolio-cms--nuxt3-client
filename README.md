@@ -5,6 +5,8 @@
 </div>
 <br/>
 
+## Technologies
+
 <p align="center">
 
 <!-- <a href="https://github.com/vuejs/vue">
@@ -48,6 +50,8 @@ An artist's portfolio, content management system, and educational workbook built
 
 ## Features
 
+- [] = Partially Implemented Funtionality
+  <hr/>
 - [ ] Post Creation
 - [ ] Post Editing
 - [ ] Post Deletion
@@ -78,6 +82,11 @@ Build the application for production using netlify-cli:
 ```bash
 netlify build && netlify deploy --prod
 ```
+
+## Further Project Goals
+
+- User and Admin Accounts
+-
 
 ## Contact me
 
