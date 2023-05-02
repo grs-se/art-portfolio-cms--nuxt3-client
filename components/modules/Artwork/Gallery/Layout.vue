@@ -1,5 +1,5 @@
 <template>
-  <main
+  <section
     class="gallery-wrapper"
     :class="[
       settingsStore.state.showAside === false
@@ -7,6 +7,7 @@
         : 'absolute left-0 w-2/3',
     ]"
   >
+    <h1 id="top">Gallery</h1>
     <ol
       data-gallery-mode="grid-cards"
       class="grid-cards mx-auto grid bg-white sm:grid-cols-1 sm:gap-2 md:grid-cols-2 xl:grid-cols-3 xl:gap-4"
@@ -14,7 +15,8 @@
       <slot></slot>
     </ol>
     <slot name="pagination" />
-  </main>
+    <!-- <a href="#top">Scroll to Top</a> -->
+  </section>
 </template>
 
 <script lang="ts" setup>
@@ -30,6 +32,17 @@ const settingsStore = useSettingsStore();
   padding: 1.5rem 1.5rem 2rem 1.5rem;
   overflow-y: scroll;
   height: 100vh;
+}
+</style>
+
+<style scoped lang="scss">
+html {
+  scroll-behavior: smooth;
+}
+a[href='#top'] {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
 }
 </style>
 

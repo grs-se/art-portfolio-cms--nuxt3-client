@@ -4,7 +4,7 @@
     <ArtworkFiltersSidebar isOpen />
     <Aside
       v-show="settingsStore.state.showAside === true"
-      :currentItem="selectedArtwork"
+      :currentItem="selectedCard"
       :slides="displayedResults"
     />
 
@@ -64,13 +64,13 @@ const currentSlide = ref(0);
 const showAside = computed(() => {
   return settingsStore.state.showAside;
 });
-const selectedArtwork = ref<IArtwork>(
-  displayedResults.value[currentSlide.value]
-);
-function openAside(artwork: IArtwork) {
+const selectedCard = ref<IArtwork>(displayedResults.value[currentSlide.value]);
+function openAside(): void {
   settingsStore.state.showAside = true;
 }
-async function nextSlide(step = 1) {
+// onMounted({openAside;
+// selectedCard});
+async function nextSlide(step = 1): Promise<void> {
   if (
     currentPage.value === maxPage.value &&
     currentSlide.value === displayedResults.value.length - 1
@@ -84,7 +84,7 @@ async function nextSlide(step = 1) {
     setCurrentSlide(0);
   }
 }
-async function prevSlide(step = -1) {
+async function prevSlide(step = -1): Promise<void> {
   if (currentSlide.value === 0 && currentPage.value === 1) return;
   if (currentSlide.value === 0 && currentPage.value > 1) {
     await router.replace({
@@ -96,7 +96,7 @@ async function prevSlide(step = -1) {
 }
 function setCurrentSlide(index: number) {
   currentSlide.value = index;
-  selectedArtwork.value = displayedResults.value[currentSlide.value];
+  selectedCard.value = displayedResults.value[currentSlide.value];
 }
 function handleKeyDown(e: KeyboardEvent) {
   switch (e.key) {

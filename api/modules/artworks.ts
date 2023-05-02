@@ -4,7 +4,7 @@ import { IArtwork, IGetArtworkResponse } from 'types';
 class ArtModule extends HttpFactory {
   private RESOURCE = '/artworks';
 
-  async getArtworks(params: string = ''): Promise<IGetArtworkResponse> {
+  async getArtworks(params?: string): Promise<IGetArtworkResponse> {
     const res = await this.call<IGetArtworkResponse>(
       'GET',
       `${this.RESOURCE}/${params}`
@@ -14,7 +14,7 @@ class ArtModule extends HttpFactory {
     return res.data.data.artworks;
   }
 
-  async getArtworkByTitle(title): Promise<IGetArtworkResponse> {
+  async getArtworkByTitle(title: string): Promise<IGetArtworkResponse> {
     await this.call<IGetArtworkResponse>('GET', `${this.RESOURCE}/${title}`);
   }
 
