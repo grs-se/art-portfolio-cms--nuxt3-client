@@ -1,10 +1,10 @@
-<h1 align="center">Visual Artist's Portfolio and Content Management System</h1>
+<h1 align="center">Artist's Portfolio and CMS</h1>
 
 <div align="center">
   :man_artist:
 </div>
 <div align="center">
-  <strong>Programming as an extension of my visual art practice</strong>
+  <strong>Inspired by the intersection between Art and Programming</strong>
 </div>
 
 <br />
@@ -51,7 +51,7 @@
 
 <div align="center">
   <sub>Built for artists, with ❤︎ by
-  <a href="https://twitter.com/">GRS</a> and
+  <a href="https://twitter.com/">GRS</a>
 </div>
 
 ## Table of Contents
@@ -73,12 +73,8 @@
 
 ## Features
 
-- **minimal size:** weighing `4kb`, Choo is a tiny little framework
-- **event based:** our performant event system makes writing apps easy
-- **small api:** with only 6 methods there's not much to learn
-- **minimal tooling:** built for the cutting edge `browserify` compiler
 - **isomorphic:** renders seamlessly in both Node and browsers
-- **very cute:** choo choo!
+- **cloud asset storage:**
 
 <div align="center">
     <img src="docs/_media/project_screenshot(gallery_category_filters).png" alt="" />
