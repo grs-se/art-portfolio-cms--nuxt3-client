@@ -14,6 +14,28 @@
 
 <br />
 
+<p align="center">
+
+<!-- <a href="https://github.com/vuejs/vue">
+    <img src="https://img.shields.io/badge/vue-2.6.10-brightgreen.svg" alt="vue">
+  </a> -->
+  <!-- <a href="https://github.com/lin-xin/vue-manage-system/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
+  </a> -->
+  <a href="https://github.com/vuejs/vue">
+    <img src="https://img.shields.io/badge/Vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D" alt="vue">
+  </a>
+   <a href="https://github.com/nuxt">
+    <img src="https://img.shields.io/badge/Nuxt-002E3B?style=for-the-badge&logo=nuxtdotjs&logoColor=#00DC82" alt="vue">
+  </a>
+  <!-- <a href="https://github.com/vuejs/pinia">
+   <img src="https://img.shields.io/badge/Pinia.svg?style=for-the-badge&logo=piniadotjs&logoColor=#FFD14D" alt="pinia">
+  </a> -->
+   <a href="https://github.com/tailwindcss">
+    <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="tailwindcss">
+   </a>
+</p>
+
 <div align="center">
   <!-- Stability -->
   <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">
@@ -193,28 +215,6 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeyDown));
 ```
 
 ## Technologies
-
-<p align="center">
-
-<!-- <a href="https://github.com/vuejs/vue">
-    <img src="https://img.shields.io/badge/vue-2.6.10-brightgreen.svg" alt="vue">
-  </a> -->
-  <!-- <a href="https://github.com/lin-xin/vue-manage-system/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
-  </a> -->
-  <a href="https://github.com/vuejs/vue">
-    <img src="https://img.shields.io/badge/Vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D" alt="vue">
-  </a>
-   <a href="https://github.com/nuxt">
-    <img src="https://img.shields.io/badge/Nuxt-002E3B?style=for-the-badge&logo=nuxtdotjs&logoColor=#00DC82" alt="vue">
-  </a>
-  <!-- <a href="https://github.com/vuejs/pinia">
-   <img src="https://img.shields.io/badge/Pinia.svg?style=for-the-badge&logo=piniadotjs&logoColor=#FFD14D" alt="pinia">
-  </a> -->
-   <a href="https://github.com/tailwindcss">
-    <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="tailwindcss">
-   </a>
-</p>
 
 ## Live Demo Site
 
