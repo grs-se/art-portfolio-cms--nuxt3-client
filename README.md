@@ -248,7 +248,6 @@ Please note: this project is still in development, contains faults and unfinishe
 - **continuous intergration/deployment:**: with Netlify CLI
 - **state management**: with Pinia
 
-- [ ] = Partially Implemented Funtionality
 <hr/>
 
 - [ ] Post Creation
@@ -282,6 +281,10 @@ Please note: this project is still in development, contains faults and unfinishe
 
 - [x] CI/CD Netlify CLI
 - [ ]
+
+- [ ] = Partially Implemented Funtionality
+
+<hr/>
 
 ## Production
 
