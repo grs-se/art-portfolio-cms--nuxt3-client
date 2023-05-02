@@ -13,18 +13,33 @@ An artist's portfolio, content management system, and educational workbook built
 
 ### Project Screenshots
 
-|                                                         |                                                                   |
-| ------------------------------------------------------- | ----------------------------------------------------------------- |
-| ![](<docs/_media/project_screenshot(3).png>)            | ![](<docs/_media/project_screensho(gallery_categoy_filters).png>) |
-| ![](<docs/_media/project_screenshot(landing_page).png>) | ![](<docs/_media/project_screenshot(gallery_category).png>)       |
+|                                                         |                                                                    |
+| ------------------------------------------------------- | ------------------------------------------------------------------ |
+| ![](<docs/_media/project_screenshot(3).png>)            | ![](<docs/_media/project_screenshot(gallery_categoy_filters).png>) |
+| ![](<docs/_media/project_screenshot(landing_page).png>) | ![](<docs/_media/project_screenshot(gallery_category).png>)        |
 
 ## Features
 
-- [x] Post Feed
+- [ ] Post Creation
+- [ ] Post Editing
+- [ ] Post Deletion
+- [ ] Post Liking
+- [ ] Post Commenting
+- [ ] Post Tagging
+- [x] Post Searching
 - [x] Post Filtering
-- [x] Post Sorting
-- [ ] Bookmarking
-- [ ] Optional Gallery Modes: grid, masonry, lightbox, carousel, spotlights, modal
+- [ ] Post Bookmarking
+
+### UI Features
+
+- [x] Gallery Modes
+  - [x] Grid
+  - [x] Masonry
+  - [x] Lightbox
+  - [x] Carousel
+  - [x] Spotlights
+  - [x] Modal
+  - [x] Aside
 - [ ] Dark Mode
 
 Build using netlify-cli:
