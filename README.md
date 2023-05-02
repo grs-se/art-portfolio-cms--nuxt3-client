@@ -13,10 +13,10 @@ An artist's portfolio, content management system, and educational workbook built
 
 ### Project Screenshots
 
-|                                                         |                                                                    |
-| ------------------------------------------------------- | ------------------------------------------------------------------ |
-| ![](<docs/_media/project_screenshot(3).png>)            | ![](<docs/_media/project_screenshot(gallery_categoy_filters).png>) |
-| ![](<docs/_media/project_screenshot(landing_page).png>) | ![](<docs/_media/project_screenshot(gallery_category).png>)        |
+|                                                         |                                                                     |
+| ------------------------------------------------------- | ------------------------------------------------------------------- |
+| ![](<docs/_media/project_screenshot(3).png>)            | ![](<docs/_media/project_screenshot(gallery_category_filters).png>) |
+| ![](<docs/_media/project_screenshot(landing_page).png>) | ![](<docs/_media/project_screenshot(gallery_category).png>)         |
 
 ## Features
 
