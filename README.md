@@ -68,11 +68,6 @@
 - [See Also](#see-also)
 - [Support](#support)
 
-## Features Overview
-
-- **isomorphic:** renders seamlessly in both Node and browsers
-- **cloud asset storage:**: store images and files on Cloudinary or AWS S3
-
 ## Example
 
 ```js
@@ -248,6 +243,11 @@ Please note: this project is still in development, contains faults and unfinishe
 
 ## Features
 
+- **isomorphic/universal rendering:** renders seamlessly in browsers
+- **cloud asset storage:**: store images and files in cloud storage with Cloudinary or AWS S3
+- **continuous intergration/deployment:**: with Netlify CLI
+- **state management**: with Pinia
+
 - [ ] = Partially Implemented Funtionality
 <hr/>
 
@@ -273,6 +273,15 @@ Please note: this project is still in development, contains faults and unfinishe
   - [x] Spotlights
   - [x] Modal
   - [x] Aside
+
+### State Management
+
+- [x] Pinia
+
+### Deployment
+
+- [x] CI/CD Netlify CLI
+- [ ]
 
 ## Production
 
