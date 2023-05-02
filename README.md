@@ -1,5 +1,88 @@
 # Visual Artist's Portfolio and Content Management System
 
+<h1 align="center">Choo</h1>
+
+<div align="center">
+  :man_artist:
+</div>
+<div align="center">
+  <strong>Programming as an extension of my visual art practice</strong>
+</div>
+
+<br />
+
+<div align="center">
+  <!-- Stability -->
+  <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">
+    <img src="https://img.shields.io/badge/stability-experimental-orange.svg?style=flat-square"
+      alt="API stability" />
+  </a>
+  <!-- NPM version -->
+  <a href="https://npmjs.org/package/choo">
+    <img src="https://img.shields.io/npm/v/choo.svg?style=flat-square"
+      alt="NPM version" />
+  </a>
+  <!-- Build Status -->
+  <a href="https://travis-ci.org/choojs/choo">
+    <img src="https://img.shields.io/travis/choojs/choo/master.svg?style=flat-square"
+      alt="Build Status" />
+  </a>
+  <!-- Test Coverage -->
+  <a href="https://codecov.io/github/choojs/choo">
+    <img src="https://img.shields.io/codecov/c/github/choojs/choo/master.svg?style=flat-square"
+      alt="Test Coverage" />
+  </a>
+  <!-- Standard -->
+  <a href="https://standardjs.com">
+    <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square"
+      alt="Standard" />
+  </a>
+</div>
+
+<div align="center">
+  <h3>
+    <a href="https://grs-art-portfolio-cms.netlify.app/">
+      Website
+    </a>
+    <span> | </span>
+    <a href="https://github.com/grs-se/art-portfolio-cms--api-server">
+      REST API
+    </a>
+    <span> | </span>
+  </h3>
+</div>
+
+<div align="center">
+  <sub>Built for artists, with ❤︎ by
+  <a href="https://twitter.com/">GRS</a> and
+</div>
+
+## Table of Contents
+
+- [Features](#features)
+- [Example](#example)
+- [Philosophy](#philosophy)
+- [Events](#events)
+- [State](#state)
+- [Routing](#routing)
+- [Server Rendering](#server-rendering)
+- [Components](#components)
+- [Optimizations](#optimizations)
+- [FAQ](#faq)
+- [API](#api)
+- [Installation](#installation)
+- [See Also](#see-also)
+- [Support](#support)
+
+## Features
+
+- **minimal size:** weighing `4kb`, Choo is a tiny little framework
+- **event based:** our performant event system makes writing apps easy
+- **small api:** with only 6 methods there's not much to learn
+- **minimal tooling:** built for the cutting edge `browserify` compiler
+- **isomorphic:** renders seamlessly in both Node and browsers
+- **very cute:** choo choo!
+
 <div align="center">
     <img src="docs/_media/project_screenshot(gallery_category_filters).png" alt="" />
 </div>
