@@ -1,6 +1,11 @@
 <h1 align="center">Artist's Portfolio and CMS</h1>
 
 <div align="center">
+    <img src="docs/_media/project_screenshot(gallery_category_filters).png" alt="" />
+</div>
+<br/>
+
+<div align="center">
   :man_artist:
 </div>
 <div align="center">
@@ -186,11 +191,6 @@ onBeforeMount(() => window.addEventListener('keydown', handleKeyDown));
 onBeforeUnmount(() => window.removeEventListener('keydown', handleKeyDown));
 </script>
 ```
-
-<div align="center">
-    <img src="docs/_media/project_screenshot(gallery_category_filters).png" alt="" />
-</div>
-<br/>
 
 ## Technologies
 
