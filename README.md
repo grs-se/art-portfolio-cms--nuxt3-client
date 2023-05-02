@@ -33,9 +33,15 @@
 
 https://grs-art-portfolio-cms.netlify.app/
 
-## Project Summary
+## Project Overview
 
-An artist's portfolio and content management system with intention to develop with the additional functionality of becoming an artist's personal educational resource book and review platform - for mentors and fellow artist's to provide feedback.
+I am a self-taught entry level software developer with a range of transferable skills. I began learning to code just before “lockdown”, whilst working full-time in Landscape Construction. My motivation was to build an art portfolio website linked to a database that a user could interact with in many ways: sorting, filtering, different viewing modes, commenting, bookmarking, etc. However, I quickly became fascinated with programming and this project became more ambitious, a training ground to learn more advanced programming concepts: state-management, universal and client-side rendering, cloud asset management, authentication and authorization, etc. These days I program more than making art!
+
+This project is currently in a simple form as a public display portfolio, but I am in the process of implementing additional functionality to upgrade the project to include the following functionality:
+
+- CMS, to enable artist's to manage and archive all of their artworks
+- An artist's educational e-resource book - to compile inspiration resources;
+- A review and critiquing platform for mentors and fellow artist's to interact with each other and the artworks, and provide feedback.
 
 A 'Universal' rendered application built with Vue.js(3), Nuxt(3), Pinia. Source code for the accompaying backend project - a custom REST API server - can be found at: https://github.com/grs-se/art-portfolio-cms--api-server
 
