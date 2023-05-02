@@ -1,4 +1,9 @@
-# Visual Artist's Portfolio and Content Management System.
+# Visual Artist's Portfolio and Content Management System
+
+<div align="center">
+    <img src="docs/_media/project_screenshot(gallery_category_filters).png" alt="" />
+</div>
+<br/>
 
 <p align="center">
 
@@ -22,18 +27,17 @@
    </a>
 </p>
 
+## Live Demo Site
+
 https://grs-art-portfolio-cms.netlify.app/
+
+## Summary
 
 This project is still in development and is not ready for production use.
 
 Source code for my custom REST API server for this project can be found at: https://github.com/grs-se/art-portfolio-cms--api-server
 
 An artist's portfolio, content management system, and educational workbook built with Vue.js 3 and Nuxt 3.
-
-<div align="center">
-    <img src="docs/_media/project_screenshot(gallery_category_filters).png" alt="" />
-</div>
-<br/>
 
 ### Project Screenshots
 
