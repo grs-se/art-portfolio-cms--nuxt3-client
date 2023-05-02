@@ -1,6 +1,4 @@
-# Visual Artist's Portfolio and Content Management System
-
-<h1 align="center">Choo</h1>
+<h1 align="center">Visual Artist's Portfolio and Content Management System</h1>
 
 <div align="center">
   :man_artist:
@@ -48,7 +46,6 @@
     <a href="https://github.com/grs-se/art-portfolio-cms--api-server">
       REST API
     </a>
-    <span> | </span>
   </h3>
 </div>
 
