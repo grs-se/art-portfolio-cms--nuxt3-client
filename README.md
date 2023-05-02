@@ -1,4 +1,5 @@
 <h1 align="center">Artist's Portfolio and CMS</h1>
+<h2 align="center">(Frontend)</h2>
 
 <div align="center">
     <img src="docs/_media/project_screenshot(gallery_category_filters).png" alt="" />
