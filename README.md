@@ -33,13 +33,13 @@
 
 https://grs-art-portfolio-cms.netlify.app/
 
-## Summary
+## Project Summary
 
-This project is still in development and is not ready for production use.
+An artist's portfolio and content management system with intention to develop with the additional functionality of becoming an artist's personal educational resource book and review platform - for mentors and fellow artist's to provide feedback.
 
-Source code for my custom REST API server for this project can be found at: https://github.com/grs-se/art-portfolio-cms--api-server
+A 'Universal' rendered application built with Vue.js(3), Nuxt(3), Pinia. Source code for the accompaying backend project - a custom REST API server - can be found at: https://github.com/grs-se/art-portfolio-cms--api-server
 
-An artist's portfolio, content management system, and educational workbook built with Vue.js 3 and Nuxt 3.
+Please note: this project is still in development, contains faults and unfinished implementation, and is not ready for production use.
 
 ### Project Screenshots
 
@@ -50,8 +50,9 @@ An artist's portfolio, content management system, and educational workbook built
 
 ## Features
 
-- [] = Partially Implemented Funtionality
-  <hr/>
+- [ ] = Partially Implemented Funtionality
+<hr/>
+
 - [ ] Post Creation
 - [ ] Post Editing
 - [ ] Post Deletion
@@ -86,7 +87,6 @@ netlify build && netlify deploy --prod
 ## Further Project Goals
 
 - User and Admin Accounts
--
 
 ## Contact me
 
