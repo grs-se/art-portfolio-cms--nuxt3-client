@@ -7,7 +7,7 @@
         : 'absolute left-0 w-2/3',
     ]"
   >
-    <h1 id="top">Gallery</h1>
+    <h1 id="top"></h1>
     <ol
       data-gallery-mode="grid-cards"
       class="grid-cards mx-auto grid bg-white sm:grid-cols-1 sm:gap-2 md:grid-cols-2 xl:grid-cols-3 xl:gap-4"

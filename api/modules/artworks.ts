@@ -15,7 +15,10 @@ class ArtModule extends HttpFactory {
   }
 
   async getArtworkByTitle(title: string): Promise<IGetArtworkResponse> {
-    await this.call<IGetArtworkResponse>('GET', `${this.RESOURCE}/${title}`);
+    return await this.call<IGetArtworkResponse>(
+      'GET',
+      `${this.RESOURCE}/${title}`
+    );
   }
 
   async createArtwork(artwork: IArtwork): Promise<IGetArtworkResponse> {
@@ -34,7 +37,7 @@ class ArtModule extends HttpFactory {
 
   // },
 
-  async sortByDate(params) {
+  async sortByDate(params?: string) {
     return await this.call('GET', `${this.RESOURCE}?sort=${params}`);
   }
 }

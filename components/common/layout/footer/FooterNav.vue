@@ -10,26 +10,26 @@ const footerMenuGroups = ref([
       },
     ],
   },
-  {
-    header: 'Services',
-    url: '/',
-    listItems: [
-      { item: 'Art Teaching', url: '/gallery', link: true },
-      { item: 'Art Technical', url: '/gallery', link: true },
-      { item: 'Web-Development', url: '/gallery', link: true },
-      { item: 'Landscape Construction', url: '/gallery', link: true },
-    ],
-  },
-  {
-    header: 'Products',
-    url: '/',
-    listItems: [
-      { item: 'Drawings', url: '/gallery' },
-      { item: 'Objects', url: '/gallery' },
-      { item: 'Painting', url: '/gallery' },
-      { item: 'Print', url: '/gallery' },
-    ],
-  },
+  // {
+  //   header: 'Services',
+  //   url: '/',
+  //   listItems: [
+  //     { item: 'Art Teaching', url: '/gallery', link: true },
+  //     { item: 'Art Technical', url: '/gallery', link: true },
+  //     { item: 'Web-Development', url: '/gallery', link: true },
+  //     { item: 'Landscape Construction', url: '/gallery', link: true },
+  //   ],
+  // },
+  // {
+  //   header: 'Products',
+  //   url: '/',
+  //   listItems: [
+  //     { item: 'Drawings', url: '/gallery' },
+  //     { item: 'Objects', url: '/gallery' },
+  //     { item: 'Painting', url: '/gallery' },
+  //     { item: 'Print', url: '/gallery' },
+  //   ],
+  // },
 ]);
 </script>
 

@@ -7,8 +7,8 @@ const category = route.params.category;
 
 const links = ref([
   { text: 'Gallery', url: '/gallery/observation' },
-  { text: 'Research', url: '/research' },
-  { text: 'Text', url: '/text' },
+  // { text: 'Research', url: '/research' },
+  // { text: 'Text', url: '/text' },
   // { text: 'Exhibitions', url: '/exhibitions' },
   // { text: 'Statement', url: '/text/artist-statement' },
   { text: 'About', url: '/about' },
