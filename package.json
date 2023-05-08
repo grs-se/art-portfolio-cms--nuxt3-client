@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@nuxt/content": "^2.5.2",
+    "@nuxt/image": "^0.7.1",
     "@nuxt/image-edge": "1.0.0-27991759.1a5eea1",
     "@pinia/testing": "^0.0.14",
     "@rushstack/eslint-patch": "^1.2.0",
